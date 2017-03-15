@@ -2,6 +2,8 @@
 /**
  * @var \Cake\View\View $this
  */
+use Cake\Core\Configure;
+
 $this->extend('/Layout/dashboard');
 
 $preferredBrowserLang = $this->request->acceptLanguage()[0];
@@ -34,7 +36,7 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
                 'label' => false,
             ]); ?>
 
-            <div class="g-recaptcha" data-sitekey="6LclExkUAAAAAG0AH3QZAXihUZFvd0cellU4BRV0"></div>
+            <div class="g-recaptcha" data-sitekey="<?= Configure::read('Recaptcha.publickey') ?>"></div>
 
             <?= $this->Form->input('remember_me', [
                 'label' => __('Husk mig'),
