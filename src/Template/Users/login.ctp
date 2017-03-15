@@ -5,15 +5,23 @@
 $this->extend('/Layout/dashboard');
 ?>
 
-<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-    <div class="well well-lg">
-        <?= $this->Form->create(null, ['type' => 'POST', 'class' => 'form-horizontal']); ?>
-        <fieldset>
-            <legend>
-                <?= __('Login'); ?>
-            </legend>
+<?php $this->start('script'); ?>
+<?= $this->fetch('script') ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<?php $this->end(); ?>
 
+<div class="well well-lg">
+    <?= $this->Form->create(null, [
+        'type' => 'POST',
+        'align' => [
+        ],
+    ]); ?>
+    <fieldset>
+        <legend>
+            <?= __('Login'); ?>
+        </legend>
 
+        <div>
             <?= $this->Form->input('email', [
                 'placeholder' => __('jens.a@gmail.com'),
                 'label' => false,
@@ -22,6 +30,13 @@ $this->extend('/Layout/dashboard');
             <?= $this->Form->input('password', [
                 'placeholder' => '*********',
                 'label' => false,
+            ]); ?>
+
+            <div class="g-recaptcha" data-sitekey="6LclExkUAAAAAG0AH3QZAXihUZFvd0cellU4BRV0"></div>
+
+            <?= $this->Form->input('remember_me', [
+                'label' => __('Husk mig'),
+                'type' => 'checkbox',
             ]); ?>
 
             <?= $this->Form->button(__('Login'), [
@@ -33,7 +48,7 @@ $this->extend('/Layout/dashboard');
             ], [
                 'class' => 'btn btn-lg btn-default btn-block btn-raised',
             ]); ?>
-        </fieldset>
-        <?= $this->Form->end(); ?>
-    </div>
+        </div>
+    </fieldset>
+    <?= $this->Form->end(); ?>
 </div>

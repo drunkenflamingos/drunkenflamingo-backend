@@ -13,20 +13,9 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $CreatedBy
  * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
- * @property \Cake\ORM\Association\BelongsTo $ContactPeople
  * @property \Cake\ORM\Association\BelongsTo $Languages
  * @property \Cake\ORM\Association\BelongsTo $Countries
- * @property \Cake\ORM\Association\HasMany $Agreements
- * @property \Cake\ORM\Association\HasMany $BankAccounts
- * @property \Cake\ORM\Association\HasMany $Banks
- * @property \Cake\ORM\Association\HasMany $Contacts
- * @property \Cake\ORM\Association\HasMany $Invoices
- * @property \Cake\ORM\Association\HasMany $InvoicesTransactions
- * @property \Cake\ORM\Association\HasMany $Terms
- * @property \Cake\ORM\Association\HasMany $Transactions
  * @property \Cake\ORM\Association\HasMany $UsersRoles
- * @property \Cake\ORM\Association\HasMany $Vouchers
- * @property \Cake\ORM\Association\BelongsToMany $ErpSystems
  *
  * @method Organization get($primaryKey, $options = [])
  * @method Organization newEntity($data = null, array $options = [])
@@ -68,18 +57,12 @@ class OrganizationsTable extends Table
             ],
         ]);
 
-
         $this->belongsTo('CreatedBy', [
             'foreignKey' => 'created_by_id',
             'className' => 'Users',
         ]);
         $this->belongsTo('ModifiedBy', [
             'foreignKey' => 'modified_by_id',
-            'className' => 'Users',
-        ]);
-        $this->belongsTo('ContactPeople', [
-            'foreignKey' => 'contact_person_id',
-            'joinType' => 'INNER',
             'className' => 'Users',
         ]);
         $this->belongsTo('Languages', [
@@ -90,41 +73,10 @@ class OrganizationsTable extends Table
             'foreignKey' => 'country_id',
             'joinType' => 'INNER',
         ]);
-        $this->hasMany('Agreements', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->hasMany('BankAccounts', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->hasMany('Banks', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->hasMany('Contacts', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->hasMany('Invoices', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->hasMany('InvoicesTransactions', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->hasMany('Terms', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->hasMany('Transactions', [
-            'foreignKey' => 'organization_id',
-        ]);
         $this->hasMany('UsersRoles', [
             'foreignKey' => 'organization_id',
         ]);
-        $this->hasMany('Vouchers', [
-            'foreignKey' => 'organization_id',
-        ]);
-        $this->belongsToMany('ErpSystems', [
-            'foreignKey' => 'organization_id',
-            'targetForeignKey' => 'erp_system_id',
-            'joinTable' => 'erp_systems_organizations',
-        ]);
+
     }
 
     /**
@@ -193,7 +145,6 @@ class OrganizationsTable extends Table
     {
         $rules->add($rules->existsIn(['created_by_id'], 'CreatedBy'));
         $rules->add($rules->existsIn(['modified_by_id'], 'ModifiedBy'));
-        $rules->add($rules->existsIn(['contact_person_id'], 'ContactPeople'));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
         $rules->add($rules->existsIn(['country_id'], 'Countries'));
 

@@ -38,7 +38,8 @@
     "guzzlehttp/guzzle": "~6.0",
     "friendsofcake/fixturize": "^1.0",
     "muffin/slug": "^1.1",
-    "bakkerij/notifier": "^1.2"
+    "bakkerij/notifier": "^1.2",
+    "google/recaptcha": "~1.1"
   },
   "require-dev": {
     "psy/psysh": "@stable",

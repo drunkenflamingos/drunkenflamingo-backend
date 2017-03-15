@@ -17,7 +17,6 @@ use Cake\ORM\Entity;
  *
  * @property \App\Model\Entity\User $created_by
  * @property \App\Model\Entity\User $modified_by
- * @property \App\Model\Entity\Voucher[] $vouchers
  */
 class Currency extends Entity
 {

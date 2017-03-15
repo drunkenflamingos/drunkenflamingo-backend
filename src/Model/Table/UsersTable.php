@@ -7,6 +7,7 @@ use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -70,11 +71,6 @@ class UsersTable extends Table
             'joinType' => 'INNER',
         ]);
 
-        $this->belongsTo('ActiveOrganizations', [
-            'foreign_key' => 'organization_id',
-            'joinType' => 'INNER',
-            'className' => 'Organizations',
-        ]);
 
         $this->hasMany('UsersRoles');
 
@@ -158,7 +154,7 @@ class UsersTable extends Table
     public function beforeSave(Event $event, User $entity, ArrayObject $options)
     {
         if (empty($entity->language_id)) {
-            $entity->language_id = \Cake\ORM\TableRegistry::get('Languages')->findByIsoCode('da-DK')->first()->id;
+            $entity->language_id = TableRegistry::get('Languages')->findByIsoCode('da-DK')->first()->id;
         }
     }
 }

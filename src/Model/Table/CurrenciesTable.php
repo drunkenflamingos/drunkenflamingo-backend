@@ -11,7 +11,6 @@ use Cake\Validation\Validator;
  *
  * @property \Cake\ORM\Association\BelongsTo $CreatedBy
  * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
- * @property \Cake\ORM\Association\HasMany $Vouchers
  *
  * @method \App\Model\Entity\Currency get($primaryKey, $options = [])
  * @method \App\Model\Entity\Currency newEntity($data = null, array $options = [])
@@ -61,9 +60,6 @@ class CurrenciesTable extends Table
             'foreignKey' => 'modified_by_id',
             'joinType' => 'INNER',
             'className' => 'Users',
-        ]);
-        $this->hasMany('Vouchers', [
-            'foreignKey' => 'currency_id',
         ]);
     }
 

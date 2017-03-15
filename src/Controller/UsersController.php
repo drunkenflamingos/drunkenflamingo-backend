@@ -2,7 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
 use Cake\Event\Event;
+use ReCaptcha\ReCaptcha;
 
 /**
  * Login Controller
@@ -70,6 +72,20 @@ class UsersController extends AppController
 
             return $this->redirect(['plugin' => 'User', 'controller' => 'Organizations', 'action' => 'picker']);
         }
+
+        $this->Crud->on('beforeLogin', function (Event $event) {
+
+            $recaptcha = new ReCaptcha(Configure::read('Recaptcha.secretkey'));
+            $resp = $recaptcha->verify($this->request->data('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
+
+            if ($resp->isSuccess()) {
+                $event->stopPropagation();
+            } else {
+                $this->Flash->error(__('Captcha failed...'));
+                $event->stopPropagation();
+            }
+        });
+
         return $this->Crud->execute();
     }
 

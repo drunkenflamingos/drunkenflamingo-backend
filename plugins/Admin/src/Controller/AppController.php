@@ -43,16 +43,8 @@ class AppController extends BaseController
             ),
             new MenuDivider(),
             new MenuItem(
-                __('Banks'),
-                ['controller' => 'Banks', 'action' => 'index']
-            ),
-            new MenuItem(
                 __('Currencies'),
                 ['controller' => 'Currencies', 'action' => 'index']
-            ),
-            new MenuItem(
-                __('ERP systems'),
-                ['controller' => 'ErpSystems', 'action' => 'index']
             ),
             new MenuItem(
                 __('Languages'),
