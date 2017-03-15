@@ -1,0 +1,8 @@
+/puphpet/config-custom.yaml
+/.vagrant
+/vendor/*
+/config/app.php
+/tmp/*
+/logs/*
+.env
+/webroot/cache_*
