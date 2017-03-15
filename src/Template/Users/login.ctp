@@ -3,11 +3,13 @@
  * @var \Cake\View\View $this
  */
 $this->extend('/Layout/dashboard');
+
+$preferredBrowserLang = $this->request->acceptLanguage()[0];
 ?>
 
 <?php $this->start('script'); ?>
 <?= $this->fetch('script') ?>
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?hl=<?= $preferredBrowserLang ?>'></script>
 <?php $this->end(); ?>
 
 <div class="well well-lg">
