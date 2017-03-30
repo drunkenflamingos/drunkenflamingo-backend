@@ -3,7 +3,7 @@
 # Only use spaces to indent your .yml configuration.
 # -----
 # You can specify a custom docker image from Docker Hub as your build environment.
-image: _/php:7.0-fpm-alpine
+image: php:7.0-fpm-alpine
 
 pipelines:
   default:
