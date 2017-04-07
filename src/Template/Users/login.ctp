@@ -36,7 +36,7 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
                 'label' => false,
             ]); ?>
 
-            <div class="g-recaptcha" data-sitekey="<?= Configure::read('Recaptcha.publickey') ?>"></div>
+            <div class="g-recaptcha" data-sitekey="<?= Configure::read('Recaptcha.Publickey') ?>"></div>
 
             <?= $this->Form->input('remember_me', [
                 'label' => __('Husk mig'),

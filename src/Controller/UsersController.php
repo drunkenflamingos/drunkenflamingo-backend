@@ -75,7 +75,7 @@ class UsersController extends AppController
 
         $this->Crud->on('beforeLogin', function (Event $event) {
 
-            $recaptcha = new ReCaptcha(Configure::read('Recaptcha.secretkey'));
+            $recaptcha = new ReCaptcha(Configure::read('Recaptcha.Secretkey'));
             $resp = $recaptcha->verify($this->request->data('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
 
             if ($resp->isSuccess()) {
