@@ -23,6 +23,7 @@ if (!env('APP_NAME')) {
                 'Cache.duration' => null,
                 'Cache.cakemodel' => 'Cache._cake_model_',
                 'Cache.cakecore' => 'Cache._cake_core_',
+                'Sentryhandlerdsn' => 'Error.handlers.SentryHandler.dsn'
             ];
             foreach ($keys as $key => $newKey) {
                 if ($newKey === null) {
