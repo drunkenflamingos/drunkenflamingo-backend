@@ -38,12 +38,12 @@
     "friendsofcake/fixturize": "^1.0",
     "muffin/slug": "^1.1",
     "bakkerij/notifier": "^1.2",
-    "google/recaptcha": "~1.1"
+    "google/recaptcha": "~1.1",
+    "phpunit/phpunit": "^5.0"
   },
   "require-dev": {
     "psy/psysh": "@stable",
     "cakephp/debug_kit": "~3.2",
-    "phpunit/phpunit": "^6.0",
     "cakephp/bake": "^1.2",
     "cakephp/cakephp-codesniffer": "^2.4",
     "phploc/phploc": "^3.0"
