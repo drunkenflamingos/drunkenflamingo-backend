@@ -34,7 +34,9 @@ class Country extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false,
+        'currency_id' => true,
+        'language_id' => true,
+        'name' => true,
+        'iso_code' => true,
     ];
 }
