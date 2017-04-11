@@ -77,6 +77,10 @@ class OrganizationsTable extends Table
             'foreignKey' => 'organization_id',
         ]);
 
+        $this->hasMany('Courses', [
+            'foreignKey' => 'organization_id',
+        ]);
+
     }
 
     /**

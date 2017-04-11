@@ -35,7 +35,8 @@ class UsersRole extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false,
+        'user_id' => true,
+        'role_id' => true,
+        'organization_id' => true,
     ];
 }
