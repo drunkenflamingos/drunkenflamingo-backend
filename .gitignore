@@ -4,8 +4,7 @@
 /config/app.php
 /tmp/*
 /logs/*
-.env
+/config/.env
 /webroot/cache_*
-config/Migrations/schema-dump-default.lock
-config/Migrations/schema-dump-default.lock
-config/Migrations/schema-dump-default.lock
+/.idea/
+/config/Migrations/*.lock
