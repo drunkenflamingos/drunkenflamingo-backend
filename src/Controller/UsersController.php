@@ -70,12 +70,12 @@ class UsersController extends AppController
         if (!empty($this->Auth->user('id'))) {
             $this->Flash->info(__("You're already logged in! :-)"));
 
-            return $this->redirect(['plugin' => 'User', 'controller' => 'Organizations', 'action' => 'picker']);
+            return $this->redirect(['plugin' => null, 'controller' => 'Organizations', 'action' => 'picker']);
         }
 
         $this->Crud->on('beforeLogin', function (Event $event) {
 
-            $recaptcha = new ReCaptcha(Configure::read('Recaptcha.Secretkey'));
+            $recaptcha = new ReCaptcha(Configure::read('Recaptcha.secretkey'));
             $resp = $recaptcha->verify($this->request->data('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
 
             if ($resp->isSuccess()) {
@@ -96,9 +96,9 @@ class UsersController extends AppController
                 $this->Auth->setUser($event->subject()->entity->toArray());
 
                 return $this->redirect([
-                    'plugin' => 'User',
+                    'plugin' => null,
                     'controller' => 'Organizations',
-                    'action' => 'add',
+                    'action' => 'picker',
                 ]);
             }
         });

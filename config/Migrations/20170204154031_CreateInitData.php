@@ -42,7 +42,6 @@ SQL
         $this->execute(<<<SQL
 INSERT INTO `roles` (`id`, `created_by_id`, `modified_by_id`, `name`, `identifier`, `created`, `modified`, `deleted`)
 VALUES
-	('1f73fa6a-4169-4955-b08d-f87246a0ab9c', '9b38e6bf-7c43-40a7-87cf-9c75c4bc649d', '9b38e6bf-7c43-40a7-87cf-9c75c4bc649d', 'Company owner', 'owner', '2017-02-04 15:44:55', '2017-02-04 15:44:55', NULL),
 	('da041508-5308-44d7-addf-dd800f3d8e17', '9b38e6bf-7c43-40a7-87cf-9c75c4bc649d', '9b38e6bf-7c43-40a7-87cf-9c75c4bc649d', 'Admin', 'admin', '2017-02-04 15:44:57', '2017-02-04 15:44:57', NULL);
 SQL
         );
