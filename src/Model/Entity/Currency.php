@@ -31,7 +31,8 @@ class Currency extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false,
+        'name' => true,
+        'iso_code' => true,
+        'short_name' => true,
     ];
 }

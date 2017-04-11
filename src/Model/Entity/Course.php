@@ -1,24 +1,27 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Language Entity
+ * Course Entity
  *
  * @property string $id
  * @property string $created_by_id
  * @property string $modified_by_id
+ * @property string $organization_id
+ * @property int $grade
  * @property string $name
- * @property string $iso_code
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  * @property \Cake\I18n\Time $deleted
  *
- * @property \App\Model\Entity\User $created_by
- * @property \App\Model\Entity\User $modified_by
+ * @property \App\Model\Entity\CreatedBy $created_by
+ * @property \App\Model\Entity\ModifiedBy $modified_by
+ * @property \App\Model\Entity\Organization $organization
  */
-class Language extends Entity
+class Course extends Entity
 {
 
     /**
@@ -31,7 +34,8 @@ class Language extends Entity
      * @var array
      */
     protected $_accessible = [
+        'organization_id' => true,
+        'grade' => true,
         'name' => true,
-        'iso_code' => true,
     ];
 }
