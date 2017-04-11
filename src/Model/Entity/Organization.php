@@ -46,7 +46,21 @@ class Organization extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false,
+        'contact_person_id' => true,
+        'language_id' => true,
+        'country_id' => true,
+        'name' => true,
+        'invoice_email' => true,
+        'phone_number' => true,
+        'vat_number' => true,
+        'street_name' => true,
+        'zip_code' => true,
+        'city' => true,
+        'file_dir' => true,
+        'file_size' => true,
+        'file_type' => true,
+        'file_name' => true,
+        'slug' => true,
+        'is_activated' => true,
     ];
 }
