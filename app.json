@@ -1,0 +1,40 @@
+{
+  "name": "drunkenflamingo-backend",
+  "description": "",
+  "scripts": {
+    "postdeploy": "composer compile"
+  },
+  "env": {
+    "APP_NAME": {
+      "required": true
+    },
+    "CLEARDB_DATABASE_URL": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    },
+    "DEBUG": {
+      "required": true
+    },
+    "RECAPTCHA_PUBLICKEY": {
+      "required": true
+    },
+    "RECAPTCHA_SECRETKEY": {
+      "required": true
+    },
+    "SECURITY_SALT": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "cleardb"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ]
+}
