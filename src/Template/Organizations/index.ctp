@@ -1,6 +1,6 @@
 <?php
 /* @var $this \Cake\View\View */
-$this->extend('Layout/dashboard');
+$this->extend('../Layout/dashboard');
 ?>
 
 <?php $this->start('content_header'); ?>

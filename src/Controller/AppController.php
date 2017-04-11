@@ -100,14 +100,14 @@ class AppController extends Controller
             'loginRedirect' => [
                 'prefix' => null,
                 'plugin' => null,
-                'controller' => 'RolePicker',
-                'action' => 'index',
+                'controller' => 'Organizations',
+                'action' => 'picker',
             ],
             'unauthorizedRedirect' => [
                 'prefix' => null,
                 'plugin' => null,
-                'controller' => 'RolePicker',
-                'action' => 'index',
+                'controller' => 'Organizations',
+                'action' => 'picker',
             ],
             'authError' => __('Du skal logge ind for at se denne side'),
             'storage' => 'Session',

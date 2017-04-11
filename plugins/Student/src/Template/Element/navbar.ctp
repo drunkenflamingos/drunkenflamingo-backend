@@ -17,7 +17,7 @@ use Cake\Core\Configure;
             </button>
 
             <?= $this->Html->link(
-                $this->cell('User.ShowOrganization') . ' <b class="caret"></b>',
+                $this->cell('ShowOrganization') . ' <b class="caret"></b>',
                 [
                     'plugin' => null,
                     'controller' => 'Organizations',

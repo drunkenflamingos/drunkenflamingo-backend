@@ -17,9 +17,9 @@ use Cake\Core\Configure;
             </button>
 
             <?= $this->Html->link(
-                $this->cell('User.ShowOrganization') . ' <b class="caret"></b>',
+                $this->cell('ShowOrganization') . ' <b class="caret"></b>',
                 [
-                    'plugin' => 'User',
+                    'plugin' => null,
                     'controller' => 'Organizations',
                     'action' => 'picker',
                 ], [
@@ -57,7 +57,7 @@ use Cake\Core\Configure;
                             <?= $this->Html->link(
                                 '<i class="material-icons">domain</i> ' . __('Organizations'),
                                 [
-                                    'plugin' => 'User',
+                                    'plugin' => null,
                                     'controller' => 'Organizations',
                                     'action' => 'index',
                                 ], ['escape' => false,]) ?>
