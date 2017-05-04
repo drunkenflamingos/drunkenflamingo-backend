@@ -11,17 +11,17 @@ $this->extend('/Layout/dashboard');
 
         <h2><?= __('Create user'); ?></h2>
 
-        <?= $this->Form->input('email', [
+        <?= $this->Form->control('email', [
             'placeholder' => __('jens.a@gmail.com'),
             'label' => __('Email'),
         ]); ?>
 
-        <?= $this->Form->input('password', [
+        <?= $this->Form->control('password', [
             'placeholder' => '*********',
             'label' => __('Password'),
         ]); ?>
 
-        <?= $this->Form->input('name', [
+        <?= $this->Form->control('name', [
             'placeholder' => __('Jens Andersen'),
             'label' => __('Your name'),
         ]); ?>

@@ -48,15 +48,15 @@ class CoursesFixture extends TestFixture
      */
     public $records = [
         [
-            'id' => 'e49c1cf1-3eb2-4ef7-a0a7-1e8c2a599881',
-            'created_by_id' => '204e67c2-ad13-4e0b-94e1-6f0967ef12b6',
-            'modified_by_id' => '7903888f-af65-411a-9f3e-f420e839d06d',
-            'organization_id' => '031541bc-23bd-4ca8-840e-d572faeecd45',
+            'id' => '4f726183-d6cb-44c9-a1ce-a3533da29ac3',
+            'created_by_id' => 'accacce4-be4f-42d6-b411-d24ec73d1a84',
+            'modified_by_id' => '168aa8d9-0c2e-41a4-8cf4-e780d577d499',
+            'organization_id' => '5f1c45db-7767-40d1-b83c-bc89a92a9726',
             'grade' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
-            'created' => '2017-04-11 08:26:35',
-            'modified' => '2017-04-11 08:26:35',
-            'deleted' => '2017-04-11 08:26:35'
+            'created' => '2017-04-30 10:55:46',
+            'modified' => '2017-04-30 10:55:46',
+            'deleted' => '2017-04-30 10:55:46'
         ],
     ];
 }

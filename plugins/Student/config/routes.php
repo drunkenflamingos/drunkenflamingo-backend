@@ -11,7 +11,6 @@ Router::plugin('Student', ['path' => '/student'], function (RouteBuilder $routes
     ]);
 
     $routes->resources('Dashboard');
-    $routes->resources('Organizations');
 
     $routes->fallbacks(DashedRoute::class);
 });

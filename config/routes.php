@@ -18,6 +18,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+use Cake\Core\Configure;
 use Cake\Core\Plugin;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
@@ -49,6 +50,10 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/login', ['plugin' => null, 'controller' => 'Users', 'action' => 'login']);
     $routes->connect('/register', ['plugin' => null, 'controller' => 'Users', 'action' => 'register']);
     $routes->connect('/logout', ['plugin' => null, 'controller' => 'Users', 'action' => 'logout']);
+    $routes->connect('/oauth/:provider',
+        ['controller' => 'users', 'action' => 'loginOauth'],
+        ['provider' => implode('|', array_keys(Configure::read('Muffin/OAuth2.providers')))]
+    );
 
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',

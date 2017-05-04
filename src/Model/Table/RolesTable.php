@@ -43,6 +43,8 @@ class RolesTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
 
+        $this->addBehavior('CreatedModifiedBy');
+
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -50,18 +52,12 @@ class RolesTable extends Table
                     'modified_by_id' => 'always',
                 ],
             ],
+            'propertiesMap' => [
+                'created_by_id' => '_footprint.id',
+                'modified_by_id' => '_footprint.id',
+            ],
         ]);
 
-        $this->belongsTo('CreatedBy', [
-            'foreignKey' => 'created_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
-        ]);
-        $this->belongsTo('ModifiedBy', [
-            'foreignKey' => 'modified_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
-        ]);
         $this->belongsToMany('Users', [
             'foreignKey' => 'role_id',
             'targetForeignKey' => 'user_id',
@@ -105,9 +101,6 @@ class RolesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['created_by_id'], 'CreatedBy'));
-        $rules->add($rules->existsIn(['modified_by_id'], 'ModifiedBy'));
-
         return $rules;
     }
 }

@@ -15,6 +15,7 @@ if (!env('APP_NAME')) {
         function ($data) {
             $keys = [
                 'App.fullbaseurl' => 'App.fullBaseUrl',
+                'App.name' => 'App.title',
                 'Debug' => 'debug',
                 'Email.transport' => 'EmailTransport',
                 'Database.debug.kit' => 'Datasources.debug_kit',
