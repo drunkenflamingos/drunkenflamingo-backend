@@ -1,21 +1,25 @@
 <?php
 namespace Admin\Controller;
 
-use Admin\Controller\AppController;
+use Cake\Event\Event;
+use Cake\ORM\Query;
 
 /**
  * Organizations Controller
  *
- * @property \Admin\Model\Table\OrganizationsTable $Organizations
+ * @property \App\Model\Table\OrganizationsTable $Organizations
  */
 class OrganizationsController extends AppController
 {
+    public $isAdmin = false;
+    public $modelClass = 'App.Organizations';
+
     public function initialize()
     {
         parent::initialize();
     }
 
-    public function beforeFilter(\Cake\Event\Event $event)
+    public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 
