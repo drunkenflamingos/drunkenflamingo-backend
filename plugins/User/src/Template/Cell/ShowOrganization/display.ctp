@@ -1,1 +1,0 @@
-<?= isset($organization) ? $organization->name : __('No organization') ?>

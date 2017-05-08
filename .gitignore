@@ -4,5 +4,7 @@
 /config/app.php
 /tmp/*
 /logs/*
-.env
+/config/.env
 /webroot/cache_*
+/.idea/
+/config/Migrations/*.lock

@@ -42,6 +42,8 @@ class CurrenciesTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
 
+        $this->addBehavior('CreatedModifiedBy');
+
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -49,17 +51,10 @@ class CurrenciesTable extends Table
                     'modified_by_id' => 'always',
                 ],
             ],
-        ]);
-
-        $this->belongsTo('CreatedBy', [
-            'foreignKey' => 'created_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
-        ]);
-        $this->belongsTo('ModifiedBy', [
-            'foreignKey' => 'modified_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
+            'propertiesMap' => [
+                'created_by_id' => '_footprint.id',
+                'modified_by_id' => '_footprint.id',
+            ],
         ]);
     }
 
@@ -99,9 +94,6 @@ class CurrenciesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['created_by_id'], 'CreatedBy'));
-        $rules->add($rules->existsIn(['modified_by_id'], 'ModifiedBy'));
-
         return $rules;
     }
 }

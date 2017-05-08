@@ -45,6 +45,8 @@ class UsersRolesTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
 
+        $this->addBehavior('CreatedModifiedBy');
+
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -52,18 +54,12 @@ class UsersRolesTable extends Table
                     'modified_by_id' => 'always',
                 ],
             ],
+            'propertiesMap' => [
+                'created_by_id' => '_footprint.id',
+                'modified_by_id' => '_footprint.id',
+            ],
         ]);
 
-        $this->belongsTo('CreatedBy', [
-            'foreignKey' => 'created_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
-        ]);
-        $this->belongsTo('ModifiedBy', [
-            'foreignKey' => 'modified_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
-        ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
@@ -90,10 +86,6 @@ class UsersRolesTable extends Table
             ->uuid('id')
             ->allowEmpty('id', 'create');
 
-        $validator
-            ->dateTime('deleted')
-            ->allowEmpty('deleted');
-
         return $validator;
     }
 
@@ -106,8 +98,6 @@ class UsersRolesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['created_by_id'], 'CreatedBy'));
-        $rules->add($rules->existsIn(['modified_by_id'], 'ModifiedBy'));
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['role_id'], 'Roles'));
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));

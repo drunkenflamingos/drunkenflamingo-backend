@@ -13,11 +13,9 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-/*
- * You can remove this if you are confident that your PHP version is sufficient.
- */
-if (version_compare(PHP_VERSION, '5.5.9') < 0) {
-    trigger_error('Your PHP version must be equal or higher than 5.5.9 to use CakePHP.', E_USER_ERROR);
+// You can remove this if you are confident that your PHP version is sufficient.
+if (version_compare(PHP_VERSION, '5.6.0') < 0) {
+    trigger_error('Your PHP version must be equal or higher than 5.6.0 to use CakePHP.', E_USER_ERROR);
 }
 
 /*
@@ -60,9 +58,12 @@ use Cake\Core\Plugin;
 use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\ErrorHandler;
+use Cake\Event\EventManager;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Request;
+use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 use Josegonzalez\CakeQueuesadilla\Queue\Queue;
@@ -91,13 +92,12 @@ try {
 //Configure::load('app_local', 'default');
 
 /*
- * When debug = false the metadata cache should last
- * for a very very long time, as we don't want
- * to refresh the cache while users are doing requests.
+ * When debug = true the metadata cache should only last
+ * for a short time.
  */
-if (!Configure::read('debug')) {
-    Configure::write('Cache._cake_model_.duration', '+1 years');
-    Configure::write('Cache._cake_core_.duration', '+1 years');
+if (Configure::read('debug')) {
+    Configure::write('Cache._cake_model_.duration', '+2 minutes');
+    Configure::write('Cache._cake_core_.duration', '+2 minutes');
 }
 
 /*
@@ -153,11 +153,11 @@ if (!Configure::read('App.fullBaseUrl')) {
     unset($httpHost, $s);
 }
 
-Cache::config(Configure::consume('Cache'));
-ConnectionManager::config(Configure::consume('Datasources'));
-Email::configTransport(Configure::consume('EmailTransport'));
-Email::config(Configure::consume('Email'));
-Log::config(Configure::consume('Log'));
+Cache::setConfig(Configure::consume('Cache'));
+ConnectionManager::setConfig(Configure::consume('Datasources'));
+Email::setConfigTransport(Configure::consume('EmailTransport'));
+Email::setConfig(Configure::consume('Email'));
+Log::setConfig(Configure::consume('Log'));
 Security::salt(Configure::consume('Security.salt'));
 
 /*
@@ -195,6 +195,32 @@ Type::build('date')
     ->useImmutable();
 Type::build('datetime')
     ->useImmutable();
+Type::build('timestamp')
+    ->useImmutable();
+
+Configure::write('Muffin/OAuth2', [
+    'providers' => [
+        'google' => [
+            'className' => League\OAuth2\Client\Provider\Google::class,
+            // all options defined here are passed to the provider's constructor
+            'options' => [
+                'clientId' => Configure::read('Google.auth.client.id'),
+                'clientSecret' => Configure::read('Google.auth.client.secret'),
+                'redirectUri' => Configure::read('Google.auth.redirecturi'),
+                'hostedDomain' => Router::fullBaseUrl(),
+                'accessType' => 'offline',
+                'scope' => 'profile email openid',
+            ],
+            'mapFields' => [
+                'email' => 'emails.0.value',
+            ],
+        ],
+    ],
+]);
+
+EventManager::instance()->on('Muffin/OAuth2.newUser', [TableRegistry::get('Users'), 'createNewUser']);
+EventManager::instance()->on('Muffin/OAuth2.afterIdentify', [TableRegistry::get('UserOauthTokens'), 'createOrUpdate']);
+
 
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
@@ -229,8 +255,10 @@ Plugin::load('Josegonzalez/CakeQueuesadilla');
 Queue::config(Configure::consume('Queuesadilla'));
 
 Plugin::load('Admin', ['bootstrap' => false, 'routes' => true]);
-Plugin::load('Api', ['bootstrap' => false, 'routes' => true]);
-Plugin::load('User', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('Teacher', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('TeacherAdmin', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('Student', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('StudentApi', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('CustomBootstrap');
 
 Plugin::load('AssetCompress', ['bootstrap' => true]);
@@ -247,11 +275,9 @@ Plugin::load('ADmad/Glide');
 Plugin::load('ShadowTranslate');
 Plugin::load('Search');
 
+Plugin::load('Muffin/Footprint');
+Plugin::load('Muffin/OAuth2');
 Plugin::load('Muffin/Slug');
 Plugin::load('Muffin/Trash');
-Plugin::load('Muffin/Footprint');
 
 Plugin::load('WyriHaximus/FlyPie', ['bootstrap' => true]);
-
-
-Plugin::load('Bakkerij/Notifier', ['bootstrap' => true]);

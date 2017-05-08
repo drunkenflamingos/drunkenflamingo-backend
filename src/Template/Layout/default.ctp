@@ -91,7 +91,7 @@ $this->prepend('script', $this->Html->script([
 ]));
 
 $this->prepend('script', $this->AssetCompress->script('bootstrap'));
-$this->append('script', '<script>$(function(){$.material.init()})</script>')
+$this->append('script', '<script>$(function(){$.material.init(); $(".select2").select2();});</script>')
 
 ?>
 <!DOCTYPE html>

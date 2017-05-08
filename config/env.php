@@ -15,6 +15,7 @@ if (!env('APP_NAME')) {
         function ($data) {
             $keys = [
                 'App.fullbaseurl' => 'App.fullBaseUrl',
+                'App.name' => 'App.title',
                 'Debug' => 'debug',
                 'Email.transport' => 'EmailTransport',
                 'Database.debug.kit' => 'Datasources.debug_kit',
@@ -23,7 +24,7 @@ if (!env('APP_NAME')) {
                 'Cache.duration' => null,
                 'Cache.cakemodel' => 'Cache._cake_model_',
                 'Cache.cakecore' => 'Cache._cake_core_',
-                'Sentryhandlerdsn' => 'Error.handlers.SentryHandler.dsn'
+                'Sentryhandlerdsn' => 'Error.handlers.SentryHandler.dsn',
             ];
             foreach ($keys as $key => $newKey) {
                 if ($newKey === null) {
@@ -32,7 +33,9 @@ if (!env('APP_NAME')) {
                 }
                 $value = Hash::get($data, $key);
                 $data = Hash::remove($data, $key);
-                $data = Hash::insert($data, $newKey, $value);
+                if ($value !== null) {
+                    $data = Hash::insert($data, $newKey, $value);
+                }
             }
 
             foreach ($data['Email'] as $key => $config) {

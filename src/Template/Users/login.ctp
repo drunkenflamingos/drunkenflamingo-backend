@@ -17,8 +17,6 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
 <div class="well well-lg">
     <?= $this->Form->create(null, [
         'type' => 'POST',
-        'align' => [
-        ],
     ]); ?>
     <fieldset>
         <legend>
@@ -26,22 +24,17 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
         </legend>
 
         <div>
-            <?= $this->Form->input('email', [
+            <?= $this->Form->control('email', [
                 'placeholder' => __('jens.a@gmail.com'),
                 'label' => false,
             ]); ?>
 
-            <?= $this->Form->input('password', [
+            <?= $this->Form->control('password', [
                 'placeholder' => '*********',
                 'label' => false,
             ]); ?>
 
             <div class="g-recaptcha" data-sitekey="<?= Configure::read('Recaptcha.publickey') ?>"></div>
-
-            <?= $this->Form->input('remember_me', [
-                'label' => __('Husk mig'),
-                'type' => 'checkbox',
-            ]); ?>
 
             <?= $this->Form->button(__('Login'), [
                 'class' => 'btn btn-lg btn-block btn-primary btn-raised',
@@ -55,4 +48,20 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
         </div>
     </fieldset>
     <?= $this->Form->end(); ?>
+
+    <div>
+        <hr>
+
+        <h4 class="text-center"><?= __('Or...'); ?></h4>
+
+        <?= $this->Form->postLink(
+            __('Login with Google'), [
+            'action' => 'oauthGoogle',
+            '?' => [
+                'redirect' => $this->request->getQuery('redirect'),
+            ],
+        ], [
+            'class' => 'btn btn-lg btn-block btn-default btn-raised',
+        ]); ?>
+    </div>
 </div>
