@@ -1,53 +1,16 @@
-# A CakePHP Application Skeleton
-
-[![Build Status](https://img.shields.io/travis/josegonzalez/app/master.svg?style=flat-square)](https://travis-ci.org/josegonzalez/app)
-[![License](https://img.shields.io/packagist/l/josegonzalez/app.svg?style=flat-square)](https://packagist.org/packages/josegonzalez/app)
-[![Version](https://img.shields.io/packagist/v/josegonzalez/app.svg?style=flat-square)](https://packagist.org/packages/josegonzalez/app)
-[![Total Downloads](https://img.shields.io/packagist/dt/josegonzalez/app.svg?style=flat-square)](https://packagist.org/packages/josegonzalez/app)
-
-A fork of the [official skeleton](https://github.com/cakephp/app) for creating applications with [CakePHP](http://cakephp.org) 3.x. It should be more or less "batteries included"
+# Drunkenflamingo
 
 ## Installation
 
 1. Download [Composer](http://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist josegonzalez/app [app_name]`.
+2. Run `php composer.phar install`.
 
 If Composer is installed globally, run
 ```bash
-composer create-project --prefer-dist josegonzalez/app [app_name]
+composer install
 ```
 
 You should now be able to visit the path to where you installed the app and see the default home page.
-
-## Features
-
-- [New Installed Packages and Plugins](#installed-packages-and-plugins)
-- [Environment Variable Configuration](#configuration)
-- [Asset Compression](#asset-compression)
-- [Crud Defaults](#crud-defaults)
-    - [Crud View Defaults](#crud-view-defaults)
-- [Customizing Bake](#customizing-bake)
-- [Error Handling](#error-handling)
-- [Heroku Support](#heroku-support)
-- [Queuing](#queuing)
-
-### Installed Packages and Plugins
-
-The following is a list of CakePHP plugins that are installed and pre-configured:
-
-- [friendsofcake/bootstrap-ui](https://github.com/FriendsOfCake/bootstrap-ui)
-- [friendsofcake/crud-view](https://github.com/FriendsOfCake/crud-view)
-- [friendsofcake/crud](https://github.com/FriendsOfCake/crud)
-- [friendsofcake/search](https://github.com/FriendsOfCake/search)
-- [josegonzalez/cakephp-upload](https://github.com/josegonzalez/cakephp-upload)
-- [josegonzalez/cakephp-queuesadilla](https://github.com/josegonzalez/cakephp-queuesadilla)
-- [markstory/asset_compress](https://github.com/markstory/asset_compress)
-
-The following is a list of PHP packages that are installed and pre-configured:
-
-- [cakephp/cakephp-codesniffer](https://github.com/cakephp/cakephp-codesniffer)
-- [josegonzalez/php-dotenv](https://github.com/josegonzalez/php-dotenv)
-- [josegonzalez/php-error-handers](https://github.com/josegonzalez/php-error-handlers)
 
 ### Configuration
 
@@ -71,11 +34,9 @@ The [markstory/asset_compress](https://github.com/markstory/asset_compress) plug
 
 By default, the [crud](https://github.com/friendsofcake/crud) plugin has been enabled with all known customizations. Simply creating a controller will enable all CRUD-actions in the default RESTful api mode.
 
-Note that we *also* default pagination sorting to the table's `primaryKey` (if there is a single `primaryKey` field).
-
 #### Crud View Defaults
 
-[Crud View](https://github.com/friendsofcake/crud-view) is enabled for all admin-prefixed actions in the `Application::beforeFilter`. You may *also* turn it on automatically for a controller by setting the controller's `$isAdmin` property to `true`.
+[Crud View](https://github.com/friendsofcake/crud-view) is installed - you may turn it on automatically for a controller by setting the controller's `$isAdmin` property to `true`.
 
 Note that the `scaffold.brand` is set to the constant `APP_NAME`, which can be modified in your `config/.env.default` or `config/.env` files.
 
