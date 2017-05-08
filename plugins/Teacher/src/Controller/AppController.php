@@ -14,6 +14,8 @@ class AppController extends BaseController
     public function initialize()
     {
         parent::initialize();
+
+        $this->Auth->setConfig('authError', __('Unauthorized to Teacher section'));
     }
 
     public function beforeFilter(Event $event)
@@ -36,6 +38,21 @@ class AppController extends BaseController
 
     public function isAuthorized(array $user): bool
     {
-        return !empty($user) && isset($user['id']);
+        $organizationId = $user['active_organization_id'];
+        $userId = $user['id'];
+
+        try {
+            $usersRole = TableRegistry::get('UsersRoles')->find()
+                ->where([
+                    'UsersRoles.user_id' => $userId,
+                    'UsersRoles.organization_id' => $organizationId,
+                ])
+                ->contain(['Roles'])
+                ->firstOrFail();
+        } catch (RecordNotFoundException $e) {
+            return false;
+        }
+
+        return $usersRole->role->identifier === 'teacher' && parent::isAuthorized($user);
     }
 }

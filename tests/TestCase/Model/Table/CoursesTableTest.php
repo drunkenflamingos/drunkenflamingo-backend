@@ -25,15 +25,14 @@ class CoursesTableTest extends TestCase
      */
     public $fixtures = [
         'app.courses',
-        'app.created_bies',
-        'app.modified_bies',
-        'app.organizations',
         'app.created_by',
         'app.languages',
         'app.modified_by',
         'app.users_roles',
         'app.users',
+        'app.user_oauth_tokens',
         'app.roles',
+        'app.organizations',
         'app.countries',
         'app.currencies'
     ];

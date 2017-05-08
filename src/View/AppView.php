@@ -41,7 +41,6 @@ class AppView extends View
         $this->initializeUI(['layout' => false]);
 
         $this->loadHelper('AssetCompress.AssetCompress');
-
-
+        $this->loadHelper('Table');
     }
 }

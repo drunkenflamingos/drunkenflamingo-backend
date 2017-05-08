@@ -58,9 +58,12 @@ use Cake\Core\Plugin;
 use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\ErrorHandler;
+use Cake\Event\EventManager;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Request;
+use Cake\ORM\TableRegistry;
+use Cake\Routing\Router;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
 use Josegonzalez\CakeQueuesadilla\Queue\Queue;
@@ -195,6 +198,30 @@ Type::build('datetime')
 Type::build('timestamp')
     ->useImmutable();
 
+Configure::write('Muffin/OAuth2', [
+    'providers' => [
+        'google' => [
+            'className' => League\OAuth2\Client\Provider\Google::class,
+            // all options defined here are passed to the provider's constructor
+            'options' => [
+                'clientId' => Configure::read('Google.auth.client.id'),
+                'clientSecret' => Configure::read('Google.auth.client.secret'),
+                'redirectUri' => Configure::read('Google.auth.redirecturi'),
+                'hostedDomain' => Router::fullBaseUrl(),
+                'accessType' => 'offline',
+                'scope' => 'profile email openid',
+            ],
+            'mapFields' => [
+                'email' => 'emails.0.value',
+            ],
+        ],
+    ],
+]);
+
+EventManager::instance()->on('Muffin/OAuth2.newUser', [TableRegistry::get('Users'), 'createNewUser']);
+EventManager::instance()->on('Muffin/OAuth2.afterIdentify', [TableRegistry::get('UserOauthTokens'), 'createOrUpdate']);
+
+
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the
@@ -228,9 +255,10 @@ Plugin::load('Josegonzalez/CakeQueuesadilla');
 Queue::config(Configure::consume('Queuesadilla'));
 
 Plugin::load('Admin', ['bootstrap' => false, 'routes' => true]);
-Plugin::load('Api', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('Teacher', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('TeacherAdmin', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('Student', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('StudentApi', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('CustomBootstrap');
 
 Plugin::load('AssetCompress', ['bootstrap' => true]);
@@ -247,11 +275,9 @@ Plugin::load('ADmad/Glide');
 Plugin::load('ShadowTranslate');
 Plugin::load('Search');
 
+Plugin::load('Muffin/Footprint');
+Plugin::load('Muffin/OAuth2');
 Plugin::load('Muffin/Slug');
 Plugin::load('Muffin/Trash');
-Plugin::load('Muffin/Footprint');
 
 Plugin::load('WyriHaximus/FlyPie', ['bootstrap' => true]);
-
-
-
