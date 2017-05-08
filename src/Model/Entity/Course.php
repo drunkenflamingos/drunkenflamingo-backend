@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -17,8 +16,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $modified
  * @property \Cake\I18n\Time $deleted
  *
- * @property \App\Model\Entity\CreatedBy $created_by
- * @property \App\Model\Entity\ModifiedBy $modified_by
+ * @property \App\Model\Entity\User $created_by
+ * @property \App\Model\Entity\User $modified_by
  * @property \App\Model\Entity\Organization $organization
  */
 class Course extends Entity
@@ -34,8 +33,7 @@ class Course extends Entity
      * @var array
      */
     protected $_accessible = [
-        'organization_id' => true,
-        'grade' => true,
-        'name' => true,
+        '*' => true,
+        'id' => false
     ];
 }

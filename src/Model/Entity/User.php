@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
@@ -51,10 +52,14 @@ class User extends Entity
         'name' => true,
         'email' => true,
         'password' => true,
+        'file' => true,
         'file_dir' => true,
         'file_size' => true,
         'file_type' => true,
         'file_name' => true,
+        'user_oauth_tokens' => true,
+        'users_roles' => true,
+        'roles' => true,
     ];
 
     /**
@@ -64,6 +69,10 @@ class User extends Entity
      */
     protected $_hidden = [
         'password',
+        'file_dir',
+        'file_size',
+        'file_type',
+        'file_name',
     ];
 
     protected function _setPassword($password)

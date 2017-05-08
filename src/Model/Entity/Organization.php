@@ -32,6 +32,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\User $modified_by
  * @property \App\Model\Entity\User $contact_person
  * @property \App\Model\Entity\Language $default_language
+ * @property \App\Model\Entity\User[] $users
  */
 class Organization extends Entity
 {

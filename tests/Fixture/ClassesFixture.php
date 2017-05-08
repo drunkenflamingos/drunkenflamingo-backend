@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Test\Fixture;
 
 use Cake\TestSuite\Fixture\TestFixture;
@@ -17,15 +18,82 @@ class ClassesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'created_by_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'modified_by_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'organization_id' => ['type' => 'uuid', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'grade' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
-        'created' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'modified' => ['type' => 'datetime', 'length' => null, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
-        'deleted' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        'id' => [
+            'type' => 'uuid',
+            'length' => null,
+            'null' => false,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+        ],
+        'created_by_id' => [
+            'type' => 'uuid',
+            'length' => null,
+            'null' => false,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+        ],
+        'modified_by_id' => [
+            'type' => 'uuid',
+            'length' => null,
+            'null' => false,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+        ],
+        'organization_id' => [
+            'type' => 'uuid',
+            'length' => null,
+            'null' => false,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+        ],
+        'grade' => [
+            'type' => 'integer',
+            'length' => 11,
+            'unsigned' => false,
+            'null' => false,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+            'autoIncrement' => null,
+        ],
+        'name' => [
+            'type' => 'string',
+            'length' => 255,
+            'null' => false,
+            'default' => null,
+            'collate' => 'utf8_general_ci',
+            'comment' => '',
+            'precision' => null,
+            'fixed' => null,
+        ],
+        'created' => [
+            'type' => 'datetime',
+            'length' => null,
+            'null' => false,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+        ],
+        'modified' => [
+            'type' => 'datetime',
+            'length' => null,
+            'null' => false,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+        ],
+        'deleted' => [
+            'type' => 'datetime',
+            'length' => null,
+            'null' => true,
+            'default' => null,
+            'comment' => '',
+            'precision' => null,
+        ],
         '_indexes' => [
             'BY_CREATED_BY_ID' => ['type' => 'index', 'columns' => ['created_by_id'], 'length' => []],
             'BY_MODIFIED_BY_ID' => ['type' => 'index', 'columns' => ['modified_by_id'], 'length' => []],
@@ -36,7 +104,7 @@ class ClassesFixture extends TestFixture
         ],
         '_options' => [
             'engine' => 'InnoDB',
-            'collation' => 'utf8_general_ci'
+            'collation' => 'utf8_general_ci',
         ],
     ];
     // @codingStandardsIgnoreEnd
@@ -56,7 +124,7 @@ class ClassesFixture extends TestFixture
             'name' => 'Lorem ipsum dolor sit amet',
             'created' => '2017-04-11 08:17:38',
             'modified' => '2017-04-11 08:17:38',
-            'deleted' => '2017-04-11 08:17:38'
+            'deleted' => '2017-04-11 08:17:38',
         ],
     ];
 }

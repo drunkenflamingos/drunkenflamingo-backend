@@ -12,6 +12,7 @@
  * @since     0.2.9
  * @license   http://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Controller\Controller;
@@ -83,28 +84,32 @@ class AppController extends Controller
                     'userModel' => 'Users',
                     'fields' => ['username' => 'email', 'password' => 'password'],
                 ],
+                'Muffin/OAuth2.OAuth' => [
+                    'userModel' => 'Users',
+                    'fields' => ['username' => 'email', 'password' => 'password'],
+                ],
             ],
             'authorize' => 'Controller',
             'loginAction' => [
-                'prefix' => null,
+                'prefix' => false,
                 'plugin' => null,
                 'controller' => 'Login',
                 'action' => 'index',
             ],
             'logoutRedirect' => [
-                'prefix' => null,
+                'prefix' => false,
                 'plugin' => null,
                 'controller' => 'Login',
                 'action' => 'index',
             ],
             'loginRedirect' => [
-                'prefix' => null,
+                'prefix' => false,
                 'plugin' => null,
                 'controller' => 'Organizations',
                 'action' => 'picker',
             ],
             'unauthorizedRedirect' => [
-                'prefix' => null,
+                'prefix' => false,
                 'plugin' => null,
                 'controller' => 'Organizations',
                 'action' => 'picker',
@@ -115,6 +120,7 @@ class AppController extends Controller
         ]);
 
         $this->loadComponent('RequestHandler');
+        $this->loadComponent('Paginator');
         $this->loadComponent('Flash');
         $this->loadComponent('Crud.Crud', [
             'actions' => [
@@ -183,6 +189,13 @@ class AppController extends Controller
             ],
         ]);
 
+        $this->loadComponent('Security', ['blackHoleCallback' => 'forceSSL']);
+        $this->loadComponent('Csrf');
+
+        if (!Configure::read('debug')) {
+            $this->Security->requireSecure();
+        }
+
         if ($this->isAdmin || in_array($this->request->action, $this->adminActions)) {
             $this->Crud->addListener('CrudView.View');
         }
@@ -200,13 +213,6 @@ class AppController extends Controller
             } catch (UnexpectedValueException $e) {
             }
         }
-
-        /*
-         * Enable the following components for recommended CakePHP security settings.
-         * see http://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
     }
 
     /**
@@ -214,31 +220,21 @@ class AppController extends Controller
      *
      * @param \Cake\Event\Event $event The beforeRender event.
      * @return void
+     * @throws \Cake\Core\Exception\Exception
      */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 
-        $this->Crud->on('beforePaginate', function (Event $event) {
-            $repository = $event->subject()->query->repository();
-            $primaryKey = $repository->primaryKey();
-
-            if (!is_array($primaryKey)) {
-                $this->paginate['order'] = [
-                    sprintf('%s.%s', $repository->alias(), $primaryKey) => 'asc',
-                ];
-            }
-        });
-
         if ($this->Crud->isActionMapped()) {
-            $this->Crud->action()->config('scaffold.brand', Configure::read('App.name'));
+            $this->Crud->action()->setConfig('scaffold.brand', Configure::read('App.name'));
         }
 
-        $isRest = in_array($this->response->type(), ['application/json', 'application/xml']);
+        $isRest = in_array($this->response->type(), ['application/json', 'application/xml'], true);
         $isAdmin = $this->isAdmin || in_array($this->request->action, $this->adminActions);
 
         if (!$isRest && $isAdmin) {
-            $this->viewBuilder()->className('CrudView\View\CrudView');
+            $this->viewBuilder()->setClassName('CrudView\View\CrudView');
         }
     }
 
@@ -256,6 +252,18 @@ class AppController extends Controller
         if (!array_key_exists('_serialize', $this->viewVars) && $isRest) {
             $this->set('_serialize', true);
         }
+    }
+
+
+    /**
+     * Forces usage of SSL on all of the system.
+     *
+     * @param $type
+     * @return \Cake\Http\Response|null
+     */
+    public function forceSSL($type)
+    {
+        return $this->redirect('https://' . env('SERVER_NAME') . $this->request->getUri()->getPath());
     }
 
     public function isAuthorized(array $user): bool

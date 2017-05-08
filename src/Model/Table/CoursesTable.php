@@ -10,8 +10,8 @@ use Cake\Validation\Validator;
 /**
  * Courses Model
  *
- * @property \Cake\ORM\Association\BelongsTo $CreatedBy
- * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
+ * @property \Cake\ORM\Association\BelongsTo $CreatedBies
+ * @property \Cake\ORM\Association\BelongsTo $ModifiedBies
  * @property \Cake\ORM\Association\BelongsTo $Organizations
  *
  * @method \App\Model\Entity\Course get($primaryKey, $options = [])
@@ -37,26 +37,47 @@ class CoursesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('courses');
-        $this->displayField('name');
-        $this->primaryKey('id');
+        $this->setDisplayField('name');
 
+        $this->addBehavior('Search.Search'); // Search!
         $this->addBehavior('Timestamp');
+        $this->addBehavior('CreatedModifiedBy');
 
-        $this->belongsTo('CreatedBy', [
-            'foreignKey' => 'created_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
+        $this->addBehavior('Muffin/Footprint.Footprint', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_by_id' => 'new',
+                    'modified_by_id' => 'always',
+                    'organization_id' => 'new',
+                ],
+            ],
+            'propertiesMap' => [
+                'created_by_id' => '_footprint.id',
+                'modified_by_id' => '_footprint.id',
+                'organization_id' => '_footprint.active_organization_id',
+            ],
         ]);
-        $this->belongsTo('ModifiedBy', [
-            'foreignKey' => 'modified_by_id',
-            'joinType' => 'INNER',
-            'className' => 'Users',
+
+        $this->belongsToMany('Users',[
+            'through' => 'CoursesUsers'
         ]);
         $this->belongsTo('Organizations', [
             'foreignKey' => 'organization_id',
             'joinType' => 'INNER',
         ]);
+
+        $this->searchManager()
+            ->value('grade')
+            ->value('name')
+            ->add('q', 'Search.Like', [
+                'before' => true,
+                'after' => true,
+                'wildcardAny' => '?',
+                'field' => [
+                    $this->aliasField('grade'),
+                    $this->aliasField('name'),
+                ],
+            ]);
     }
 
     /**
@@ -80,10 +101,6 @@ class CoursesTable extends Table
             ->requirePresence('name', 'create')
             ->notEmpty('name');
 
-        $validator
-            ->dateTime('deleted')
-            ->allowEmpty('deleted');
-
         return $validator;
     }
 
@@ -96,8 +113,6 @@ class CoursesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['created_by_id'], 'CreatedBy'));
-        $rules->add($rules->existsIn(['modified_by_id'], 'ModifiedBy'));
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
 
         return $rules;

@@ -34,17 +34,18 @@ class OrganizationsController extends AppController
     public function picker()
     {
         $organizations = $this->Organizations->find()
+            ->contain([
+                'UsersRoles.Roles' => function (Query $q) {
+                    return $q->where(['UsersRoles.user_id' => $this->Auth->user('id')]);
+                },
+            ])
             ->matching('UsersRoles', function (Query $q) {
-                return $q
-                    ->where(['UsersRoles.user_id' => $this->Auth->user('id')]);
-            })
-            ->contain(['UsersRoles.Roles']);
+                return $q->where(['UsersRoles.user_id' => $this->Auth->user('id')]);
+            });
 
         if ($organizations->isEmpty()) {
-            $this->Flash->success(__("Create your first organization"));
-
             return $this->redirect([
-                'action' => 'add',
+                'action' => 'waiting',
             ]);
         }
 
@@ -63,15 +64,24 @@ class OrganizationsController extends AppController
             })
             ->firstOrFail();
 
+        $role = $this->Roles->get($this->request->getData('role_id'));
+
+        $defaultPlugin = \Cake\Utility\Inflector::classify($role->identifier);
+
         $user = $this->Users->get($this->Auth->user('id'));
         $user->active_organization_id = $organization->id;
         $this->Users->save($user);
-
         $this->Auth->setUser($user->toArray());
 
         return $this->redirect([
+            'plugin' => $defaultPlugin,
             'controller' => 'Dashboard',
             'action' => 'index',
         ]);
+    }
+
+    public function waiting()
+    {
+
     }
 }

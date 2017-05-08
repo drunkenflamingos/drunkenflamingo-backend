@@ -121,8 +121,10 @@ nginx:
     upstreams: {  }
     vhosts:
         nxv_tqwzowubivin:
-            server_name: drunkenflamingo.dev
+            server_name: wordy.dev
             server_aliases:
+                - www.wordy.dev
+                - drunkenflamingo.dev
                 - www.drunkenflamingo.dev
             www_root: /var/www/drunkenflamingo
             listen_port: '80'

@@ -43,12 +43,18 @@ class CountriesTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
 
+        $this->addBehavior('CreatedModifiedBy');
+
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
                     'created_by_id' => 'new',
                     'modified_by_id' => 'always',
                 ],
+            ],
+            'propertiesMap' => [
+                'created_by_id' => '_footprint.id',
+                'modified_by_id' => '_footprint.id',
             ],
         ]);
 

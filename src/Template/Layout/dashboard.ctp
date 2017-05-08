@@ -8,7 +8,7 @@ $this->start('tb_body_start');
 ?>
 <body <?= $this->fetch('tb_body_attrs') ?>>
 <?php
-$plugin = $this->request->param('plugin');
+$plugin = $this->request->getParam('plugin');
 $element = !empty($plugin) ? $plugin . '.' : '';
 $element .= 'navbar';
 

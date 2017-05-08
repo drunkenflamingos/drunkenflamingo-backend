@@ -16,6 +16,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Languages
  * @property \Cake\ORM\Association\BelongsTo $Countries
  * @property \Cake\ORM\Association\HasMany $UsersRoles
+ * @property \Cake\ORM\Association\BelongsToMany $Users
  *
  * @method Organization get($primaryKey, $options = [])
  * @method Organization newEntity($data = null, array $options = [])
@@ -48,6 +49,8 @@ class OrganizationsTable extends Table
             'onUpdate' => true,
         ]);
 
+        $this->addBehavior('CreatedModifiedBy');
+
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -55,16 +58,12 @@ class OrganizationsTable extends Table
                     'modified_by_id' => 'always',
                 ],
             ],
+            'propertiesMap' => [
+                'created_by_id' => '_footprint.id',
+                'modified_by_id' => '_footprint.id',
+            ],
         ]);
 
-        $this->belongsTo('CreatedBy', [
-            'foreignKey' => 'created_by_id',
-            'className' => 'Users',
-        ]);
-        $this->belongsTo('ModifiedBy', [
-            'foreignKey' => 'modified_by_id',
-            'className' => 'Users',
-        ]);
         $this->belongsTo('Languages', [
             'foreignKey' => 'language_id',
             'joinType' => 'INNER',
@@ -79,6 +78,12 @@ class OrganizationsTable extends Table
 
         $this->hasMany('Courses', [
             'foreignKey' => 'organization_id',
+        ]);
+
+        $this->belongsToMany('Users', [
+            'foreignKey' => 'organization_id',
+            'targetForignKey' => 'organization_id',
+            'joinTable' => 'users_roles',
         ]);
 
     }
@@ -147,18 +152,9 @@ class OrganizationsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['created_by_id'], 'CreatedBy'));
-        $rules->add($rules->existsIn(['modified_by_id'], 'ModifiedBy'));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
         $rules->add($rules->existsIn(['country_id'], 'Countries'));
 
         return $rules;
-    }
-
-    public function beforeSave($event, $entity, $options)
-    {
-//        debug($entity);
-//        debug($options);
-//        die;
     }
 }
