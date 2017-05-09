@@ -10,3 +10,4 @@ $this->extend('/Layout/dashboard');
 <?php $this->start('MEEHHH'); ?>
 <?php $this->end(); ?>
 
+<h1>Hello world</h1>

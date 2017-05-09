@@ -2,9 +2,10 @@
 namespace Student\Controller;
 
 use Cake\Event\Event;
+use Student\Controller\AppController;
 
 /**
- * Dashboard Controller
+ * Profiles Controller
  */
 class ProfilesController extends AppController
 {
