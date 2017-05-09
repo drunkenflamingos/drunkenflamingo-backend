@@ -2,7 +2,6 @@
 namespace Student\Controller;
 
 use Cake\Event\Event;
-use Student\Controller\AppController;
 
 /**
  * Profiles Controller
