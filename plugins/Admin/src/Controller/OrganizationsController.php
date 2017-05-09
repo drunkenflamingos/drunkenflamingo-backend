@@ -1,21 +1,25 @@
 <?php
 namespace Admin\Controller;
 
-use Admin\Controller\AppController;
+use Cake\Event\Event;
+use Cake\ORM\Query;
 
 /**
  * Organizations Controller
  *
- * @property \Admin\Model\Table\OrganizationsTable $Organizations
+ * @property \App\Model\Table\OrganizationsTable $Organizations
  */
 class OrganizationsController extends AppController
 {
+    public $isAdmin = false;
+    public $modelClass = 'App.Organizations';
+
     public function initialize()
     {
         parent::initialize();
     }
 
-    public function beforeFilter(\Cake\Event\Event $event)
+    public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 
@@ -46,7 +50,7 @@ class OrganizationsController extends AppController
     {
         $this->Crud->on('afterSave', function (Event $event) {
             //Connect the users_roles
-            $ownerRoleId = $this->Roles->findByIdentifier('owner')->firstOrFail()->id;
+            $ownerRoleId = $this->Roles->findByIdentifier('teacher_admin')->firstOrFail()->id;
 
             $userRole = $this->Organizations->UsersRoles->newEntity([
                 'user_id' => $this->Auth->user('id'),
