@@ -3,6 +3,8 @@
 $this->extend('/Layout/dashboard');
 ?>
 
+<link href="/webroot/css/style.css" rel="stylesheet">
+
 <?php $this->start('content_header'); ?>
 <h1 align="center"><?= __('Rewards'); ?></h1>
 <?php $this->end(); ?>
@@ -13,6 +15,8 @@ $this->extend('/Layout/dashboard');
 <hr noshade="">
 
 <h2>Streaks</h2>
+
+<span class="label label-streak"># dage</span> <!-- Swap # with auto-updating number of streaks -->
 
 <hr noshade="">
 
