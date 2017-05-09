@@ -50,7 +50,7 @@ class OrganizationsController extends AppController
     {
         $this->Crud->on('afterSave', function (Event $event) {
             //Connect the users_roles
-            $ownerRoleId = $this->Roles->findByIdentifier('owner')->firstOrFail()->id;
+            $ownerRoleId = $this->Roles->findByIdentifier('teacher_admin')->firstOrFail()->id;
 
             $userRole = $this->Organizations->UsersRoles->newEntity([
                 'user_id' => $this->Auth->user('id'),
