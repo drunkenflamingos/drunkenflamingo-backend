@@ -6,7 +6,7 @@ use Cake\Event\Event;
 /**
  * Assignments Step 1 Controller
  */
-class AssignmentStepOneController extends AppController
+class StepOneController extends AppController
 {
     public function initialize()
     {
