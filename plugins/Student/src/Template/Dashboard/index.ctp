@@ -25,7 +25,7 @@ $this->extend('Layout/dashboard');
 
                 <div class="profile-userbuttons">
                     <button type="button" class="btn btn-success btn-sm">Badges</button>
-                    <button type="button" class="btn btn-danger btn-sm">Streaks</button>
+                    <button type="button" class="btn btn-success btn-sm">Streaks</button>
                 </div>
 
             </div>
