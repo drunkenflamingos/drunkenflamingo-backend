@@ -4,7 +4,7 @@ $this->extend('/Layout/dashboard');
 ?>
 
 <?php $this->start('content_header'); ?>
-<h1><?= __('Profile'); ?></h1>
+<h1><?= __('Step 1'); ?></h1>
 <?php $this->end(); ?>
 
 <?php $this->start('content_buttons'); ?>
