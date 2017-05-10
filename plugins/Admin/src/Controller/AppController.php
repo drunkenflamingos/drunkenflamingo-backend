@@ -31,7 +31,7 @@ class AppController extends BaseController
 
     public function isAuthorized(array $user): bool
     {
-        return $user['is_root'] === true;
+        return array_key_exists('is_root', $user) && $user['is_root'] === true;
     }
 
     protected function crudSideBar()
