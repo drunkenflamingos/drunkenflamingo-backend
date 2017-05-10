@@ -4,10 +4,25 @@ $this->extend('/Layout/dashboard');
 ?>
 
 <?php $this->start('content_header'); ?>
-<h1><?= __('Step 1'); ?></h1>
+
 <?php $this->end(); ?>
 
 <?php $this->start('content_buttons'); ?>
 <?php $this->end(); ?>
 
-<h1>Hello world</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-offset-5">
+            <h1>Opgave 1</h1>
+
+        </div>
+    </div>
+    <hr class="black-line" noshade="">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="h4-text">Her skal du læse teksten og <br> markere de ord du ikke forstår</h4>
+
+        </div>
+    </div>
+</div>
