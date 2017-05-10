@@ -12,13 +12,13 @@ $this->extend('/Layout/dashboard');
 <?php $this->start('MEEHHH'); ?>
 <?php $this->end(); ?>
 
-<hr noshade="">
+<hr title="break-line" noshade="">
 
-<h2>Streaks</h2>
+<h2 align="center">Streaks</h2>
 
 <span class="label label-streak"># dage</span> <!-- Swap # with auto-updating number of streaks -->
 
-<hr noshade="">
+<hr title="break-line" noshade="">
 
-<h2>Badges</h2>
+<h2 align="center">Badges</h2>
 

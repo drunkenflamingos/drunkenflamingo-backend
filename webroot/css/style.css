@@ -13,3 +13,13 @@
 /*
  === Badges ===
 */
+.label-streak {
+    position: relative;
+    font-size: x-large;
+    left: 45%;
+}
+
+.break-line {
+    padding-top: 10px;
+}
+
