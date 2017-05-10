@@ -16,6 +16,8 @@
 .label-streak {
     position: relative;
     font-size: x-large;
-    left: 45%;
 }
 
+.assignment-text {
+    text-align: center;
+}
