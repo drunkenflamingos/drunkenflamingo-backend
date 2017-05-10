@@ -13,8 +13,7 @@ $this->extend('/Layout/dashboard');
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-sm-offset-5">
-            <h1>Opgave 1</h1>
-
+            <h1 class="opg1">Opgave 1</h1>
         </div>
     </div>
     <hr class="black-line" noshade="">
