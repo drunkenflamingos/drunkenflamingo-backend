@@ -4,10 +4,10 @@ $this->extend('/Layout/dashboard');
 ?>
 
 <?php $this->start('content_header'); ?>
-<h1><?= __('Assignments'); ?></h1>
+<h1 align="center"><?= __('Opgaver'); ?></h1>
 <?php $this->end(); ?>
 
 <?php $this->start('content_buttons'); ?>
 <?php $this->end(); ?>
 
-<h1>Hello world</h1>
+<hr noshade="">
