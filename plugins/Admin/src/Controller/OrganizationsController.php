@@ -1,4 +1,5 @@
 <?php
+
 namespace Admin\Controller;
 
 use Cake\Event\Event;
@@ -29,36 +30,27 @@ class OrganizationsController extends AppController
 
     public function index()
     {
-        $this->Crud->on('beforePaginate', function (Event $event) {
-            $event->getSubject()->query
-                ->matching('UsersRoles', function (Query $q) {
-                    return $q->where(['user_id' => $this->Auth->user('id')]);
-                });
-        });
-
-        $this->Crud->on('beforeFind', function (Event $event) {
-            $event->getSubject()->query
-                ->matching('UsersRoles', function (Query $q) {
-                    return $q->where(['user_id' => $this->Auth->user('id')]);
-                });
-        });
-
         return $this->Crud->execute();
     }
 
     public function add()
     {
-        $this->Crud->on('afterSave', function (Event $event) {
-            //Connect the users_roles
-            $ownerRoleId = $this->Roles->findByIdentifier('teacher_admin')->firstOrFail()->id;
+        $teacherAdmin = $this->Roles->findByIdentifier('teacher_admin')->firstOrFail();
 
-            $userRole = $this->Organizations->UsersRoles->newEntity([
-                'user_id' => $this->Auth->user('id'),
-                'organization_id' => $event->getSubject()->entity->id,
-                'role_id' => $ownerRoleId,
+        $this->set(compact('teacherAdmin'));
+
+        $this->Crud->on('beforeSave', function (Event $event) {
+        });
+
+        $this->Crud->on('afterSave', function (Event $event) {
+            //Set the newly created user as contact person
+            $userId = $event->getSubject()->entity->users[0]->id;
+
+            $newEntity = $this->Organizations->patchEntity($event->getSubject()->entity, [
+                'contact_person_id' => $userId,
             ]);
 
-            $this->Organizations->UsersRoles->save($userRole);
+            $this->Organizations->save($newEntity);
         });
 
         return $this->Crud->execute();
