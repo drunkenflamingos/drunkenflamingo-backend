@@ -30,8 +30,6 @@ $this->extend('Layout/dashboard');
         <tr>
             <td><?= h($organization->name) ?></td>
             <td class="actions">
-                <?= $this->Form->postLink('', ['action' => 'pick', $organization->id],
-                    ['title' => __('Select'), 'class' => 'btn btn-default glyphicon glyphicon glyphicon-log-in']) ?>
                 <?= $this->Html->link('', ['action' => 'view', $organization->id],
                     ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
                 <?= $this->Html->link('', ['action' => 'edit', $organization->id],
