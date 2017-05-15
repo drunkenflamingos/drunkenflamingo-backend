@@ -2,28 +2,32 @@
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\Homeworks;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Currencies Model
+ * Homework Model
  *
  * @property \Cake\ORM\Association\BelongsTo $CreatedBy
  * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
+ * @property \Cake\ORM\Association\HasMany $HomeworkCourses
+ * @property \Cake\ORM\Association\BelongsTo $Organizations
+ * @property \Cake\ORM\Association\BelongsToMany $Courses
  *
- * @method \App\Model\Entity\Currency get($primaryKey, $options = [])
- * @method \App\Model\Entity\Currency newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Currency[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Currency|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Currency patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Currency[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Currency findOrCreate($search, callable $callback = null, $options = [])
+ * @method Homeworks get($primaryKey, $options = [])
+ * @method Homeworks newEntity($data = null, array $options = [])
+ * @method Homeworks[] newEntities(array $data, array $options = [])
+ * @method Homeworks|bool save(EntityInterface $entity, $options = [])
+ * @method Homeworks patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Homeworks[] patchEntities($entities, array $data, array $options = [])
+ * @method Homeworks findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class CurrenciesTable extends Table
+class HomeworksTable extends Table
 {
 
     /**
@@ -36,9 +40,7 @@ class CurrenciesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('currencies');
-        $this->displayField('name');
-        $this->primaryKey('id');
+        $this->setDisplayField('name');
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
@@ -50,12 +52,26 @@ class CurrenciesTable extends Table
                 'Model.beforeSave' => [
                     'created_by_id' => 'new',
                     'modified_by_id' => 'always',
+                    'organization_id' => 'new',
                 ],
             ],
             'propertiesMap' => [
                 'created_by_id' => '_footprint.id',
                 'modified_by_id' => '_footprint.id',
+                'organization_id' => '_footprint.active_organization_id',
             ],
+        ]);
+
+        $this->hasMany('HomeworksCourses');
+
+        $this->belongsTo('Organizations', [
+            'foreignKey' => 'organization_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsToMany('Courses', [
+            'foreignKey' => 'homework_id',
+            'targetForeignKey' => 'course_id',
+            'joinTable' => 'homeworks_courses',
         ]);
     }
 
@@ -76,12 +92,8 @@ class CurrenciesTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->requirePresence('iso_code', 'create')
-            ->notEmpty('iso_code');
-
-        $validator
-            ->requirePresence('short_name', 'create')
-            ->notEmpty('short_name');
+            ->requirePresence('text', 'create')
+            ->allowEmpty('text');
 
         return $validator;
     }
@@ -95,6 +107,8 @@ class CurrenciesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
+
         return $rules;
     }
 }

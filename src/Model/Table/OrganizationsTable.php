@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Organization;
@@ -41,7 +42,7 @@ class OrganizationsTable extends Table
     {
         parent::initialize($config);
 
-        $this->displayField('name');
+        $this->setDisplayField('name');
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
@@ -50,7 +51,6 @@ class OrganizationsTable extends Table
         ]);
 
         $this->addBehavior('CreatedModifiedBy');
-
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -72,6 +72,12 @@ class OrganizationsTable extends Table
             'foreignKey' => 'country_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('ContactPeople', [
+            'foreignKey' => 'contact_person_id',
+            'joinType' => 'INNER',
+            'className' => 'Users',
+        ]);
+
         $this->hasMany('UsersRoles', [
             'foreignKey' => 'organization_id',
         ]);

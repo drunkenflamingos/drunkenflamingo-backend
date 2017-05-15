@@ -57,6 +57,15 @@ use Cake\Core\Configure;
                     <ul class="dropdown-menu">
                         <li>
                             <?= $this->Html->link(
+                                '<i class="material-icons">domain</i> ' . __('Organizations'),
+                                [
+                                    'plugin' => null,
+                                    'controller' => 'Organizations',
+                                    'action' => 'index',
+                                ], ['escape' => false,]) ?>
+                        </li>
+                        <li>
+                            <?= $this->Html->link(
                                 '<i class="material-icons">directions_run</i> ' . __('Log out'),
                                 [
                                     'plugin' => null,

@@ -19,13 +19,13 @@ vagrantfile:
                         check_guest_tools: 0
                         update_guest_tools: 0
                 machines:
-                    vflm_c5r2qh08y9wb:
+                    vflm_bybbaw5j06za:
                         id: machine1
                         hostname: com.drunkenflamingo.web
                         network:
                             private_network: 192.168.33.110
                             forwarded_port:
-                                vflmnfp_6mnks7wlkr3h:
+                                vflmnfp_eid6njo8tbk9:
                                     host: '8144'
                                     guest: '22'
                         memory: '512'
@@ -40,7 +40,7 @@ vagrantfile:
                     - '--verbose'
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
         synced_folder:
-            vflsf_29g4cwubw6b0:
+            vflsf_5o7r8gtuknvc:
                 owner: www-data
                 group: www-data
                 source: ./
@@ -127,7 +127,7 @@ nginx:
         names_hash_bucket_size: 128
     upstreams: {  }
     vhosts:
-        nxv_3b3jmyf7nwnf:
+        nxv_2lpdyjbukqd1:
             server_name: wordy.dev
             server_aliases:
                 - www.wordy.dev
@@ -138,7 +138,7 @@ nginx:
             client_max_body_size: 1m
             ssl: '0'
             locations:
-                nxvl_oa5yz1e0zskd:
+                nxvl_43bxqnirt9ve:
                     www_root: /var/www/drunkenflamingo/webroot
                     location: /
                     autoindex: 'off'
@@ -156,7 +156,7 @@ nginx:
                         - '$path_info $fastcgi_path_info'
                     proxy: ''
                     proxy_redirect: ''
-                nxvl_v75og202achf:
+                nxvl_m5mnzypmt0ae:
                     www_root: /var/www/drunkenflamingo/webroot
                     location: '~ \.php$'
                     autoindex: 'off'
@@ -191,7 +191,7 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_rbycdfc099rh:
+        av_e04m7aywg51k:
             servername: awesome.dev
             serveraliases:
                 - www.awesome.dev
@@ -208,7 +208,7 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_zfqlkcb7x6qx:
+                avd_pmh3fgnna0n7:
                     path: /var/www/awesome/web
                     directoryindex: 'index.php app.dev'
                     options:
@@ -222,21 +222,21 @@ apache:
                     custom_fragment: ''
                     provider: directory
             files_match:
-                avfm_vg3hkdv21sn9:
+                avfm_ph7h6y84ux4o:
                     path: (app_dev|config)\.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     setenv:
                         - 'APP_ENV dev'
                     custom_fragment: ''
                     provider: filesmatch
-                avfm_21oyea9u9njb:
+                avfm_gzx129oe3pqx:
                     path: app\.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     setenv:
                         - 'APP_ENV prod'
                     custom_fragment: ''
                     provider: filesmatch
-                avfm_1e36xgdw8fqw:
+                avfm_wgn4k2fx5pzr:
                     path: \.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     custom_fragment: ''
@@ -271,7 +271,7 @@ php:
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_y9um38jjvcmf:
+        phpfp_sws92imkgoyg:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
@@ -314,7 +314,7 @@ drush:
 ruby:
     install: '1'
     versions:
-        rv_drphhdqopes8:
+        rv_525gzn853bx5:
             default: '1'
             bundler: '1'
             version: 2.3.1
@@ -339,18 +339,18 @@ mariadb:
         root_password: '1234'
         override_options: {  }
     users:
-        mariadbnu_t20uzhi9uxhf:
+        mariadbnu_o6nfmzgcc43x:
             name: drunkenflamingo
             password: drunkenflamingo
     databases:
-        mariadbnd_qt3i9ngbdlkw:
+        mariadbnd_d63wqrmgnc8b:
             name: drunkenflamingo
             sql: ''
-        mariadbnd_px2lq2fw47kd:
+        mariadbnd_dnw9aheir4qt:
             name: test_drunkenflamingo
             sql: ''
     grants:
-        mariadbng_jw9iro4doca3:
+        mariadbng_ux63j3kga1qj:
             user: drunkenflamingo
             table: '*.*'
             privileges:
@@ -422,7 +422,7 @@ elastic_search:
         version: 2.3.1
         java_install: true
     instances:
-        esi_qjt8744hhjou:
+        esi_jh8mx0koyfe2:
             name: es-01
 solr:
     install: '0'

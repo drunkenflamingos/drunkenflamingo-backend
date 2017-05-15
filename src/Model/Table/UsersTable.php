@@ -4,6 +4,7 @@ namespace App\Model\Table;
 
 use App\Model\Entity\User;
 use ArrayObject;
+use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\I18n\FrozenTime;
 use Cake\ORM\Query;
@@ -20,13 +21,16 @@ use League\OAuth2\Client\Token\AccessToken;
  * @property \Cake\ORM\Association\BelongsTo $CreatedBy
  * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
  * @property \Cake\ORM\Association\BelongsTo $Languages
+ * @property \Cake\ORM\Association\HasMany $UsersRoles
+ * @property \Cake\ORM\Association\HasMany $UserOauthTokens
  * @property \Cake\ORM\Association\BelongsToMany $Roles
+ * @property \Cake\ORM\Association\BelongsToMany $Organizations
  *
  * @method User get($primaryKey, $options = [])
  * @method User newEntity($data = null, array $options = [])
  * @method User[] newEntities(array $data, array $options = [])
- * @method User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method User|bool save(EntityInterface $entity, $options = [])
+ * @method User patchEntity(EntityInterface $entity, array $data, array $options = [])
  * @method User[] patchEntities($entities, array $data, array $options = [])
  * @method User findOrCreate($search, callable $callback = null, $options = [])
  *
@@ -189,9 +193,27 @@ class UsersTable extends Table
         }
     }
 
-    public function findActive(Query $q, array $options)
+    /**
+     * @param Query $q
+     * @param array $options
+     * @return Query
+     */
+    public function findActive(Query $q, array $options): Query
     {
-        return $q->where(['Users.is_active' => true]);
+        return $q->where(['Users.is_activated' => true]);
+    }
+
+    /**
+     * Custom finder that is used to authenticate API usage
+     * TODO
+     *
+     * @param Query $q
+     * @param array $options
+     * @return Query
+     */
+    public function findApiAuth(Query $q, array $options): Query
+    {
+        return $q;
     }
 
     public function findInOrganizationWithRoleIdentifier(Query $q, array $options)
@@ -213,8 +235,7 @@ class UsersTable extends Table
                 $q = $q->where(['UsersRoles.role_id' => $options['role_id']]);
             }
 
-            return $q
-                ->where(['UsersRoles.organization_id' => $options['organization_id']]);
+            return $q->where(['UsersRoles.organization_id' => $options['organization_id']]);
         });
     }
 

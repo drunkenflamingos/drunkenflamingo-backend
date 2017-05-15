@@ -26,6 +26,9 @@ class AppController extends BaseController
                     'UsersRoles.user_id' => $userId,
                     'UsersRoles.organization_id' => $organizationId,
                 ])
+                ->matching('Roles', function (Query $q) {
+                    return $q->where(['Roles.identifier' => 'teacher_admin']);
+                })
                 ->contain(['Roles'])
                 ->firstOrFail();
         } catch (RecordNotFoundException $e) {
