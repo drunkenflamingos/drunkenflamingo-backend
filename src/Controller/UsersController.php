@@ -135,7 +135,7 @@ class UsersController extends AppController
 
     public function loginOauth()
     {
-        $session =$this->request->session();
+        $session = $this->request->session();
         if ($session->read('oauth2state') !== $this->request->getQuery('state')) {
             //XSS?
             throw new BadRequestException(__('Invalid state'));

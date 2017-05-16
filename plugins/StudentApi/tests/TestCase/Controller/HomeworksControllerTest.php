@@ -1,13 +1,13 @@
 <?php
-namespace TeacherAdmin\Test\TestCase\Controller;
+namespace StudentApi\Test\TestCase\Controller;
 
 use Cake\TestSuite\IntegrationTestCase;
-use TeacherAdmin\Controller\CoursesController;
+use StudentApi\Controller\HomeworksController;
 
 /**
- * TeacherAdmin\Controller\CoursesController Test Case
+ * StudentApi\Controller\HomeworksController Test Case
  */
-class CoursesControllerTest extends IntegrationTestCase
+class HomeworksControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,17 +16,21 @@ class CoursesControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.teacher_admin.courses',
-        'plugin.teacher_admin.created_by',
-        'plugin.teacher_admin.languages',
-        'plugin.teacher_admin.modified_by',
-        'plugin.teacher_admin.users_roles',
-        'plugin.teacher_admin.users',
-        'plugin.teacher_admin.user_oauth_tokens',
-        'plugin.teacher_admin.roles',
-        'plugin.teacher_admin.organizations',
-        'plugin.teacher_admin.countries',
-        'plugin.teacher_admin.currencies'
+        'plugin.student_api.homeworks',
+        'plugin.student_api.created_by',
+        'plugin.student_api.languages',
+        'plugin.student_api.modified_by',
+        'plugin.student_api.users_roles',
+        'plugin.student_api.users',
+        'plugin.student_api.user_oauth_tokens',
+        'plugin.student_api.courses',
+        'plugin.student_api.courses_users',
+        'plugin.student_api.organizations',
+        'plugin.student_api.countries',
+        'plugin.student_api.currencies',
+        'plugin.student_api.contact_people',
+        'plugin.student_api.roles',
+        'plugin.student_api.homeworks_courses'
     ];
 
     /**
