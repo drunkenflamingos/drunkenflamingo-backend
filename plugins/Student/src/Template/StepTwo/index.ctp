@@ -21,7 +21,10 @@ $this->extend('/Layout/dashboard');
     <div class="row">
         <div class="col-lg-12">
             <h4 class="assignmentDescription">Klik på hvert ord for at udvide boksene <br> og skriv en definiton på hvert ord</h4>
-
         </div>
+        <button class="ordnetButton">Gå til Ordnet.dk</button>
     </div>
+
+
+
 </div>

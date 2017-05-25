@@ -104,7 +104,10 @@
 /*
  === Step 2 ===
 */
-
+.ordnetButton {
+    position: relative;
+    left: 75%;
+}
 
 /*
  === Step 3 ===

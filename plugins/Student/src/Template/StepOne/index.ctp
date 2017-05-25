@@ -21,7 +21,6 @@ $this->extend('/Layout/dashboard');
     <div class="row">
         <div class="col-lg-12">
             <h4 class="assignmentDescription">Her skal du læse teksten <br> og markere de ord du ikke forstår <br> og gerne vil arbejde med</h4>
-
         </div>
     </div>
 </div>
