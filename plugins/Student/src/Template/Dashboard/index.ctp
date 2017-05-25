@@ -11,7 +11,7 @@ $this->extend('Layout/dashboard');
             <div class="profile-sidebar">
 
                 <div class="profile-userpic">
-                    <img src="/webroot/img/guy.jpg" class="img-responsive" alt="guy who smiles">
+                    <img src="/webroot/img/guy.jpg" class="img-responsive">
                 </div>
 
                 <div class="profile-usertitle">
