@@ -79,9 +79,12 @@
 .label-streak {
     position: relative;
     font-size: x-large;
-    left: 45%;
 }
 
+<<<<<<< HEAD
+.assignment-text {
+    text-align: center;
+=======
 .break-line {
     padding-top: 10px;
 }
@@ -97,6 +100,7 @@
 .opg1 {
     left: 6px;
     position: relative;
+<<<<<<< HEAD
 }
 
 .done-btn {
@@ -108,4 +112,7 @@
     border-radius: 5px;
     color: white !important;
     float: right;
+=======
+>>>>>>> refs/remotes/origin/Christian
+>>>>>>> refs/remotes/origin/Patrick
 }
