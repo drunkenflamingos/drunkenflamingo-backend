@@ -30,7 +30,8 @@ $this->extend('/Layout/dashboard');
 
                     Suspendisse maximus sagittis mattis. Vivamus ut augue quis tellus egestas laoreet eget sed tortor. Mauris consequat quam a nunc lacinia, eget tristique sem blandit. Mauris fringilla ornare ante, eu consectetur nisi blandit nec. Pellentesque dapibus iaculis convallis. Aliquam sed tortor rutrum, auctor elit eget, dictum ex. Donec viverra dapibus nulla, ut pulvinar odio. Phasellus scelerisque nisl ut fringilla bibendum. Aenean commodo, ex at maximus pellentesque, neque enim maximus felis, vitae molestie dui justo molestie ex. In hac habitasse platea dictumst. Morbi mattis ornare venenatis. Suspendisse ante elit, imperdiet in nisl non, venenatis ullamcorper lacus. Nullam a lectus diam. Nullam ut vestibulum nisl, nec eleifend lorem. Sed lobortis feugiat lectus at accumsan. Fusce condimentum, turpis quis commodo efficitur, dui nulla blandit velit, nec laoreet enim erat vitae sem. Duis ultricies sem nisl.</div>
             </div>
-            <button type="button" class="done-btn btn btn-success btn-sm">Done</button>
+
+            <button type="button" class="done-btn btn btn-warning">Done</button>
         </div>
     </div>
 </div>

@@ -81,10 +81,10 @@
     font-size: x-large;
 }
 
-<<<<<<< HEAD
 .assignment-text {
     text-align: center;
-=======
+}
+
 .break-line {
     padding-top: 10px;
 }
@@ -93,14 +93,13 @@
  === Step 1 ===
 */
 
-.h4-text {
+.assignmentDescription {
     text-align: center;
 }
 
-.opg1 {
+.assignmentTitle {
     left: 6px;
     position: relative;
-<<<<<<< HEAD
 }
 
 .done-btn {
@@ -112,7 +111,4 @@
     border-radius: 5px;
     color: white !important;
     float: right;
-=======
->>>>>>> refs/remotes/origin/Christian
->>>>>>> refs/remotes/origin/Patrick
 }
