@@ -13,18 +13,14 @@ $this->extend('/Layout/dashboard');
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-sm-offset-5">
-            <h1 class="assignmentTitle">Opgave 2</h1>
+            <h1 class="assignmentTitle">Opgave 3</h1>
         </div>
     </div>
     <hr class="black-line" noshade="">
 
     <div class="row">
         <div class="col-lg-12">
-            <h4 class="assignmentDescription">Klik på hvert ord for at udvide boksene <br> og skriv en definiton på hvert ord</h4>
+            <h4 class="assignmentDescription">Her skal du skrive ordets ordklasse, <br> finde et synonym for ordet <br> og skrive en sætning med ordet</h4>
         </div>
-        <button class="ordnetButton">Gå til Ordnet.dk</button>
     </div>
-
-
-
 </div>
