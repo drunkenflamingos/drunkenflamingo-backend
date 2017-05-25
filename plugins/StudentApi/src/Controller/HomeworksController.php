@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace StudentApi\Controller;
 
@@ -6,7 +7,6 @@ use Cake\Event\Event;
 use Cake\I18n\Time;
 use Cake\Network\Exception\BadRequestException;
 use Cake\ORM\Query;
-use StudentApi\Controller\AppController;
 
 /**
  * Homeworks Controller
@@ -27,7 +27,7 @@ class HomeworksController extends AppController
         parent::beforeFilter($event);
 
         $courses = $this->Homeworks->Courses->find()
-            ->select('id')
+            ->select(['id'])
             ->matching('Users', function (Query $q) {
                 return $q->where(['Users.id' => $this->Auth->user('id')]);
             });
