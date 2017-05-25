@@ -8,3 +8,5 @@
 /webroot/cache_*
 /.idea/
 /config/Migrations/*.lock
+
+.idea/workspace.xml
