@@ -81,10 +81,10 @@
     font-size: x-large;
 }
 
-<<<<<<< HEAD
 .assignment-text {
     text-align: center;
-=======
+}
+
 .break-line {
     padding-top: 10px;
 }
@@ -92,13 +92,21 @@
 /*
  === Step 1 ===
 */
-
-.h4-text {
+.assignmentDescription {
     text-align: center;
 }
 
-.opg1 {
+.assignmentTitle {
     left: 6px;
     position: relative;
->>>>>>> refs/remotes/origin/Christian
 }
+
+/*
+ === Step 2 ===
+*/
+
+
+/*
+ === Step 3 ===
+*/
+
