@@ -2,28 +2,32 @@
 
 namespace App\Model\Table;
 
+use App\Model\Entity\HomeworksCourse;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Currencies Model
+ * HomeworkCourses Model
  *
  * @property \Cake\ORM\Association\BelongsTo $CreatedBy
  * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
+ * @property \Cake\ORM\Association\BelongsTo $Courses
+ * @property \Cake\ORM\Association\BelongsTo $Homeworks
  *
- * @method \App\Model\Entity\Currency get($primaryKey, $options = [])
- * @method \App\Model\Entity\Currency newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Currency[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Currency|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Currency patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Currency[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Currency findOrCreate($search, callable $callback = null, $options = [])
+ * @method HomeworksCourse get($primaryKey, $options = [])
+ * @method HomeworksCourse newEntity($data = null, array $options = [])
+ * @method HomeworksCourse[] newEntities(array $data, array $options = [])
+ * @method HomeworksCourse|bool save(EntityInterface $entity, $options = [])
+ * @method HomeworksCourse patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method HomeworksCourse[] patchEntities($entities, array $data, array $options = [])
+ * @method HomeworksCourse findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class CurrenciesTable extends Table
+class HomeworksCoursesTable extends Table
 {
 
     /**
@@ -35,10 +39,6 @@ class CurrenciesTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-
-        $this->table('currencies');
-        $this->displayField('name');
-        $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
@@ -57,6 +57,15 @@ class CurrenciesTable extends Table
                 'modified_by_id' => '_footprint.id',
             ],
         ]);
+
+        $this->belongsTo('Courses', [
+            'foreignKey' => 'course_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Homeworks', [
+            'foreignKey' => 'homework_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**
@@ -72,16 +81,17 @@ class CurrenciesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
+            ->dateTime('published_from')
+            ->requirePresence('published_from', 'create')
+            ->notEmpty('published_from');
 
         $validator
-            ->requirePresence('iso_code', 'create')
-            ->notEmpty('iso_code');
+            ->dateTime('published_to')
+            ->allowEmpty('published_to');
 
         $validator
-            ->requirePresence('short_name', 'create')
-            ->notEmpty('short_name');
+            ->dateTime('deadline')
+            ->allowEmpty('deadline');
 
         return $validator;
     }
@@ -95,6 +105,20 @@ class CurrenciesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        //TODO published_from must be < published_to
+        //TODO deadline must be > published_from && > published_to (if set)
+
+        $rules->add($rules->existsIn(['course_id'], 'Courses'));
+        $rules->add($rules->existsIn(['homework_id'], 'Homeworks'));
+
         return $rules;
+    }
+
+    public function findPublishedAt(Query $q, array $options)
+    {
+        return $q->where([
+            'published_from >=' => $options[0],
+            'published_to' <= $options[0],
+        ]);
     }
 }

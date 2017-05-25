@@ -1,26 +1,30 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
 /**
- * Language Entity
+ * HomeworksCourse Entity
  *
  * @property string $id
  * @property string $created_by_id
  * @property string $modified_by_id
- * @property string $name
- * @property string $iso_code
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
- * @property \Cake\I18n\Time $deleted
+ * @property string $course_id
+ * @property string $homework_id
+ * @property \Cake\I18n\FrozenTime $published_from
+ * @property \Cake\I18n\FrozenTime $published_to
+ * @property \Cake\I18n\FrozenTime $deadline
+ * @property \Cake\I18n\FrozenTime $created
+ * @property \Cake\I18n\FrozenTime $modified
+ * @property \Cake\I18n\FrozenTime $deleted
  *
  * @property \App\Model\Entity\User $created_by
  * @property \App\Model\Entity\User $modified_by
+ * @property \App\Model\Entity\Course $course
+ * @property \App\Model\Entity\Homeworks $homework
  */
-class Language extends Entity
+class HomeworksCourse extends Entity
 {
 
     /**
@@ -33,7 +37,10 @@ class Language extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'iso_code' => true,
+        'course_id' => true,
+        'homework_id' => true,
+        'published_from' => true,
+        'published_to' => true,
+        'deadline' => true,
     ];
 }

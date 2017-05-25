@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
@@ -63,5 +65,6 @@ class Organization extends Entity
         'file_name' => true,
         'slug' => true,
         'is_activated' => true,
+        'users' => true,
     ];
 }

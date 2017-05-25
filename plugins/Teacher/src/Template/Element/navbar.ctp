@@ -16,16 +16,9 @@ use Cake\Core\Configure;
                 <span class="icon-bar"></span>
             </button>
 
-            <?= $this->Html->link(
-                $this->cell('ShowOrganization') . ' <b class="caret"></b>',
-                [
-                    'plugin' => null,
-                    'controller' => 'Organizations',
-                    'action' => 'picker',
-                ], [
-                'class' => 'navbar-brand',
-                'escape' => false,
-            ]) ?>
+            <div class="navbar-brand">
+                <?= $this->cell('ShowOrganization') ?>
+            </div>
 
         </div>
         <div class="navbar-collapse collapse">
@@ -40,6 +33,15 @@ use Cake\Core\Configure;
                         '<i class="material-icons">show_chart</i> ' . __('Dashboard'),
                         [
                             'controller' => 'Dashboard',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">show_chart</i> ' . __('Homework'),
+                        [
+                            'controller' => 'Homeworks',
                             'action' => 'index',
                         ], ['escape' => false,]) ?>
                 </li>
@@ -59,7 +61,7 @@ use Cake\Core\Configure;
                                 [
                                     'plugin' => null,
                                     'controller' => 'Organizations',
-                                    'action' => 'index',
+                                    'action' => 'picker',
                                 ], ['escape' => false,]) ?>
                         </li>
 

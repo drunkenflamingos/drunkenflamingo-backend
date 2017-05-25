@@ -58,8 +58,8 @@ class CoursesTable extends Table
             ],
         ]);
 
-        $this->belongsToMany('Users',[
-            'through' => 'CoursesUsers'
+        $this->belongsToMany('Users', [
+            'through' => 'CoursesUsers',
         ]);
         $this->belongsTo('Organizations', [
             'foreignKey' => 'organization_id',

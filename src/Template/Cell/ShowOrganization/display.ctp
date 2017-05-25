@@ -5,6 +5,6 @@ if (isset($organization)) : ?>
         'controller' => 'Dashboard',
         'action' => 'index',
     ]); ?>
-    <?php else: ?>
+<?php else: ?>
     <?= h(__('No organization')); ?>
 <?php endif; ?>

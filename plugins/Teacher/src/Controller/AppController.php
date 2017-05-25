@@ -1,9 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace Teacher\Controller;
 
 use App\Controller\AppController as BaseController;
+use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
+use Cake\ORM\Query;
+use Cake\ORM\TableRegistry;
 
 /**
  * @property \App\Model\Table\UsersTable $Users
@@ -15,7 +19,7 @@ class AppController extends BaseController
     {
         parent::initialize();
 
-        $this->Auth->setConfig('authError', __('Unauthorized to Teacher section'));
+        $this->Auth->setConfig('authError', __('Unauthorized to teacher section'));
     }
 
     public function beforeFilter(Event $event)
@@ -47,6 +51,9 @@ class AppController extends BaseController
                     'UsersRoles.user_id' => $userId,
                     'UsersRoles.organization_id' => $organizationId,
                 ])
+                ->matching('Roles', function (Query $q) {
+                    return $q->where(['Roles.identifier' => 'teacher']);
+                })
                 ->contain(['Roles'])
                 ->firstOrFail();
         } catch (RecordNotFoundException $e) {
