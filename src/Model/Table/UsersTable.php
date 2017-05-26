@@ -1,12 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Behavior\CreatedModifiedByBehavior;
 use App\Model\Entity\User;
 use ArrayObject;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\I18n\FrozenTime;
+use Cake\ORM\Behavior\TimestampBehavior;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -34,7 +37,8 @@ use League\OAuth2\Client\Token\AccessToken;
  * @method User[] patchEntities($entities, array $data, array $options = [])
  * @method User findOrCreate($search, callable $callback = null, $options = [])
  *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin TimestampBehavior
+ * @mixin CreatedModifiedByBehavior
  */
 class UsersTable extends Table
 {
@@ -124,7 +128,7 @@ class UsersTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -178,7 +182,7 @@ class UsersTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));

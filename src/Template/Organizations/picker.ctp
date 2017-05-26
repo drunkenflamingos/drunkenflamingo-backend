@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @var \Cake\View\View $this
  * @var \App\Model\Entity\Organization[] $organizations

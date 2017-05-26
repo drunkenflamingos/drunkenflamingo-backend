@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Admin\Controller\Users;
 
 use Admin\Controller\AppController;

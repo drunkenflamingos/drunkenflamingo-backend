@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -24,6 +25,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\CoursesUser findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \App\Model\Behavior\CreatedModifiedByBehavior
  */
 class CoursesUsersTable extends Table
 {
@@ -71,7 +73,7 @@ class CoursesUsersTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -87,7 +89,7 @@ class CoursesUsersTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['course_id'], 'Courses'));

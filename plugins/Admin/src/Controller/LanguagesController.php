@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Admin\Controller;
 
 use Admin\Controller\AppController;
@@ -23,7 +25,7 @@ class LanguagesController extends AppController
         $this->loadModel('Languages');
 
         $action = $this->Crud->action();
-        $action->config('scaffold.fields', ['name', 'iso_code']);
+        $action->setConfig('scaffold.fields', ['name', 'iso_code']);
     }
 
     public function index()

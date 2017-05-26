@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -23,6 +24,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Role findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \App\Model\Behavior\CreatedModifiedByBehavior
  */
 class RolesTable extends Table
 {
@@ -37,9 +39,7 @@ class RolesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('roles');
-        $this->displayField('name');
-        $this->primaryKey('id');
+        $this->setDisplayField('name');
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
@@ -72,7 +72,7 @@ class RolesTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -100,7 +100,7 @@ class RolesTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
     {
         return $rules;
     }

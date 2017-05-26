@@ -1,8 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+
+use App\Model\Entity\UsersRole;
+use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -16,15 +19,16 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Roles
  * @property \Cake\ORM\Association\BelongsTo $Organizations
  *
- * @method \App\Model\Entity\UsersRole get($primaryKey, $options = [])
- * @method \App\Model\Entity\UsersRole newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\UsersRole[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\UsersRole|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\UsersRole patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\UsersRole[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\UsersRole findOrCreate($search, callable $callback = null, $options = [])
+ * @method UsersRole get($primaryKey, $options = [])
+ * @method UsersRole newEntity($data = null, array $options = [])
+ * @method UsersRole[] newEntities(array $data, array $options = [])
+ * @method UsersRole|bool save(EntityInterface $entity, $options = [])
+ * @method UsersRole patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method UsersRole[] patchEntities($entities, array $data, array $options = [])
+ * @method UsersRole findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \App\Model\Behavior\CreatedModifiedByBehavior
  */
 class UsersRolesTable extends Table
 {
@@ -81,7 +85,7 @@ class UsersRolesTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -97,7 +101,7 @@ class UsersRolesTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['role_id'], 'Roles'));

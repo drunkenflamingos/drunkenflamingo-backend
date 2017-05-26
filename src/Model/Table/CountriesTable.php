@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -25,6 +26,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Country findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ *
  */
 class CountriesTable extends Table
 {
@@ -75,7 +77,7 @@ class CountriesTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -99,7 +101,7 @@ class CountriesTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
     {
         $rules->add($rules->existsIn(['currency_id'], 'Currencies'));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
