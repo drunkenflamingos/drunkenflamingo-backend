@@ -1,6 +1,8 @@
 <?php
+declare(strict_types=1);
 /* @var $this \Cake\View\View */
-$this->extend('Layout/dashboard');
+$this->extend('/Layout/dashboard');
+
 ?>
 
 <?php $this->start('content_header'); ?>
@@ -8,15 +10,37 @@ $this->extend('Layout/dashboard');
 <?php $this->end(); ?>
 
 <?php $this->start('content_buttons'); ?>
-<div class="btn-group">
+<div class="btn-group-raised">
     <?= $this->Html->link('<i class="material-icons">add</i> ' . __('New homework'), [
         'action' => 'add',
     ], [
-        'class' => 'btn btn-primary btn-raised btn-block',
+        'class' => 'btn btn-primary',
         'escape' => false,
     ]) ?>
+
 </div>
 <?php $this->end(); ?>
+
+<div class="row">
+    <div class="col-xs-12">
+        <?= $this->Form->create(null, ['type' => 'GET']) ?>
+        <div class="input-group">
+            <?= $this->Form->control('q', [
+                'placeholder' => __('Search') . '...',
+                'label' => false,
+                'value' => $this->request->getQuery('q'),
+            ]) ?>
+
+            <span class="input-group-btn">
+                <button class="btn btn-default">
+                    <i class="material-icons">search</i>
+                </button>
+            </span>
+
+        </div>
+        <?= $this->Form->end(); ?>
+    </div>
+</div>
 
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
@@ -34,21 +58,25 @@ $this->extend('Layout/dashboard');
             <td><?= h($homework->text) ?></td>
             <td><?= $homework->created->i18nFormat() ?></td>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', $homework->id],
-                    ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', $homework->id],
-                    ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', $homework->id], [
-                    'confirm' => __('Are you sure you want to delete # {0}?', $homework->id),
-                    'title' => __('Delete'),
-                    'class' => 'btn btn-default glyphicon glyphicon-trash',
+                <?= $this->Table->actions([
+                    $this->Html->link(__('View'),
+                        ['action' => 'view', $homework->id]
+                    ),
+                    $this->Html->link(__('Edit'),
+                        ['action' => 'edit', $homework->id]
+                    ),
+                    $this->Form->postLink(__('Delete'),
+                        ['action' => 'delete', $homework->id],
+                        ['confirm' => __('Are you sure you want to delete # {0}?', $homework->name),]
+                    ),
                 ]) ?>
+
             </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
-<div class="paginator">
+<div class="paginator text-center">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>

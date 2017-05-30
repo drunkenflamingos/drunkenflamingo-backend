@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /* @var $this \Cake\View\View */
 $this->extend('/Layout/dashboard');
 
@@ -60,7 +61,6 @@ $this->extend('/Layout/dashboard');
                         'confirm' => __('Are you sure you want to delete {0}?', $user->name),
                     ]),
                 ]) ?>
-
             </td>
         </tr>
     <?php endforeach; ?>

@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /* @var $this \Cake\View\View */
 use Cake\Core\Configure;
 

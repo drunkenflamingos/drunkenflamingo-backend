@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * @var \Cake\View\View $this
  */
@@ -46,7 +48,14 @@ use Cake\Core\Configure;
                         ], ['escape' => false,]) ?>
                 </li>
 
-                <li class="nav-divider"></li>
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">show_chart</i> ' . __('Assignments'),
+                        [
+                            'controller' => 'Assignments',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
 
                 <li class="dropdown">
                     <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"

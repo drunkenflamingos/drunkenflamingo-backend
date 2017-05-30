@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Admin\Controller;
 
@@ -21,7 +22,8 @@ class AppController extends BaseController
         parent::beforeFilter($event);
 
         $action = $this->Crud->action();
-        $action->config('scaffold.sidebar_navigation', $this->crudSideBar());
+        $action->setConfig('scaffold.site_title', 'Wordy admin');
+        $action->setConfig('scaffold.sidebar_navigation', $this->crudSideBar());
     }
 
     public function beforeRender(Event $event)
@@ -53,6 +55,10 @@ class AppController extends BaseController
             new MenuItem(
                 __('Roles'),
                 ['controller' => 'Roles', 'action' => 'index']
+            ),
+            new MenuItem(
+                __('Word classes'),
+                ['controller' => 'WordClasses', 'action' => 'index']
             ),
             new MenuDivider(),
             new MenuItem(

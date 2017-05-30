@@ -81,5 +81,7 @@ class User extends Entity
         if (strlen($password) > 0) {
             return (new DefaultPasswordHasher)->hash($password);
         }
+
+        return null;
     }
 }

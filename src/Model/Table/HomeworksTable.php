@@ -1,31 +1,32 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use App\Model\Entity\Homeworks;
+use App\Model\Entity\Homework;
 use Cake\Datasource\EntityInterface;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * Homework Model
+ * Homeworks Model
  *
- * @property \Cake\ORM\Association\BelongsTo $CreatedBy
- * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
- * @property \Cake\ORM\Association\HasMany $HomeworkCourses
  * @property \Cake\ORM\Association\BelongsTo $Organizations
+ * @property \Cake\ORM\Association\BelongsToMany $Assignments
  * @property \Cake\ORM\Association\BelongsToMany $Courses
+ * @property \Cake\ORM\Association\BelongsToMany $Users
  *
- * @method Homeworks get($primaryKey, $options = [])
- * @method Homeworks newEntity($data = null, array $options = [])
- * @method Homeworks[] newEntities(array $data, array $options = [])
- * @method Homeworks|bool save(EntityInterface $entity, $options = [])
- * @method Homeworks patchEntity(EntityInterface $entity, array $data, array $options = [])
- * @method Homeworks[] patchEntities($entities, array $data, array $options = [])
- * @method Homeworks findOrCreate($search, callable $callback = null, $options = [])
+ * @method Homework get($primaryKey, $options = [])
+ * @method Homework newEntity($data = null, array $options = [])
+ * @method Homework[] newEntities(array $data, array $options = [])
+ * @method Homework|bool save(EntityInterface $entity, $options = [])
+ * @method Homework patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method Homework[] patchEntities($entities, array $data, array $options = [])
+ * @method Homework findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \App\Model\Behavior\CreatedModifiedByBehavior
  */
 class HomeworksTable extends Table
 {
@@ -44,9 +45,8 @@ class HomeworksTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
-
         $this->addBehavior('CreatedModifiedBy');
-
+        $this->addBehavior('Search.Search'); // Search!
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -68,11 +68,29 @@ class HomeworksTable extends Table
             'foreignKey' => 'organization_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsToMany('Courses', [
-            'foreignKey' => 'homework_id',
-            'targetForeignKey' => 'course_id',
-            'joinTable' => 'homeworks_courses',
+
+
+        $this->belongsToMany('Assignments', [
+            'through' => 'HomeworksAssignments',
         ]);
+
+        $this->belongsToMany('Courses', [
+            'through' => 'HomeworksCourses',
+        ]);
+
+        $this->belongsToMany('Users', [
+            'through' => 'HomeworksUsers',
+        ]);
+
+        $this->searchManager()
+            ->value('name')
+            ->add('q', 'Search.Like', [
+                'before' => true,
+                'after' => true,
+                'field' => [
+                    'name',
+                ],
+            ]);
     }
 
     /**
@@ -81,7 +99,7 @@ class HomeworksTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -92,7 +110,6 @@ class HomeworksTable extends Table
             ->notEmpty('name');
 
         $validator
-            ->requirePresence('text', 'create')
             ->allowEmpty('text');
 
         return $validator;
@@ -105,7 +122,7 @@ class HomeworksTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
     {
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
 

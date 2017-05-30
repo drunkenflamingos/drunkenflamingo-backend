@@ -6,24 +6,23 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Homework Entity
+ * Answer Entity
  *
  * @property string $id
  * @property string $created_by_id
  * @property string $modified_by_id
- * @property string $organization_id
- * @property string $name
- * @property string $text
+ * @property string $assignment_id
+ * @property bool $is_done
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  * @property \Cake\I18n\FrozenTime $deleted
  *
  * @property \App\Model\Entity\User $created_by
  * @property \App\Model\Entity\User $modified_by
- * @property \App\Model\Entity\Organization $organization
- * @property \App\Model\Entity\Course[] $courses
+ * @property \App\Model\Entity\Assignment $assignment
+ * @property \App\Model\Entity\AnswerFeedback[] $answer_feedbacks
  */
-class Homeworks extends Entity
+class Answer extends Entity
 {
 
     /**
@@ -36,10 +35,7 @@ class Homeworks extends Entity
      * @var array
      */
     protected $_accessible = [
-        'organization_id' => true,
-        'name' => true,
-        'text' => true,
-        'courses' => true,
-        'homeworks_courses' => true,
+        'assignment_id' => true,
+        'is_done' => true,
     ];
 }

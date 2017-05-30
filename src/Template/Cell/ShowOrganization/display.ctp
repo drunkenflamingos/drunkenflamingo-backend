@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 if (isset($organization)) : ?>
     <?= $this->Html->link($organization->name, [
         'prefix' => false,

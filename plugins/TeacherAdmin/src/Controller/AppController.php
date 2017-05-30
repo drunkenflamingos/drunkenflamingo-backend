@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace TeacherAdmin\Controller;
 
 use App\Controller\AppController as BaseController;
 use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
 
 class AppController extends BaseController
