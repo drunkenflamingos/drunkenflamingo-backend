@@ -20,7 +20,7 @@ $this->extend('/Layout/dashboard');
 
     <div class="row">
         <div class="col-lg-12">
-            <h4 class="assignmentDescription">Her skal du læse teksten og <br> markere de ord du ikke forstår</h4>
+            <h4 class="assignmentDescription">Her skal du læse teksten <br> og markere de ord du ikke forstår <br> og gerne vil arbejde med</h4>
             <h4 class="assignmentDescription"><b>Marker mindst 5</b></h4>
         </div>
 
@@ -32,7 +32,7 @@ $this->extend('/Layout/dashboard');
             </div>
 
             <button type="button" class="done-btn btn btn-warning">Done</button>
-            <h4 class="assignmentDescription">Her skal du læse teksten <br> og markere de ord du ikke forstår <br> og gerne vil arbejde med</h4>
+
         </div>
     </div>
 </div>
