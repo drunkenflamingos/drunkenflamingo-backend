@@ -24,8 +24,6 @@
     "friendsofcake/search": "^3.1",
     "markstory/asset_compress": "3.*",
     "josegonzalez/cakephp-upload": "3.*",
-    "josegonzalez/cakephp-queuesadilla": "0.4.*",
-    "josegonzalez/queuesadilla": "*",
     "josegonzalez/php-error-handlers": "0.*",
     "friendsofcake/crud-users": "^0.4.0",
     "muffin/footprint": "dev-master",
@@ -84,7 +82,6 @@
   "scripts": {
     "compile": [
       "bin/cake migrations migrate",
-      "bin/cake migrations migrate -p Josegonzalez/CakeQueuesadilla",
       "bin/cake asset_compress clear",
       "bin/cake asset_compress build"
     ],

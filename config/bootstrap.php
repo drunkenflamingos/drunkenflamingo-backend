@@ -50,23 +50,18 @@ require __DIR__ . '/paths.php';
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
 use Cake\Cache\Cache;
-use Cake\Console\ConsoleErrorHandler;
-use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Core\Plugin;
 use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
-use Cake\Error\ErrorHandler;
 use Cake\Event\EventManager;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Request;
 use Cake\ORM\TableRegistry;
 use Cake\Routing\Router;
-use Cake\Utility\Inflector;
 use Cake\Utility\Security;
-use Josegonzalez\CakeQueuesadilla\Queue\Queue;
 
 /*
  * Read configuration file and inject configuration into various
@@ -249,10 +244,6 @@ EventManager::instance()->on('Muffin/OAuth2.afterIdentify', [TableRegistry::get(
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
-
-// Handle the CakeQueuesadilla
-Plugin::load('Josegonzalez/CakeQueuesadilla');
-Queue::config(Configure::consume('Queuesadilla'));
 
 Plugin::load('Admin', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('Teacher', ['bootstrap' => false, 'routes' => true]);
