@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3418087da9b9e85eabfb6a4414c3d6ba",
+    "content-hash": "1f332fd337b73386ef82c3bc9f12556d",
     "packages": [
         {
             "name": "ad7six/shadow-translate",
@@ -1320,58 +1320,6 @@
             "time": "2017-04-23T18:45:36+00:00"
         },
         {
-            "name": "josegonzalez/cakephp-queuesadilla",
-            "version": "0.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/josegonzalez/cakephp-queuesadilla.git",
-                "reference": "06f31655cd276550c165fc80eb5558e6089cd56e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/josegonzalez/cakephp-queuesadilla/zipball/06f31655cd276550c165fc80eb5558e6089cd56e",
-                "reference": "06f31655cd276550c165fc80eb5558e6089cd56e",
-                "shasum": ""
-            },
-            "require": {
-                "cakephp/cakephp": "~3.0",
-                "josegonzalez/queuesadilla": "0.0.*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "cakephp/cakephp-codesniffer": "dev-master",
-                "phpunit/phpunit": "4.1.*",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "cakephp-plugin",
-            "autoload": {
-                "psr-4": {
-                    "Josegonzalez\\CakeQueuesadilla\\": "src",
-                    "Josegonzalez\\CakeQueuesadilla\\Test\\Fixture\\": "tests\\Fixture"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jose Diaz-Gonzalez",
-                    "email": "cakephp+queuesadilla@josediazgonzalez.com",
-                    "homepage": "http://josediazgonzalez.com",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "CakePHP wrapper plugin around Queuesadilla, a generic php queueing backend",
-            "homepage": "https://github.com/josegonzalez/cakephp-queuesadilla",
-            "keywords": [
-                "cakephp",
-                "queue",
-                "shell"
-            ],
-            "time": "2017-02-07T23:38:58+00:00"
-        },
-        {
             "name": "josegonzalez/cakephp-upload",
             "version": "3.6.3",
             "source": {
@@ -1584,68 +1532,6 @@
             "time": "2016-04-20T05:17:23+00:00"
         },
         {
-            "name": "josegonzalez/queuesadilla",
-            "version": "0.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/josegonzalez/php-queuesadilla.git",
-                "reference": "0136d1f1b1a2ddff3047c95656c98e33f7bf94f5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/josegonzalez/php-queuesadilla/zipball/0136d1f1b1a2ddff3047c95656c98e33f7bf94f5",
-                "reference": "0136d1f1b1a2ddff3047c95656c98e33f7bf94f5",
-                "shasum": ""
-            },
-            "require": {
-                "league/event": "~2.0",
-                "php": ">=5.5.0",
-                "psr/log": "~1.0"
-            },
-            "require-dev": {
-                "iron-io/iron_mq": "dev-master",
-                "monolog/monolog": "*",
-                "pda/pheanstalk": "dev-master",
-                "phpmd/phpmd": "dev-master",
-                "predis/predis": "~1.0",
-                "satooshi/php-coveralls": "dev-master",
-                "squizlabs/php_codesniffer": "dev-master"
-            },
-            "suggest": {
-                "iron-io/iron_mq": "Adds support for IronMQ background workers",
-                "monolog/monolog": "Adds support for logging",
-                "pda/pheanstalk": "Adds support for Beanstalk background workers"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "josegonzalez\\Queuesadilla": [
-                        "src",
-                        "tests"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jose Diaz-Gonzalez",
-                    "email": "queuesadilla@josegonzalez.com",
-                    "homepage": "http://josediazgonzalez.com",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Queue background jobs to any backend system",
-            "homepage": "https://github.com/josegonzalez/php-queuesadilla",
-            "keywords": [
-                "php",
-                "queue"
-            ],
-            "time": "2017-01-05T17:26:32+00:00"
-        },
-        {
             "name": "league/climate",
             "version": "3.2.1",
             "source": {
@@ -1695,56 +1581,6 @@
                 "terminal"
             ],
             "time": "2016-04-04T20:24:59+00:00"
-        },
-        {
-            "name": "league/event",
-            "version": "2.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/event.git",
-                "reference": "e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/event/zipball/e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd",
-                "reference": "e4bfc88dbcb60c8d8a2939a71f9813e141bbe4cd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "henrikbjorn/phpspec-code-coverage": "~1.0.1",
-                "phpspec/phpspec": "~2.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\Event\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Frank de Jonge",
-                    "email": "info@frenky.net"
-                }
-            ],
-            "description": "Event package",
-            "keywords": [
-                "emitter",
-                "event",
-                "listener"
-            ],
-            "time": "2015-05-21T12:24:47+00:00"
         },
         {
             "name": "league/flysystem",
