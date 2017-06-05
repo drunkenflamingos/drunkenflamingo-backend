@@ -41,11 +41,15 @@ class AssignmentsController extends AppController
         });
     }
 
-    public function delete($id = null)
+    public function index()
     {
         return $this->Crud->execute();
     }
 
+    public function delete($id = null)
+    {
+        return $this->Crud->execute();
+    }
 }
 
 

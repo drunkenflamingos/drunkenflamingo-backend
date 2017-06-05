@@ -6,6 +6,7 @@ namespace Teacher\Controller;
 use App\Model\Entity\Course;
 use Cake\Event\Event;
 use Cake\ORM\Query;
+use Cake\Routing\Router;
 use Teacher\Controller\AppController;
 
 /**
@@ -84,6 +85,10 @@ class HomeworksController extends AppController
                     'Courses',
                     'Users',
                     'Assignments',
+                    'Answers' => [
+                        'CreatedBy',
+                        'Assignments',
+                    ],
                 ]);
         });
 
@@ -93,7 +98,7 @@ class HomeworksController extends AppController
     public function add()
     {
         $this->Crud->on('beforeRedirect', function (Event $event) {
-            $event->getSubject()->url = \Cake\Routing\Router::url([
+            $event->getSubject()->url = Router::url([
                 'action' => 'view',
                 $event->getSubject()->entity->id,
             ]);

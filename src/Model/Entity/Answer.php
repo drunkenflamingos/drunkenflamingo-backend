@@ -20,6 +20,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\User $created_by
  * @property \App\Model\Entity\User $modified_by
  * @property \App\Model\Entity\Assignment $assignment
+ * @property \App\Model\Entity\Homework $homework
  * @property \App\Model\Entity\AnswerFeedback[] $answer_feedbacks
  */
 class Answer extends Entity
@@ -36,6 +37,7 @@ class Answer extends Entity
      */
     protected $_accessible = [
         'assignment_id' => true,
+        'homework_id' => true,
         'is_done' => true,
     ];
 }

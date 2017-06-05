@@ -261,9 +261,6 @@ Plugin::load('CrudUsers');
 Plugin::load('Josegonzalez/Upload');
 Plugin::load('Josegonzalez/Version', ['bootstrap' => true]);
 
-Plugin::load('ADmad/Glide');
-
-Plugin::load('ShadowTranslate');
 Plugin::load('Search');
 
 Plugin::load('Muffin/Footprint');

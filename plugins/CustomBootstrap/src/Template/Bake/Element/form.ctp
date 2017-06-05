@@ -8,6 +8,8 @@ $fields = collection($fields)
 });
 %>
 <?php
+declare(strict_types=1);
+
 $this->extend('/Layout/dashboard');
 <% foreach (['tb_actions', 'tb_sidebar'] as $block): %>
 
