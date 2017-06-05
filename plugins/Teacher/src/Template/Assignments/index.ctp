@@ -51,7 +51,7 @@ $this->extend('/Layout/dashboard'); ?>
     <?php foreach ($assignments as $assignment): ?>
         <tr>
             <td><?= h($assignment->title) ?></td>
-            <td><?= '<i class="material-icons">' . ($assignment->is_locked ? 'lock_outline' : 'lock_open') .'</i>'?></td>
+            <td><?= '<i class="material-icons">' . ($assignment->is_locked ? 'lock_outline' : 'lock_open') . '</i>' ?></td>
             <td><?= h($assignment->created->i18nFormat()) ?></td>
             <td class="actions">
                 <?= $this->Table->actions([

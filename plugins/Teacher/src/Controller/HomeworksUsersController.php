@@ -5,7 +5,6 @@ namespace Teacher\Controller;
 
 use Cake\Event\Event;
 use Cake\ORM\Query;
-use Teacher\Controller\AppController;
 
 /**
  * HomeworksUsers Controller

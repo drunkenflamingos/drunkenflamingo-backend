@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace StudentApi\Controller;
 
@@ -7,8 +8,6 @@ use Cake\Core\Configure;
 use Cake\Datasource\Exception\MissingModelException;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
-use Cake\I18n\I18n;
-use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use Crud\Controller\ControllerTrait;
@@ -54,20 +53,23 @@ class AppController extends BaseController
 
         $this->loadComponent('Auth', [
             'authenticate' => [
-                'StudentApi.Api' => [
+                'ADmad/JwtAuth.Jwt' => [
                     'userModel' => 'Users',
-                    'fields' => ['username' => 'token'], //TODO Change to API key
-                    'finder' => 'ApiAuth',
+                    'scope' => ['Users.activated' => 1],
+                    'fields' => [
+                        'username' => 'id',
+                    ],
+                    'parameter' => 'token',
+                    // Boolean indicating whether the "sub" claim of JWT payload
+                    'queryDatasource' => true,
+                ],
+                'Form' => [
+                    'scope' => ['Users.activated' => 1],
                 ],
             ],
             'authorize' => 'Controller',
             'authError' => __('This page requires authentication'),
-            'loginAction' => [
-                'prefix' => false,
-                'plugin' => false,
-                'controller' => 'Login',
-                'action' => 'index',
-            ],
+            'loginAction' => false,
             'unauthorizedRedirect' => false,
             'storage' => 'Memory',
             'checkAuthIn' => 'Controller.initialize',
@@ -138,6 +140,7 @@ class AppController extends BaseController
                 'Crud.Api',
                 'Crud.ApiPagination',
                 'Crud.ApiQueryLog',
+                'CrudJsonApi.JsonApi',
                 'Crud.RelatedModels',
                 'Crud.Redirect',
             ],
