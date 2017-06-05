@@ -27,7 +27,7 @@ class HomeworksController extends AppController
 
         $type = $this->request->getQuery('type') === 'user' ? 'user' : 'courses';
 
-        $filterFunction = function (Event &$event) use ($type) {
+        $this->Crud->on('beforePaginate', function (Event $event) use ($type) {
             if ($type === 'user') {
                 $event->getSubject()->query
                     ->find('ActiveAtUsers', ['time' => Time::now()])
@@ -48,14 +48,15 @@ class HomeworksController extends AppController
                         return $q->where(['Answers.created_by_id' => $this->Auth->user('id')]);
                     },
                 ]);
-        };
-
-        $this->Crud->on('beforePaginate', function (Event $event) use ($filterFunction) {
-            $filterFunction($event);
         });
 
-        $this->Crud->on('beforeFind', function (Event $event) use ($filterFunction) {
-            $filterFunction($event);
+        $this->Crud->on('beforeFind', function (Event $event) {
+            $event->getSubject()->query
+                ->contain([
+                    'Assignments.Answers' => function (Query $q) {
+                        return $q->where(['Answers.created_by_id' => $this->Auth->user('id')]);
+                    },
+                ]);
         });
 
         $this->set(compact('type'));

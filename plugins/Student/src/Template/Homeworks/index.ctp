@@ -4,7 +4,6 @@ declare(strict_types=1);
 /* @var $this \Cake\View\View */
 use App\Model\Entity\Answer;
 use App\Model\Entity\Assignment;
-use App\Model\Entity\Homework;
 
 $this->extend('/Layout/dashboard'); ?>
 
