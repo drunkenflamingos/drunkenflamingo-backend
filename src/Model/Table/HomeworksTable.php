@@ -65,6 +65,7 @@ class HomeworksTable extends Table
         ]);
 
         $this->hasMany('HomeworksCourses');
+        $this->hasMany('HomeworksUsers');
         $this->hasMany('Answers');
 
         $this->belongsTo('Organizations', [
@@ -141,5 +142,33 @@ class HomeworksTable extends Table
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
 
         return $rules;
+    }
+
+    public function findActiveAtCourses(Query $q, array $options): Query
+    {
+        return $q
+            ->matching('HomeworksCourses', function (Query $q) use ($options) {
+                if (!empty($options['course_id'])) {
+                    $q->where(['HomeworksCourses.course_id' => $options['course_id']]);
+                }
+
+                return $q
+                    ->where([
+                        'HomeworksCourses.published_from <=' => $options['time'],
+                        'HomeworksCourses.published_to >=' => $options['time'],
+                    ]);
+            });
+    }
+
+    public function findActiveAtUsers(Query $q, array $options): Query
+    {
+        return $q
+            ->matching('HomeworksUsers', function (Query $q) use ($options) {
+                return $q
+                    ->where([
+                        'HomeworksCourses.published_from <=' => $options['time'],
+                        'HomeworksCourses.published_to >=' => $options['time'],
+                    ]);
+            });
     }
 }
