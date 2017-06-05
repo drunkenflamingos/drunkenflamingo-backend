@@ -24,6 +24,9 @@ $this->start('tb_sidebar');
 <?php
 $this->end();
 ?>
+
+<h1>TODO</h1>
+
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">

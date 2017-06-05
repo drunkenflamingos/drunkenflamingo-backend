@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
 /**
  * Homeworks Model
  *
+ * @property
  * @property \Cake\ORM\Association\BelongsTo $Organizations
  * @property \Cake\ORM\Association\BelongsToMany $Assignments
  * @property \Cake\ORM\Association\BelongsToMany $Courses
@@ -64,6 +65,7 @@ class HomeworksTable extends Table
         ]);
 
         $this->hasMany('HomeworksCourses');
+        $this->hasMany('Answers');
 
         $this->belongsTo('Organizations', [
             'foreignKey' => 'organization_id',

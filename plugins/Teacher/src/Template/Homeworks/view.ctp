@@ -25,6 +25,8 @@ $this->extend('/Layout/dashboard');
 
 <h2><?= __('Details'); ?></h2>
 
+<h1>TODO</h1>
+
 <div class="btn-group-raised">
     <?= $this->Html->link('<i class="material-icons">edit</i> ' . __('Edit'), [
         'action' => 'edit',
@@ -300,9 +302,8 @@ $this->extend('/Layout/dashboard');
                     <?= $this->Table->actions([
                         $this->Html->link(__('View'), [
                             'controller' => 'Assignments',
-                            'action' => 'edit',
+                            'action' => 'view',
                             $assignment->id,
-                            '?' => ['redirect_url' => $this->request->getRequestTarget()],
                         ]),
                         $this->Html->link(__('Edit'), [
                             'controller' => 'Assignments',
@@ -337,6 +338,66 @@ $this->extend('/Layout/dashboard');
 <?php
 /**
  *
+ * Assignments
+ *
+ */
+?>
+<?php $this->start('homeworkAnswers'); ?>
+<h2><?= __('Answers'); ?></h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th><?= __('Time'); ?></th>
+        <th><?= __('Pupil'); ?></th>
+        <th><?= __('Assignment'); ?></th>
+        <th><?= __('Actions'); ?></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php if (empty($homework->answers)): ?>
+        <tr>
+            <td colspan="3"><?= __('No answers yet'); ?></td>
+        </tr>
+    <?php else: ?>
+        <?php foreach ($homework->answers as $answer): ?>
+            <tr>
+                <td><?= $answer->created->i18nFormat() ?></td>
+                <td>
+                    <?= $this->Html->link(h($answer->created_by->name), [
+                        'controller' => 'Users',
+                        'action' => 'view',
+                        $answer->created_by->id,
+                    ]) ?>
+                </td>
+                <td>
+                    <?= $this->Html->link(h($answer->assignment->title), [
+                        'controller' => 'Assignments',
+                        'action' => 'view',
+                        $answer->assignment->id,
+                    ]) ?>
+                </td>
+                <td class="actions">
+                    <?= $this->Table->actions([
+                        $this->Html->link(__('View'), [
+                            'controller' => 'Answers',
+                            'action' => 'view',
+                            $answer->id,
+                        ]),
+                    ]) ?>
+                </td>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif ?>
+    </tbody>
+</table>
+<?php $this->end(); ?>
+
+
+<?php
+/**
+ *
  * Actual content
  *
  */
@@ -366,7 +427,13 @@ $this->extend('/Layout/dashboard');
             <?= __('Assignments'); ?>
         </a>
     </li>
+    <li>
+        <a href="#homeworkAnswers" data-toggle="tab" aria-expanded="false">
+            <?= __('Answers'); ?>
+        </a>
+    </li>
 </ul>
+
 <div class="tab-content">
     <div class="tab-pane fade active in" id="homeworkView">
         <?= $this->fetch('homeworkDetails') ?>
@@ -379,5 +446,8 @@ $this->extend('/Layout/dashboard');
     </div>
     <div class="tab-pane fade" id="homeworkAssignments">
         <?= $this->fetch('homeworkAssignments') ?>
+    </div>
+    <div class="tab-pane fade" id="homeworkAnswers">
+        <?= $this->fetch('homeworkAnswers') ?>
     </div>
 </div>
