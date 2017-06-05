@@ -4,7 +4,6 @@ declare(strict_types=1);
 /**
  * @var \Cake\View\View $this
  */
-use Cake\Core\Configure;
 
 ?>
 <div class="navbar navbar-fixed-top" role="navigation">
@@ -29,12 +28,38 @@ use Cake\Core\Configure;
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-divider"></li>
                 <li>
                     <?= $this->Html->link(
-                        '<i class="material-icons">show_chart</i> ' . __('Dashboard'),
+                        '<i class="material-icons">home</i>',
                         [
                             'controller' => 'Dashboard',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">mode_edit</i> ' . __('Homework'),
+                        [
+                            'controller' => 'Homeworks',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">assignment</i> ' . __('Assignments'),
+                        [
+                            'controller' => 'Assignments',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">feedback</i> ' . __('Feedback'),
+                        [
+                            'controller' => 'AnswerFeedbacks',
                             'action' => 'index',
                         ], ['escape' => false,]) ?>
                 </li>
@@ -50,11 +75,30 @@ use Cake\Core\Configure;
                     <ul class="dropdown-menu">
                         <li>
                             <?= $this->Html->link(
+                                '<i class="material-icons">stars</i> ' . __('Badges'),
+                                [
+                                    'controller' => 'Badges',
+                                    'action' => 'index',
+                                ], ['escape' => false,]) ?>
+                        </li>
+                        <li class="divider"></li>
+
+                        <li>
+                            <?= $this->Html->link(
                                 '<i class="material-icons">domain</i> ' . __('Organizations'),
                                 [
                                     'plugin' => null,
                                     'controller' => 'Organizations',
                                     'action' => 'picker',
+                                ], ['escape' => false,]) ?>
+                        </li>
+
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="material-icons">settings</i> ' . __('Settings'),
+                                [
+                                    'controller' => 'Dashboard',
+                                    'action' => 'index',
                                 ], ['escape' => false,]) ?>
                         </li>
 
