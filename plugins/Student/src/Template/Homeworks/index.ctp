@@ -47,11 +47,11 @@ $this->extend('/Layout/dashboard'); ?>
             </td>
             <td>
                 <?php
-                $deadline = $homeWork->_matchingData['HomeworksCourses']->deadline ?? null;
+                $deadline = $homework->_matchingData['HomeworksCourses']->deadline ?? $homework->_matchingData['HomeworksUsers']->deadline ?? null;
                 ?>
 
-                <?php if (!empty($homework->deadline)) : ?>
-                    <?= $homework->deadline->i18nFormat() ?> - (<?= $homework->deadline->diffForHumans() ?>)
+                <?php if (!empty($deadline)) : ?>
+                    <?= $deadline->i18nFormat() ?> (<?= $deadline->diffForHumans() ?>)
                 <?php else: ?>
                     <?= __('None') ?>
                 <?php endif; ?>
