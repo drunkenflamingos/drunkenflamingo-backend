@@ -81,15 +81,15 @@ $this->end();
         </div>
         <table class="table table-striped" cellpadding="0" cellspacing="0">
             <tr>
-                <td><?= __('Correct answers') ?></td>
+                <td><?= __('Correctly answered tasks') ?></td>
                 <td><?= __('TODO') ?></td>
             </tr>
             <tr>
-                <td><?= __('Incorrect answers') ?></td>
+                <td><?= __('Incorrectly answered tasks') ?></td>
                 <td><?= __('TODO') ?></td>
             </tr>
             <tr>
-                <td><?= __('Skipped') ?></td>
+                <td><?= __('Skipped tasks') ?></td>
                 <td><?= __('TODO') ?></td>
             </tr>
         </table>

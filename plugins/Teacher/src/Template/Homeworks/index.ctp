@@ -92,7 +92,7 @@ $this->extend('/Layout/dashboard');
     <thead>
     <tr>
         <th><?= $this->Paginator->sort('name'); ?></th>
-        <th><?= $this->Paginator->sort('text'); ?></th>
+        <th><?= $this->Paginator->sort('text', __('Description')); ?></th>
         <th><?= $this->Paginator->sort('created'); ?></th>
         <th class="actions"><?= __('Actions'); ?></th>
     </tr>

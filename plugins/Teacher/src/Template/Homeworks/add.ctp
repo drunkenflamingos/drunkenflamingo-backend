@@ -16,7 +16,7 @@ $this->extend('Layout/dashboard');
         <fieldset>
             <?php
             echo $this->Form->control('name');
-            echo $this->Form->control('text');
+            echo $this->Form->control('text', ['label' => __('Description')]);
             ?>
 
             <?php if ($this->request->getQuery('addNoCourse') !== '1') : ?>

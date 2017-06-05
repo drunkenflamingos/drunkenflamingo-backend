@@ -25,8 +25,6 @@ $this->extend('/Layout/dashboard');
 
 <h2><?= __('Details'); ?></h2>
 
-<h1>TODO</h1>
-
 <div class="btn-group-raised">
     <?= $this->Html->link('<i class="material-icons">edit</i> ' . __('Edit'), [
         'action' => 'edit',
@@ -41,12 +39,12 @@ $this->extend('/Layout/dashboard');
     <!-- Panel header -->
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
-            <td><?= __('Created by') ?></td>
-            <td><?= h($homework->created_by->name) ?></td>
+            <td><?= __('Title') ?></td>
+            <td><?= h($homework->name) ?></td>
         </tr>
         <tr>
-            <td><?= __('Name') ?></td>
-            <td><?= h($homework->name) ?></td>
+            <td><?= __('Created by') ?></td>
+            <td><?= h($homework->created_by->name) ?></td>
         </tr>
         <tr>
             <td><?= __('Created') ?></td>
@@ -57,7 +55,7 @@ $this->extend('/Layout/dashboard');
             <td><?= h($homework->modified->i18nFormat()) ?></td>
         </tr>
         <tr>
-            <td><?= __('Text'); ?></td>
+            <td><?= __('Description'); ?></td>
             <td><?= $this->Text->autoParagraph(h($homework->text)); ?></td>
         </tr>
     </table>

@@ -24,7 +24,7 @@ $this->extend('Layout/dashboard');
         <fieldset>
             <?php
             echo $this->Form->control('name');
-            echo $this->Form->control('text');
+            echo $this->Form->control('text', ['label' => __('Description')]);
             ?>
         </fieldset>
         <?= $this->Form->button('<i class="material-icons">save</i> ' . __('Save'), [
