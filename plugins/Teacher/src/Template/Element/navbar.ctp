@@ -4,7 +4,6 @@ declare(strict_types=1);
 /**
  * @var \Cake\View\View $this
  */
-use Cake\Core\Configure;
 
 ?>
 <div class="navbar navbar-fixed-top" role="navigation">

@@ -3,21 +3,23 @@ declare(strict_types=1);
 
 namespace Teacher\Controller;
 
-use Teacher\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Answers Controller
  *
- * @property \Teacher\Model\Table\AnswersTable $Answers
+ * @property \App\Model\Table\AnswersTable $Answers
  */
 class AnswersController extends AppController
 {
     public function initialize()
     {
         parent::initialize();
+
+        $this->Crud->disable(['add', 'edit', 'delete']);
     }
 
-    public function beforeFilter(\Cake\Event\Event $event)
+    public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
     }
@@ -28,22 +30,6 @@ class AnswersController extends AppController
     }
 
     public function view($id = null)
-    {
-        return $this->Crud->execute();
-    }
-
-    public function add()
-    {
-        return $this->Crud->execute();
-    }
-
-
-    public function edit($id = null)
-    {
-        return $this->Crud->execute();
-    }
-
-    public function delete($id = null)
     {
         return $this->Crud->execute();
     }

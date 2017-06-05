@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Teacher\Controller;
 
 use Cake\Event\Event;
-use Teacher\Controller\AppController;
 
 /**
  * Courses Controller
