@@ -25,7 +25,7 @@ $this->start('tb_sidebar');
 $this->end();
 ?>
 
-<h1>TODO</h1>
+<h1> View assignment </h1>
 
 <div class="panel panel-default">
     <!-- Panel header -->
@@ -39,15 +39,15 @@ $this->end();
         </tr>
         <tr>
             <td><?= __('Created By Id') ?></td>
-            <td><?= h($assignment->created_by_id) ?></td>
+            <td><?= h($assignment->created_by->name) ?></td>
         </tr>
         <tr>
             <td><?= __('Modified By Id') ?></td>
-            <td><?= h($assignment->modified_by_id) ?></td>
+            <td><?= h($assignment->modified_by->name) ?></td>
         </tr>
         <tr>
             <td><?= __('Organization Id') ?></td>
-            <td><?= h($assignment->organization_id) ?></td>
+            <td><?= h($assignment->organization->name) ?></td>
         </tr>
         <tr>
             <td><?= __('Title') ?></td>
@@ -74,5 +74,25 @@ $this->end();
             <td><?= $this->Text->autoParagraph(h($assignment->text)); ?></td>
         </tr>
     </table>
+    <div class="panel panel-default">
+        <!-- Panel header -->
+        <div class="panel-heading">
+            <h3 class="panel-title"> Statistics </h3>
+        </div>
+        <table class="table table-striped" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><?= __('Correct answers') ?></td>
+                <td><?= __('TODO') ?></td>
+            </tr>
+            <tr>
+                <td><?= __('Incorrect answers') ?></td>
+                <td><?= __('TODO') ?></td>
+            </tr>
+            <tr>
+                <td><?= __('Skipped') ?></td>
+                <td><?= __('TODO') ?></td>
+            </tr>
+        </table>
+
 </div>
 

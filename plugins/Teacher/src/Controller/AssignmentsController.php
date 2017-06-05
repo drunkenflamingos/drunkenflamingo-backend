@@ -43,6 +43,13 @@ class AssignmentsController extends AppController
 
     public function view($id = null)
     {
+        $this->Crud->on('beforeFind', function (Event $event) {
+            $event->getSubject()->query->contain([
+                "CreatedBy",
+                "ModifiedBy",
+                "Organizations"
+            ]);
+        });
         return $this->Crud->execute();
     }
 
