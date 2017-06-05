@@ -23,7 +23,7 @@ $this->extend('/Layout/dashboard');
            class="btn btn-primary dropdown-toggle"
            data-toggle="dropdown"
            aria-expanded="false">
-            <span class="caret"></span>
+            <i class="material-icons">arrow_drop_down</i>
         </a>
         <ul class="dropdown-menu">
             <li>
@@ -38,15 +38,14 @@ $this->extend('/Layout/dashboard');
     </div>
 
     <div class="btn-group">
-        <a href="bootstrap-elements.html" data-target="#" class="btn btn-raised dropdown-toggle" data-toggle="dropdown"
+        <a href="#" data-target="#" class="btn btn-raised dropdown-toggle" data-toggle="dropdown"
            aria-expanded="false">
             <?= __('Show only for'); ?>
             <?php
             if (isset($selectedCourse)): ?>
                 <?= h($selectedCourse->getCombinedName()) ?>
             <?php endif ?>
-            <span class="caret"></span>
-            <div class="ripple-container"></div>
+            <i class="material-icons">arrow_drop_down</i>
         </a>
         <ul class="dropdown-menu">
             <li>
