@@ -7,7 +7,6 @@ use App\Model\Entity\Course;
 use Cake\Event\Event;
 use Cake\ORM\Query;
 use Cake\Routing\Router;
-use Teacher\Controller\AppController;
 
 /**
  * Homework Controller

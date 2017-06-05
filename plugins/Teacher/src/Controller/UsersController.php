@@ -3,7 +3,6 @@
 namespace Teacher\Controller;
 
 use Cake\Event\Event;
-use Teacher\Controller\AppController;
 
 /**
  * Users Controller
