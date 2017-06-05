@@ -1,14 +1,12 @@
 <?php
-declare(strict_types=1);
-
 namespace Student\Controller;
 
 use Cake\Event\Event;
 
 /**
- * Profiles Controller
+ * Assignments Step 1 Controller
  */
-class ProfilesController extends AppController
+class StepOneController extends AppController
 {
     public function initialize()
     {
