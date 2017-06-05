@@ -18,7 +18,7 @@ $this->extend('/Layout/dashboard');
     </div>
     <hr class="black-line" noshade="">
     <div class="row">
-        <div class="col-lg-12 col-sm-offset-5">
+        <div class="col-lg-12">
             <h4 class="assignment-text">Vælg en opgave og vis hvad du kan, <br> og lær det du ikke kan endnu</h4>
         </div>
     </div>
