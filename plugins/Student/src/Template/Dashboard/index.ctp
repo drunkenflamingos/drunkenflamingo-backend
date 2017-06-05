@@ -17,7 +17,7 @@ $this->extend('Layout/dashboard');
 
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        Sofus Jensen
+                        <?= $this->request->session()->read('Auth.User.name') ?>
                     </div>
                     <div class="profile-usertitle-job">
                         Klasse: B

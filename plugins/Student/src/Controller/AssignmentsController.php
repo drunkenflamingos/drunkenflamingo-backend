@@ -1,4 +1,5 @@
 <?php
+
 namespace Student\Controller;
 
 use Cake\Event\Event;
@@ -8,11 +9,13 @@ use Cake\Event\Event;
  */
 class AssignmentsController extends AppController
 {
+    public $modelClass = 'Assignments';
+
     public function initialize()
     {
         parent::initialize();
 
-        $this->Crud->disable(['index', 'add', 'edit', 'view', 'delete']);
+        $this->Crud->disable(['add', 'edit', 'delete']);
     }
 
     public function beforeFilter(Event $event)
@@ -22,6 +25,11 @@ class AssignmentsController extends AppController
 
     public function index()
     {
+        return $this->Crud->execute();
+    }
 
+    public function view($id = null)
+    {
+        return $this->Crud->execute();
     }
 }

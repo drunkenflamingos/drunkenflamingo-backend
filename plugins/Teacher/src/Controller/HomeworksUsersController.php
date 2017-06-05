@@ -1,8 +1,8 @@
 <?php
-declare(strict_types=1);
 
 namespace Teacher\Controller;
 
+use App\Model\Entity\Course;
 use Cake\Event\Event;
 use Cake\ORM\Query;
 
@@ -28,18 +28,13 @@ class HomeworksUsersController extends AppController
 
         $this->Crud->on('beforeFind', function (Event $event) {
             $event->getSubject()->query
-                ->matching('Courses', function (Query $q) {
-                    return $q->where([
-                        'Courses.organization_id' => $this->Auth->user('active_organization_id'),
-                    ]);
-                });
-        });
-
-        $this->Crud->on('beforePaginate', function (Event $event) {
-            $event->getSubject()->query
-                ->matching('Courses', function (Query $q) {
-                    return $q->where([
-                        'Courses.organization_id' => $this->Auth->user('active_organization_id'),
+                ->matching('Homeworks', function (Query $q) {
+                    return $q->where(['Homeworks.organization_id' => $this->Auth->user('active_organization_id')]);
+                })
+                ->matching('Users', function (Query $q) {
+                    return $q->find('InOrganizationWithRoleIdentifier', [
+                        'organization_id' => $this->Auth->user('active_organization_id'),
+                        'role_identifier' => 'student',
                     ]);
                 });
         });
@@ -52,13 +47,14 @@ class HomeworksUsersController extends AppController
         });
 
         $users = $this->HomeworksUsers->Users
-            ->find('list')
             ->find('InOrganizationWithRoleIdentifier', [
-                'role_identifier' => 'student',
                 'organization_id' => $this->Auth->user('active_organization_id'),
+                'role_identifier' => 'student',
             ])
-            ->order(['Users.name']);
-
+            ->order([
+                'Users.name',
+            ])
+            ->combine('id', 'name');
 
         $this->set(compact('users'));
 

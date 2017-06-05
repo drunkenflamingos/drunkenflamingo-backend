@@ -28,15 +28,9 @@ class HomeworksCoursesController extends AppController
 
         $this->Crud->on('beforeFind', function (Event $event) {
             $event->getSubject()->query
-                ->matching('Courses', function (Query $q) {
-                    return $q->where([
-                        'Courses.organization_id' => $this->Auth->user('active_organization_id'),
-                    ]);
-                });
-        });
-
-        $this->Crud->on('beforePaginate', function (Event $event) {
-            $event->getSubject()->query
+                ->matching('Homeworks', function (Query $q) {
+                    return $q->where(['Homeworks.organization_id' => $this->Auth->user('active_organization_id')]);
+                })
                 ->matching('Courses', function (Query $q) {
                     return $q->where([
                         'Courses.organization_id' => $this->Auth->user('active_organization_id'),

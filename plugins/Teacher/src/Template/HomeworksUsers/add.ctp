@@ -26,7 +26,7 @@ $this->extend('Layout/dashboard');
                 'type' => 'select',
                 'options' => $users,
                 'empty' => '-- ' . __('Choose') . ' --',
-                'label' => __('Course'),
+                'label' => __('User'),
             ]);
             echo $this->Form->control('published_from', [
                 'type' => 'datetime',

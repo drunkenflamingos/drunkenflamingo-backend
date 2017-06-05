@@ -207,14 +207,14 @@ $this->extend('/Layout/dashboard');
                 <td class="actions">
                     <?= $this->Table->actions([
                         $this->Html->link(__('Edit'), [
-                            'controller' => 'HomeworksCourses',
+                            'controller' => 'HomeworksUsers',
                             'action' => 'edit',
                             $user->_joinData->id,
                             '?' => ['redirect_url' => $this->request->getRequestTarget()],
                         ]),
                         $this->Form->postLink(__('Delete'),
                             [
-                                'controller' => 'HomeworksCourses',
+                                'controller' => 'HomeworksUsers',
                                 'action' => 'delete',
                                 $user->_joinData->id,
                             ],

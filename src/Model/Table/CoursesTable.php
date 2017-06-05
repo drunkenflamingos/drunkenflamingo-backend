@@ -45,7 +45,7 @@ class CoursesTable extends Table
         $this->addBehavior('Search.Search'); // Search!
         $this->addBehavior('Timestamp');
         $this->addBehavior('CreatedModifiedBy');
-
+        $this->addBehavior('Muffin/Trash.Trash');
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [

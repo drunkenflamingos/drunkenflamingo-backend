@@ -20,7 +20,8 @@ $this->extend('/Layout/dashboard');
 
     <div class="row">
         <div class="col-lg-12">
-            <h4 class="assignmentDescription">Her skal du skrive ordets ordklasse, <br> finde et synonym for ordet <br> og skrive en sætning med ordet</h4>
+            <h4 class="assignmentDescription">Her skal du skrive ordets ordklasse, <br> finde et synonym for ordet <br>
+                og skrive en sætning med ordet</h4>
         </div>
     </div>
 </div>
