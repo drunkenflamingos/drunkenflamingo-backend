@@ -7,7 +7,7 @@ $this->extend('/Layout/dashboard'); ?>
 <?php $this->start('content_header'); ?>
 <h1><?= __('Answer'); ?></h1>
 <?php $this->end(); ?>
-?>
+
 <div class="panel panel-default">
     <!-- Panel header -->
     <div class="panel-heading">
