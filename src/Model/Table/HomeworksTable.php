@@ -5,6 +5,7 @@ namespace App\Model\Table;
 
 use App\Model\Entity\Homework;
 use Cake\Datasource\EntityInterface;
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -84,6 +85,17 @@ class HomeworksTable extends Table
 
         $this->searchManager()
             ->value('name')
+            ->add('course_id', 'Search.Callback', [
+                'callback' => function (Query $query, array $args, $filter) {
+                    if (empty($args['course_id'])) {
+                        return $query;
+                    }
+
+                    return $query->matching('Courses', function (Query $q) use ($args) {
+                        return $q->where(['Courses.id' => $args['course_id']]);
+                    });
+                },
+            ])
             ->add('q', 'Search.Like', [
                 'before' => true,
                 'after' => true,

@@ -22,7 +22,9 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\User $modified_by
  * @property \App\Model\Entity\HomeworksCourse[] $homeworks_courses
  * @property \App\Model\Entity\Organization $organization
+ * @property \App\Model\Entity\Assignment[] $assignments
  * @property \App\Model\Entity\Course[] $courses
+ * @property \App\Model\Entity\User[] $users
  */
 class Homework extends Entity
 {

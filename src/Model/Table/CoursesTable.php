@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Table;
 
 
+use Cake\Database\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -110,13 +111,26 @@ class CoursesTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
+        $rules->add($rules->isUnique(['grade', 'name', 'organization_id'],
+            __('You can only have 1 combination per organization')
+        ));
 
         return $rules;
+    }
+
+    /**
+     * @param Query $q
+     * @param array $options
+     * @return Query
+     */
+    public function findDefaultOrder(Query $q, array $options): Query
+    {
+        return $q->order(['Courses.grade', 'Courses.name']);
     }
 }

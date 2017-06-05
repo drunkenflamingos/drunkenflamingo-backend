@@ -13,8 +13,6 @@ use Cake\Validation\Validator;
 /**
  * HomeworksAssignments Model
  *
- * @property \Cake\ORM\Association\BelongsTo $CreatedBies
- * @property \Cake\ORM\Association\BelongsTo $ModifiedBies
  * @property \Cake\ORM\Association\BelongsTo $Assignments
  * @property \Cake\ORM\Association\BelongsTo $Homeworks
  *

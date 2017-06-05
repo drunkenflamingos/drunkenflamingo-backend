@@ -1,25 +1,24 @@
 <?php
 /* @var $this \Cake\View\View */
-$this->extend('/Layout/dashboard'); ?>
+
+$this->extend('/Layout/dashboard');
+
+$homeworkId = $this->request->getParam('pass')[0];
+?>
+
+
 
 <?php $this->start('content_header'); ?>
-<h1><?= __('Assignment'); ?></h1>
+<h1><?= __('Add assignment'); ?></h1>
 <?php $this->end(); ?>
 
-<?php $this->start('content_buttons'); ?>
-<div class="btn-group-raised">
-    <?= $this->Html->link('<i class="material-icons">add</i> ' . __('New Assignment'), [
-        'action' => 'add',
-    ], [
-        'class' => 'btn btn-primary',
-        'escape' => false,
-    ]) ?>
-</div>
-<?php $this->end(); ?>
 
 <div class="row">
     <div class="col-xs-12">
         <?= $this->Form->create(null, ['type' => 'GET']) ?>
+        <?= $this->Form->hidden('redirect_url', [
+            'value' => $this->request->getQuery('redirect_url'),
+        ]); ?>
         <div class="input-group">
             <?= $this->Form->control('q', [
                 'placeholder' => __('Search') . '...',
@@ -38,11 +37,10 @@ $this->extend('/Layout/dashboard'); ?>
     </div>
 </div>
 
-<table class="table table-striped" cellpadding="0" cellspacing="0">
+<table class="table table-striped">
     <thead>
     <tr>
         <th><?= $this->Paginator->sort('title'); ?></th>
-        <th><?= $this->Paginator->sort('is_locked', __('Status')); ?></th>
         <th><?= $this->Paginator->sort('created'); ?></th>
         <th class="actions"><?= __('Actions'); ?></th>
     </tr>
@@ -51,26 +49,34 @@ $this->extend('/Layout/dashboard'); ?>
     <?php foreach ($assignments as $assignment): ?>
         <tr>
             <td><?= h($assignment->title) ?></td>
-            <td><?= '<i class="material-icons">' . ($assignment->is_locked ? 'lock_outline' : 'lock_open') .'</i>'?></td>
             <td><?= h($assignment->created->i18nFormat()) ?></td>
             <td class="actions">
                 <?= $this->Table->actions([
                     $this->Html->link(__('View'),
-                        ['action' => 'view', $assignment->id]
+                        [
+                            'controller' => 'Assignments',
+                            'action' => 'view',
+                            $assignment->id,
+                        ]
                     ),
-                    $this->Html->link(__('Edit'),
-                        ['action' => 'edit', $assignment->id]
-                    ),
-                    $this->Form->postLink(__('Delete'),
-                        ['action' => 'delete', $assignment->id],
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $assignment->title),]
-                    ),
+                    $this->Form->postLink(__('Select'), [
+                        $homeworkId,
+                        '?' => [
+                            'redirect_url' => $this->request->getQuery('redirect_url'),
+                        ],
+                        $this->request->getParam('homework_id'),
+                    ], [
+                        'data' => [
+                            'assignment_id' => $assignment->id,
+                        ],
+                    ]),
                 ]) ?>
             </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
+
 <div class="paginator text-center">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>

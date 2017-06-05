@@ -29,12 +29,30 @@ use Cake\Core\Configure;
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-divider"></li>
                 <li>
                     <?= $this->Html->link(
                         '<i class="material-icons">show_chart</i> ' . __('Dashboard'),
                         [
                             'controller' => 'Dashboard',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">group</i> ' . __('Pupils'),
+                        [
+                            'prefix' => false,
+                            'controller' => 'Users',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">class</i> ' . __('Courses'),
+                        [
+                            'controller' => 'Courses',
                             'action' => 'index',
                         ], ['escape' => false,]) ?>
                 </li>

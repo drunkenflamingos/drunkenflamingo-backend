@@ -1,37 +1,40 @@
 <?php
+declare(strict_types=1);
 /**
  * @var \App\View\AppView $this
  */
-?>
-<?php
+
 $this->extend('/Layout/dashboard');
+?>
 
-$this->start('tb_actions');
-?>
-<li><?= $this->Html->link(__('List Assignments'), ['action' => 'index']) ?></li>
-<?php
-$this->end();
+<div class="col-xs-12 col-md-8 col-md-offset-2">
+    <div class="well">
+        <?= $this->Form->create($assignment); ?>
+        <fieldset>
+            <h1><?= __('Add assignment'); ?></h1>
 
-$this->start('tb_sidebar');
-?>
-<ul class="nav nav-sidebar">
-    <li><?= $this->Html->link(__('List Assignments'), ['action' => 'index']) ?></li>
-</ul>
-<?php
-$this->end();
-?>
-<?= $this->Form->create($assignment); ?>
-<fieldset>
-    <legend><?= __('Add {0}', ['Assignment']) ?></legend>
-    <?php
-    echo $this->Form->control('created_by_id');
-    echo $this->Form->control('modified_by_id');
-    echo $this->Form->control('organization_id');
-    echo $this->Form->control('title');
-    echo $this->Form->control('text');
-    echo $this->Form->control('is_locked');
-    echo $this->Form->control('deleted');
-    ?>
-</fieldset>
-<?= $this->Form->button(__("Add")); ?>
-<?= $this->Form->end() ?>
+            <?php if (!empty($this->request->getQuery('homework_id'))): ?>
+                <?= $this->Form->hidden('homeworks._ids', [
+                    'value' => $this->request->getQuery('homework_id'),
+                ]); ?>
+            <?php endif; ?>
+
+            <?php
+            echo $this->Form->control('title');
+
+            echo $this->Form->control('text', [
+                'label' => __('Text content'),
+            ]);
+
+            echo $this->Form->control('is_locked');
+            ?>
+        </fieldset>
+
+        <?= $this->Form->button('<i class="material-icons">save</i> ' . __('Save'), [
+            'class' => 'btn btn-raised btn-primary',
+            'escape' => false,
+        ]) ?>
+
+        <?= $this->Form->end() ?>
+    </div>
+</div>

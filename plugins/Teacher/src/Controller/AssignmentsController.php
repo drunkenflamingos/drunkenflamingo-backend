@@ -22,6 +22,18 @@ class AssignmentsController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+
+        $this->Crud->on('beforeFind', function (Event $event) {
+            $event->getSubject()->query->where([
+                'organization_id' => $this->Auth->user('active_organization_id'),
+            ]);
+        });
+
+        $this->Crud->on('beforePaginate', function (Event $event) {
+            $event->getSubject()->query->where([
+                'organization_id' => $this->Auth->user('active_organization_id'),
+            ]);
+        });
     }
 
     public function index()
@@ -38,7 +50,6 @@ class AssignmentsController extends AppController
     {
         return $this->Crud->execute();
     }
-
 
     public function edit($id = null)
     {
