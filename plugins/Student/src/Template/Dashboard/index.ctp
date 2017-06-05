@@ -11,8 +11,8 @@ $this->extend('Layout/dashboard');
         <div class="col-lg-12">
             <div class="profile-sidebar">
 
-                <div class="profile-userpic">
-                    <img src="/webroot/img/guy.jpg" class="img-responsive">
+                <div class="profile-userpic" align="center">
+                    TODO: Users Google image here
                 </div>
 
                 <div class="profile-usertitle">
@@ -20,7 +20,7 @@ $this->extend('Layout/dashboard');
                         <?= $this->request->session()->read('Auth.User.name') ?>
                     </div>
                     <div class="profile-usertitle-job">
-                        Klasse: B
+                        Klasse: (TODO)
                     </div>
                 </div>
 
