@@ -1,30 +1,12 @@
 <?php
 declare(strict_types=1);
 
-$this->extend('/Layout/dashboard');
+/* @var $this \Cake\View\View */
+$this->extend('/Layout/dashboard'); ?>
 
-
-$this->start('tb_actions');
-?>
-<li><?= $this->Html->link(__('Edit Answer'), ['action' => 'edit', $answer->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Answer'), ['action' => 'delete', $answer->id],
-        ['confirm' => __('Are you sure you want to delete # {0}?', $answer->id)]) ?> </li>
-<li><?= $this->Html->link(__('List Answers'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Answer'), ['action' => 'add']) ?> </li>
-<?php
-$this->end();
-
-$this->start('tb_sidebar');
-?>
-<ul class="nav nav-sidebar">
-    <li><?= $this->Html->link(__('Edit Answer'), ['action' => 'edit', $answer->id]) ?> </li>
-    <li><?= $this->Form->postLink(__('Delete Answer'), ['action' => 'delete', $answer->id],
-            ['confirm' => __('Are you sure you want to delete # {0}?', $answer->id)]) ?> </li>
-    <li><?= $this->Html->link(__('List Answers'), ['action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Answer'), ['action' => 'add']) ?> </li>
-</ul>
-<?php
-$this->end();
+<?php $this->start('content_header'); ?>
+<h1><?= __('Answer'); ?></h1>
+<?php $this->end(); ?>
 ?>
 <div class="panel panel-default">
     <!-- Panel header -->
