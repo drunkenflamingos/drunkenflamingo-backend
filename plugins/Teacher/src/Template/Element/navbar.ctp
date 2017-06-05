@@ -74,6 +74,15 @@ declare(strict_types=1);
                         ], ['escape' => false,]) ?>
                 </li>
 
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">show_chart</i> ' . __('Statistics'),
+                        [
+                            'controller' => 'Statistics',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
                 <li class="dropdown">
                     <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"
                        aria-expanded="false">
