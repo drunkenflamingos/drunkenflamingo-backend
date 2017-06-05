@@ -69,9 +69,7 @@ class AssignmentsTable extends Table
             'foreignKey' => 'assignment_id',
         ]);
         $this->belongsToMany('Homeworks', [
-            'foreignKey' => 'assignment_id',
-            'targetForeignKey' => 'homework_id',
-            'joinTable' => 'homeworks_assignments',
+            'through' => 'HomeworksAssignments',
         ]);
 
         $this->searchManager()
@@ -122,6 +120,20 @@ class AssignmentsTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
+
+        //Avoid unlocking assignments if it's already locked, and it's in use in either an answer or a homework
+        $rules->add(function (Assignment $entity, array $options): bool {
+            if ($entity->getDirty('is_locked')) {
+                if ($entity->getOriginal('is_locked') === true && $entity->is_locked !== true) {
+                    return $entity->isInUse() === false;
+                }
+            }
+
+            return true;
+        }, 'AlreadyUsedCannotBeUnlocked', [
+            'errorField' => 'is_locked',
+            'message' => __("You cannot unlock an assignment after it has been because it's already in use"),
+        ]);
 
         return $rules;
     }

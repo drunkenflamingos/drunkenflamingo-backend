@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 
 /**
  * Assignment Entity
@@ -42,5 +43,13 @@ class Assignment extends Entity
         'title' => true,
         'text' => true,
         'is_locked' => true,
+        'homeworks' => true,
     ];
+
+    public function isInUse():bool
+    {
+        $withAnswersAndHomework = TableRegistry::get('Assignments')->get($this->id, ['contain' => ['Answers', 'Homeworks']]);
+
+        return $withAnswersAndHomework->answers !== [] || $withAnswersAndHomework->homeworks !== [];
+    }
 }

@@ -38,4 +38,9 @@ class Course extends Entity
         '*' => true,
         'id' => false,
     ];
+
+    public function getCombinedName(): string
+    {
+        return sprintf('%s. %s', $this->grade, $this->name);
+    }
 }
