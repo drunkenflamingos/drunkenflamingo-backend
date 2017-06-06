@@ -26,6 +26,7 @@ use League\OAuth2\Client\Token\AccessToken;
  * @property \Cake\ORM\Association\BelongsTo $Languages
  * @property \Cake\ORM\Association\HasMany $UsersRoles
  * @property \Cake\ORM\Association\HasMany $UserOauthTokens
+ * @property \Cake\ORM\Association\HasMany $LoginAttempts
  * @property \Cake\ORM\Association\BelongsToMany $Roles
  * @property \Cake\ORM\Association\BelongsToMany $Organizations
  *
@@ -90,6 +91,7 @@ class UsersTable extends Table
 
         $this->hasMany('UsersRoles');
         $this->hasMany('UserOauthTokens');
+        $this->hasMany('LoginAttempts');
 
         $this->belongsToMany('Courses', [
             'through' => 'CoursesUsers',

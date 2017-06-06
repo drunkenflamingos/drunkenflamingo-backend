@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Form\ChangePasswordForm;
+use App\Utility\GetIp;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Network\Exception\BadRequestException;
@@ -116,10 +117,36 @@ class UsersController extends AppController
 
             if (!$resp->isSuccess()) {
                 $event->stopPropagation();
+
+                $this->Users->LoginAttempts->logUnauthenticatedAttempt([
+                    'email' => $this->request->getData('email'),
+                    'ipv4' => GetIp::getUserIpV4(),
+                    'ipv6' => GetIp::getUserIpV6(),
+                ]);
+
                 $this->Flash->error(__('Captcha failed...'));
                 return $this->redirect($this->referer());
             }
         });
+
+
+        $this->Crud->on('afterLogin', function (Event $event) {
+            $ipv4 = GetIp::getUserIpV4();
+            $ipv6 = GetIp::getUserIpV6();
+
+            if ($event->getSubject()->success) {
+                $user = $this->Users->get($event->getSubject()->user['id']);
+
+                $user->triggerSuccessfullLogin($ipv4, $ipv6);
+            } else {
+                $this->Users->LoginAttempts->logUnauthenticatedAttempt([
+                    'email' => $this->request->getData('email'),
+                    'ipv4' => $ipv4,
+                    'ipv6' => $ipv6,
+                ]);
+            }
+        });
+
 
         return $this->Crud->execute();
     }

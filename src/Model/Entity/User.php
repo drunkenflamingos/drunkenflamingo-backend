@@ -40,6 +40,7 @@ use Firebase\JWT\JWT;
  * @property \App\Model\Entity\User $modified_by
  * @property \App\Model\Entity\Language $language
  * @property \App\Model\Entity\Role[] $roles
+ * @property \App\Model\Entity\LoginAttempt[] $loginAttempts
  */
 class User extends Entity
 {
@@ -110,5 +111,19 @@ class User extends Entity
         if (TableRegistry::get('Users')->save($this)) {
             $this->getMailer('User')->send('forgotPassword', [$this]);
         }
+    }
+
+    public function triggerSuccessfullLogin(string $ipv4 = null, string $ipv6 = null)
+    {
+        $loginAttempts = TableRegistry::get('LoginAttempts');
+
+        $loginAttempt = $loginAttempts->newEntity([
+            'user_id' => $this->id,
+            'ip4' => $ipv4,
+            'ip6' => $ipv6,
+            'success' => true,
+        ]);
+
+        $loginAttempts->save($loginAttempt);
     }
 }
