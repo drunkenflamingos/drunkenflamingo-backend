@@ -233,7 +233,7 @@ class AnswersController extends AppController
             if ($this->Answers->save($answer)) {
                 $this->Flash->success(__('Assignment was finished successfully'));
 
-                return $this->redirect(['controller' => 'Assignments', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Answers', 'action' => 'index']);
             }
 
             $this->Flash->error(__('An error happened'));
