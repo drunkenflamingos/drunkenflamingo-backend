@@ -264,7 +264,9 @@ class AppController extends Controller
      */
     public function forceSSL($type)
     {
-        return $this->redirect('https://' . env('SERVER_NAME') . $this->request->getUri()->getPath());
+        if ($type === 'secure') {
+            return $this->redirect('https://' . env('SERVER_NAME') . $this->request->getUri()->getPath());
+        }
     }
 
     public function isAuthorized(array $user): bool
