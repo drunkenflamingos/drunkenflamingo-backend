@@ -71,6 +71,7 @@ $this->extend('/Layout/dashboard'); ?>
                         ], [
                             'data' => [
                                 'assignment_id' => $assignment->id,
+                                'homework_id' => $homework->id,
                             ],
                         ]) ?>
                     <?php endif; ?>

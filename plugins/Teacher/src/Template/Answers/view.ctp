@@ -2,54 +2,110 @@
 declare(strict_types=1);
 
 /* @var $this \Cake\View\View */
-$this->extend('/Layout/dashboard'); ?>
+$this->extend('/Layout/dashboard');
 
-<?php $this->start('content_header'); ?>
-<h1><?= __('Answer'); ?></h1>
-<?php $this->end(); ?>
+$assignment = $answer->assignment;
+$words = mb_split(' ', $assignment->text);
+?>
 
-<div class="panel panel-default">
-    <!-- Panel header -->
-    <div class="panel-heading">
-        <h3 class="panel-title"><?= h($answer->id) ?></h3>
+
+<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+
+    <h1><?= __('Answer'); ?></h1>
+
+    <div class="panel panel-default">
+        <!-- Panel header -->
+        <table class="table table-striped" cellpadding="0" cellspacing="0">
+            <tr>
+                <td><?= __('Created by') ?></td>
+                <td>
+                    <?= $this->Html->link(h($answer->created_by->name), [
+                        'controller' => 'Users',
+                        'action' => 'view',
+                        $answer->created_by->id,
+                    ]) ?>
+                </td>
+            </tr>
+            <tr>
+                <td><?= __('Assignment') ?></td>
+                <td>
+                    <?= $this->Html->link(h($answer->assignment->title), [
+                        'controller' => 'Assignments',
+                        'action' => 'view',
+                        $answer->assignment->id,
+                    ]) ?>
+                </td>
+            </tr>
+            <tr>
+                <td><?= __('Homework') ?></td>
+                <td>
+                    <?= $this->Html->link(h($answer->homework->name), [
+                        'controller' => 'Homeworks',
+                        'action' => 'view',
+                        $answer->homework->id,
+                    ]) ?>
+                </td>
+            </tr>
+            <tr>
+                <td><?= __('Created') ?></td>
+                <td><?= h($answer->created->i18nFormat()) ?></td>
+            </tr>
+            <tr>
+                <td><?= __('Modified') ?></td>
+                <td><?= h($answer->modified->i18nFormat()) ?></td>
+            </tr>
+            <tr>
+                <td><?= __('Completed') ?></td>
+                <td><?= $answer->is_done ? __('Yes') : __('No'); ?></td>
+            </tr>
+        </table>
     </div>
-    <table class="table table-striped" cellpadding="0" cellspacing="0">
-        <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= h($answer->id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Created By Id') ?></td>
-            <td><?= h($answer->created_by_id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Modified By Id') ?></td>
-            <td><?= h($answer->modified_by_id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Assignment Id') ?></td>
-            <td><?= h($answer->assignment_id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Homework Id') ?></td>
-            <td><?= h($answer->homework_id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Created') ?></td>
-            <td><?= h($answer->created) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Modified') ?></td>
-            <td><?= h($answer->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Deleted') ?></td>
-            <td><?= h($answer->deleted) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Is Done') ?></td>
-            <td><?= $answer->is_done ? __('Yes') : __('No'); ?></td>
-        </tr>
-    </table>
-</div>
 
+    <?= $this->Form->create($answer, [
+        'url' => [
+            'controller' => '',
+        ],
+    ]) ?>
+
+    <?php if (!empty($answer->answer_words)): ?>
+        <h2><?= __('Words in answer'); ?></h2>
+        <?php foreach ($answer->answer_words as $answerWord) : ?>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= $words[$answerWord->word_placement] ?></h3>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <td><?= __('Definition'); ?></td>
+                        <td><?= h($answerWord->definition) ?></td>
+                    </tr>
+
+                    <tr>
+                        <td><?= __('Word class'); ?></td>
+                        <td><?= $answerWord->word_class->title ?? null ?></td>
+                    </tr>
+
+                    <tr>
+                        <td><?= __('Synonym'); ?></td>
+                        <td><?= h($answerWord->synonym) ?></td>
+                    </tr>
+
+                    <tr>
+                        <td><?= __('Sentence'); ?></td>
+                        <td><?= $this->Text->autoParagraph($answerWord->sentence) ?></td>
+                    </tr>
+
+                    <tr>
+                        <td><?= __('Skipped?'); ?></td>
+                        <td><?= $answerWord->is_skipped ? __('Yes') : __('No') ?></td>
+                    </tr>
+
+                    <tr>
+                        <td><?= __('Help text'); ?></td>
+                        <td><?= h($answerWord->help_text) ?></td>
+                    </tr>
+                </table>
+            </div>
+        <?php endforeach ?>
+    <?php endif; ?>
+</div>

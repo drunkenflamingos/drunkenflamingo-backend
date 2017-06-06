@@ -123,7 +123,7 @@ class AssignmentsTable extends Table
 
         //Avoid unlocking assignments if it's already locked, and it's in use in either an answer or a homework
         $rules->add(function (Assignment $entity, array $options): bool {
-            if ($entity->getDirty('is_locked')) {
+            if ($entity->getDirty('is_locked') && !$entity->isNew()) {
                 if ($entity->getOriginal('is_locked') === true && $entity->is_locked !== true) {
                     return $entity->isInUse() === false;
                 }
@@ -133,6 +133,18 @@ class AssignmentsTable extends Table
         }, 'AlreadyUsedCannotBeUnlocked', [
             'errorField' => 'is_locked',
             'message' => __("You cannot unlock an assignment after it has been because it's already in use"),
+        ]);
+
+        //Avoid changing text of assignment if it is in use
+        $rules->add(function (Assignment $entity, array $options): bool {
+            if ($entity->getDirty('text') && !$entity->isNew()) {
+                return $entity->isInUse() === false;
+            }
+
+            return true;
+        }, 'AlreadyUsedCannotBeChanged', [
+            'errorField' => 'text',
+            'message' => __('You cannot change an assignment after students have submitted answers'),
         ]);
 
         return $rules;

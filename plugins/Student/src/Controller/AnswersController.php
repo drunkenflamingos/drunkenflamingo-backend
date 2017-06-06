@@ -134,6 +134,23 @@ class AnswersController extends AppController
             ],
         ]);
 
+        $this->Crud->on('afterFind', function (Event $event) {
+            $answer = $event->getSubject()->entity;
+
+            $firstAnswerWord = $this->Answers->AnswerWords->find()
+                ->where(['AnswerWords.answer_id' => $answer->id]);
+
+            if ($firstAnswerWord->isEmpty()) {
+                $this->Flash->error(__('You have to select words first'));
+
+                return $this->redirect(Router::url([
+                    'action' => 'stepOne',
+                    $answer->id,
+                ]));
+            }
+        });
+
+
         $this->Crud->on('beforeFind', function (Event $event) {
             $event->getSubject()->query->contain(['AnswerWords', 'Assignments']);
         });
@@ -165,7 +182,7 @@ class AnswersController extends AppController
                     ->first();
 
                 if ($firstAnswerWord === null) {
-                    $this->Flas->error(__('You have to select words first'));
+                    $this->Flash->error(__('You have to select words first'));
 
                     return $this->redirect(Router::url([
                         'action' => 'stepOne',
