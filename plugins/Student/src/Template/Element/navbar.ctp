@@ -43,9 +43,9 @@ declare(strict_types=1);
 
                 <li>
                     <?= $this->Html->link(
-                        '<i class="material-icons">assignment</i> ' . __('Assignments'),
+                        '<i class="material-icons">assignment</i> ' . __('Answers'),
                         [
-                            'controller' => 'Assignments',
+                            'controller' => 'Answers',
                             'action' => 'index',
                         ], ['escape' => false,]) ?>
                 </li>

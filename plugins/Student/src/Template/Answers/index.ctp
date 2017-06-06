@@ -24,9 +24,6 @@ $this->start('content_buttons');
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
     <tr>
-        <th><?= $this->Paginator->sort('id'); ?></th>
-        <th><?= $this->Paginator->sort('created_by_id'); ?></th>
-        <th><?= $this->Paginator->sort('modified_by_id'); ?></th>
         <th><?= $this->Paginator->sort('assignment_id'); ?></th>
         <th><?= $this->Paginator->sort('homework_id'); ?></th>
         <th><?= $this->Paginator->sort('is_done'); ?></th>
@@ -37,9 +34,6 @@ $this->start('content_buttons');
     <tbody>
     <?php foreach ($answers as $answer): ?>
         <tr>
-            <td><?= h($answer->id) ?></td>
-            <td><?= h($answer->created_by_id) ?></td>
-            <td><?= h($answer->modified_by_id) ?></td>
             <td><?= h($answer->assignment_id) ?></td>
             <td><?= h($answer->homework_id) ?></td>
             <td><?= h($answer->is_done) ?></td>
@@ -47,26 +41,15 @@ $this->start('content_buttons');
             <td class="actions">
                 <?= $this->Table->actions([
                     $this->Html->link(__('View'),
-                        ['action' => 'view', $homework->id]
+                        ['action' => 'view', $answer->id]
                     ),
                     $this->Html->link(__('Edit'),
-                        ['action' => 'edit', $homework->id]
+                        ['action' => 'edit', $answer->id]
                     ),
                     $this->Form->postLink(__('Delete'),
-                        ['action' => 'delete', $homework->id],
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $homework->name),]
+                        ['action' => 'delete', $answer->id],
+                        ['confirm' => __('Are you sure you want to delete # {0}?', $answer->id),]
                     ),
-                ]) ?>
-
-            </td>
-            <td class="actions">
-                <?= $this->Table->actions([
-                    $this->Html->link(__('View'), ['action' => 'view', $answer->id], ['title' => __('View')]),
-                    $this->Html->link(__('Edit'), ['action' => 'edit', $answer->id], ['title' => __('Edit')]),
-                    $this->Form->postLink(__('Delete'), ['action' => 'delete', $answer->id], [
-                        'confirm' => __('Are you sure you want to delete # {0}?', $answer->id),
-                        'title' => __('Delete'),
-                    ]),
                 ]) ?>
             </td>
         </tr>

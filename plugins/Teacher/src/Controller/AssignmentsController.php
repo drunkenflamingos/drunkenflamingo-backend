@@ -37,7 +37,6 @@ class AssignmentsController extends AppController
 
         //Because of bugs with homeworks._ids.0 not being recognized correctly
         $this->Security->setConfig('unlockedActions', ['add']);
-
     }
 
     public function index()
