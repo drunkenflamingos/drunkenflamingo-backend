@@ -12,6 +12,8 @@ use Cake\Event\Event;
  */
 class AnswersController extends AppController
 {
+    public $modelClass = 'App.Answers';
+
     public function initialize()
     {
         parent::initialize();
@@ -22,6 +24,18 @@ class AnswersController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+
+        $this->Crud->on('beforeFind', function (Event $event) {
+            $event->getSubject()->query->matching('Homeworks', function (\Cake\ORM\Query $q) {
+                return $q->where(['Homeworks.organization_id' => $this->Auth->user('active_organization_id')]);
+            });
+        });
+
+        $this->Crud->on('beforePaginate', function (Event $event) {
+            $event->getSubject()->query->matching('Homeworks', function (\Cake\ORM\Query $q) {
+                return $q->where(['Homeworks.organization_id' => $this->Auth->user('active_organization_id')]);
+            });
+        });
     }
 
     public function index()
@@ -31,6 +45,18 @@ class AnswersController extends AppController
 
     public function view($id = null)
     {
+        $this->Crud->on('beforeFind', function (Event $event) {
+            $event->getSubject()->query
+                ->contain([
+                    'CreatedBy',
+                    'AnswerWords' => [
+                        'WordClasses'
+                    ],
+                    'Assignments',
+                    'Homeworks',
+                ]);
+        });
+
         return $this->Crud->execute();
     }
 }

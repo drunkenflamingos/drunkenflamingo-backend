@@ -46,9 +46,16 @@ class Assignment extends Entity
         'homeworks' => true,
     ];
 
-    public function isInUse():bool
+    protected function _setText($value)
     {
-        $withAnswersAndHomework = TableRegistry::get('Assignments')->get($this->id, ['contain' => ['Answers', 'Homeworks']]);
+        return preg_replace("/[\r\n]/", ' ', $value);
+
+    }
+
+    public function isInUse(): bool
+    {
+        $withAnswersAndHomework = TableRegistry::get('Assignments')->get($this->id,
+            ['contain' => ['Answers', 'Homeworks']]);
 
         return $withAnswersAndHomework->answers !== [] || $withAnswersAndHomework->homeworks !== [];
     }

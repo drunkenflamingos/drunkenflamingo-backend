@@ -63,7 +63,7 @@ class AnswerWordsTable extends Table
 
         $this->belongsTo('WordClasses', [
             'foreignKey' => 'word_class_id',
-            'joinType' => 'INNER',
+            'joinType' => 'LEFT',
         ]);
         $this->belongsTo('Answers', [
             'foreignKey' => 'answer_id',
