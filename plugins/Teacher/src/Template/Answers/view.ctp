@@ -72,7 +72,15 @@ $words = mb_split(' ', $assignment->text);
         <?php foreach ($answer->answer_words as $answerWord) : ?>
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?= $words[$answerWord->word_placement] ?></h3>
+                    <h3 class="panel-title">
+                        <?= $words[$answerWord->word_placement] ?>
+
+                        <?php if ($answerWord->is_skipped): ?>
+                            <div class="pull-right">
+                                <span class="label label-danger"><?= __('Skipped'); ?></span>
+                            </div>
+                        <?php endif; ?>
+                    </h3>
                 </div>
                 <table class="table table-striped">
                     <tr>
@@ -93,11 +101,6 @@ $words = mb_split(' ', $assignment->text);
                     <tr>
                         <td><?= __('Sentence'); ?></td>
                         <td><?= $this->Text->autoParagraph($answerWord->sentence) ?></td>
-                    </tr>
-
-                    <tr>
-                        <td><?= __('Skipped?'); ?></td>
-                        <td><?= $answerWord->is_skipped ? __('Yes') : __('No') ?></td>
                     </tr>
 
                     <tr>

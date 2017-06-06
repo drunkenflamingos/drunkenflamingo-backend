@@ -24,9 +24,9 @@ $this->start('content_buttons');
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
     <tr>
-        <th><?= $this->Paginator->sort('assignment_id'); ?></th>
-        <th><?= $this->Paginator->sort('homework_id'); ?></th>
-        <th><?= $this->Paginator->sort('is_done'); ?></th>
+        <th><?= $this->Paginator->sort('Assignments.title'); ?></th>
+        <th><?= $this->Paginator->sort('Homeworks.name'); ?></th>
+        <th><?= $this->Paginator->sort('is_done', __('Completed')); ?></th>
         <th><?= $this->Paginator->sort('created'); ?></th>
         <th class="actions"><?= __('Actions'); ?></th>
     </tr>
@@ -34,9 +34,9 @@ $this->start('content_buttons');
     <tbody>
     <?php foreach ($answers as $answer): ?>
         <tr>
-            <td><?= h($answer->assignment_id) ?></td>
-            <td><?= h($answer->homework_id) ?></td>
-            <td><?= h($answer->is_done) ?></td>
+            <td><?= h($answer->assignment->title) ?></td>
+            <td><?= h($answer->homework->name) ?></td>
+            <td><?= h($answer->is_done ? __('Yes') : __('No')) ?></td>
             <td><?= h($answer->created) ?></td>
             <td class="actions">
                 <?= $this->Table->actions([

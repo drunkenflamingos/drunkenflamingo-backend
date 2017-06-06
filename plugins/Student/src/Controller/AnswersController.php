@@ -86,6 +86,10 @@ class AnswersController extends AppController
 
     public function index()
     {
+        $this->Crud->on('beforePaginate', function (Event $event) {
+            $event->getSubject()->query->contain(['Assignments', 'Homeworks']);
+        });
+
         return $this->Crud->execute();
     }
 
