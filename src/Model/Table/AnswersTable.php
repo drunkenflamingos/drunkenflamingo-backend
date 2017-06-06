@@ -16,6 +16,7 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $Assignments
  * @property \Cake\ORM\Association\BelongsTo $Homeworks
  * @property \Cake\ORM\Association\HasMany $AnswerFeedbacks
+ * @property \Cake\ORM\Association\HasMany $AnswerWords
  *
  * @method Answer get($primaryKey, $options = [])
  * @method Answer newEntity($data = null, array $options = [])
@@ -67,6 +68,10 @@ class AnswersTable extends Table
         ]);
 
         $this->hasMany('AnswerFeedbacks', [
+            'foreignKey' => 'answer_id',
+        ]);
+
+        $this->hasMany('AnswerWords', [
             'foreignKey' => 'answer_id',
         ]);
     }

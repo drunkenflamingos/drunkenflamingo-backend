@@ -10,10 +10,14 @@ use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
+use Crud\Controller\Component\CrudComponent;
 use Crud\Controller\ControllerTrait;
 use Muffin\Footprint\Auth\FootprintAwareTrait;
 use UnexpectedValueException;
 
+/**
+ * @property CrudComponent $Crud
+ */
 class AppController extends BaseController
 {
     use ControllerTrait;
@@ -55,7 +59,7 @@ class AppController extends BaseController
             'authenticate' => [
                 'ADmad/JwtAuth.Jwt' => [
                     'userModel' => 'Users',
-                    'scope' => ['Users.activated' => 1],
+                    'scope' => ['Users.is_activated' => 1],
                     'fields' => [
                         'username' => 'id',
                     ],
@@ -64,7 +68,7 @@ class AppController extends BaseController
                     'queryDatasource' => true,
                 ],
                 'Form' => [
-                    'scope' => ['Users.activated' => 1],
+                    'scope' => ['Users.is_activated' => 1],
                 ],
             ],
             'authorize' => 'Controller',
@@ -147,7 +151,6 @@ class AppController extends BaseController
         ]);
 
         $this->loadComponent('Security', ['blackHoleCallback' => 'forceSSL']);
-        $this->loadComponent('Csrf');
 
         if (!Configure::read('debug')) {
             $this->Security->requireSecure();
@@ -175,6 +178,8 @@ class AppController extends BaseController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+
+        $this->Security->setConfig('unlockedActions', [$this->request->getParam('action')]);
 
 //        TODO
 //        $this->loadModel('Languages');

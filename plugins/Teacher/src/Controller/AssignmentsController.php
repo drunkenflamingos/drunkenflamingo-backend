@@ -34,6 +34,9 @@ class AssignmentsController extends AppController
                 'organization_id' => $this->Auth->user('active_organization_id'),
             ]);
         });
+
+        //Because of bugs with homeworks._ids.0 not being recognized correctly
+        $this->Security->setConfig('unlockedActions', ['add']);
     }
 
     public function index()

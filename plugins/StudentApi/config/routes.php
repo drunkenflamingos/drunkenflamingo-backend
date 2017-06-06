@@ -6,14 +6,13 @@ use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 const API_RESOURCES_DEFAULT = [
     'Homeworks',
+    'AnswerWords',
 ];
 
 Router::scope('/', function ($routes) {
 
 });
-Router::plugin('StudentApi', ['path' => '/student-api'], function (RouteBuilder $routes) {
-    $routes->extensions(['json', 'xml']);
-
+Router::plugin('StudentApi', ['path' => '/student-api/v1'], function (RouteBuilder $routes) {
     foreach (API_RESOURCES_DEFAULT as $apiResource) {
         $routes->resources($apiResource, [
             'inflect' => 'dasherize',

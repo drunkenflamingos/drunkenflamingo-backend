@@ -17,7 +17,13 @@ use Cake\Core\Configure;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><?= Configure::read('App.title') ?></a>
+            <div class="navbar-brand" href="#">
+                <?= $this->Html->image('logo_white_transparent.png', [
+                    'class' => 'img-responsive',
+                    'style' => 'height: 32px;',
+                    'url' => \Cake\Routing\Router::url(['controller' => 'Dashboard', 'action' => 'index']),
+                ]) ?>
+            </div>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

@@ -22,6 +22,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Assignment $assignment
  * @property \App\Model\Entity\Homework $homework
  * @property \App\Model\Entity\AnswerFeedback[] $answer_feedbacks
+ * @property \App\Model\Entity\AnswerWord[] $answer_words
  */
 class Answer extends Entity
 {
@@ -39,5 +40,6 @@ class Answer extends Entity
         'assignment_id' => true,
         'homework_id' => true,
         'is_done' => true,
+        'answer_words' => true,
     ];
 }

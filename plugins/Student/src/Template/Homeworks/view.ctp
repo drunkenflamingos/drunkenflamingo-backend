@@ -1,73 +1,89 @@
 <?php
+/**
+ * @var \Cake\View\View $this
+ */
 declare(strict_types=1);
 
 $this->extend('/Layout/dashboard');
 
+$this->extend('/Layout/dashboard'); ?>
 
-$this->start('tb_actions');
-?>
-<li><?= $this->Html->link(__('Edit Homework'), ['action' => 'edit', $homework->id]) ?> </li>
-<li><?= $this->Form->postLink(__('Delete Homework'), ['action' => 'delete', $homework->id],
-        ['confirm' => __('Are you sure you want to delete # {0}?', $homework->id)]) ?> </li>
-<li><?= $this->Html->link(__('List Homeworks'), ['action' => 'index']) ?> </li>
-<li><?= $this->Html->link(__('New Homework'), ['action' => 'add']) ?> </li>
-<?php
-$this->end();
+<?php $this->start('content_header'); ?>
+<h1><?= h($homework->name) ?></h1>
+<?php $this->end(); ?>
 
-$this->start('tb_sidebar');
-?>
-<ul class="nav nav-sidebar">
-    <li><?= $this->Html->link(__('Edit Homework'), ['action' => 'edit', $homework->id]) ?> </li>
-    <li><?= $this->Form->postLink(__('Delete Homework'), ['action' => 'delete', $homework->id],
-            ['confirm' => __('Are you sure you want to delete # {0}?', $homework->id)]) ?> </li>
-    <li><?= $this->Html->link(__('List Homeworks'), ['action' => 'index']) ?> </li>
-    <li><?= $this->Html->link(__('New Homework'), ['action' => 'add']) ?> </li>
-</ul>
-<?php
-$this->end();
-?>
-<div class="panel panel-default">
-    <!-- Panel header -->
-    <div class="panel-heading">
-        <h3 class="panel-title"><?= h($homework->name) ?></h3>
+<?php $this->start('content_buttons'); ?>
+<?php $this->end(); ?>
+
+<?php if (!empty($homework->text)): ?>
+    <div class="well well-sm">
+        <h4><?= __('Description'); ?></h4>
+        <?= $this->Text->autoParagraph(h($homework->text)) ?>
     </div>
-    <table class="table table-striped" cellpadding="0" cellspacing="0">
+<?php endif; ?>
+
+
+<h2><?= __('Assignments'); ?></h2>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th><?= __('Name'); ?></th>
+        <th class="actions"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php if (!empty($assignments)): ?>
+        <?php foreach ($assignments as $assignment): ?>
+            <tr>
+                <td>
+                    <?= $this->Html->link(h($assignment->title), [
+                        'controller' => 'Assignments',
+                        'action' => 'view',
+                        $assignment->id,
+                    ]) ?>
+                </td>
+                <td>
+                    <?php if (!empty($assignment->answers)): ?>
+                        <?php if (count($assignment->answers) > 1): ?>
+                            <?php foreach ($assignment->answers as $key => $answer): ?>
+                                <?= $key !== 0 ? $this->Table->actionSeparator() : null; ?>
+                                <?= $this->Html->link(__('Answer {0}', [$key + 1]), [
+                                    'controller' => 'Answers',
+                                    'action' => 'view',
+                                    $answer->id,
+                                ]) ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php $isDone = $assignment->answers[0]->is_done; ?>
+                            <?= $this->Html->link(
+                                $isDone ?
+                                    __('Edit (from {0})', [$assignment->answers[0]->modified->i18nFormat()]) :
+                                    __('Continue'), [
+                                'controller' => 'Answers',
+                                'action' => 'stepOne',
+                                $assignment->answers[0]->id,
+                            ]) ?>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <?= $this->Form->postLink(__('Start'), [
+                            'controller' => 'Answers',
+                            'action' => 'add',
+                        ], [
+                            'data' => [
+                                'assignment_id' => $assignment->id,
+                            ],
+                        ]) ?>
+                    <?php endif; ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php else: ?>
         <tr>
-            <td><?= __('Id') ?></td>
-            <td><?= h($homework->id) ?></td>
+            <td>
+                <?= __('No assignments found'); ?>
+            </td>
         </tr>
-        <tr>
-            <td><?= __('Created By Id') ?></td>
-            <td><?= h($homework->created_by_id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Modified By Id') ?></td>
-            <td><?= h($homework->modified_by_id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Organization Id') ?></td>
-            <td><?= h($homework->organization_id) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Name') ?></td>
-            <td><?= h($homework->name) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Created') ?></td>
-            <td><?= h($homework->created) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Modified') ?></td>
-            <td><?= h($homework->modified) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Deleted') ?></td>
-            <td><?= h($homework->deleted) ?></td>
-        </tr>
-        <tr>
-            <td><?= __('Text') ?></td>
-            <td><?= $this->Text->autoParagraph(h($homework->text)); ?></td>
-        </tr>
-    </table>
-</div>
+    <?php endif; ?>
+    </tbody>
+</table>
 

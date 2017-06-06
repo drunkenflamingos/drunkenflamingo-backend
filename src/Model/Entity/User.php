@@ -5,6 +5,8 @@ namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\ORM\Entity;
+use Cake\Utility\Security;
+use Firebase\JWT\JWT;
 
 /**
  * User Entity
@@ -83,5 +85,16 @@ class User extends Entity
         }
 
         return null;
+    }
+
+    public function getJwtToken()
+    {
+        return JWT::encode(
+            [
+                'sub' => $this->id,
+                'exp' => time() + 604800,
+            ],
+            Security::salt()
+        );
     }
 }
