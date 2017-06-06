@@ -70,6 +70,19 @@ use Cake\Core\Configure;
                                     'action' => 'index',
                                 ], ['escape' => false,]) ?>
                         </li>
+
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="material-icons">settings</i> ' . __('Settings'),
+                                [
+                                    'plugin' => false,
+                                    'controller' => 'Users',
+                                    'action' => 'edit',
+                                ], ['escape' => false,]) ?>
+                        </li>
+
+                        <li class="divider"></li>
+
                         <li>
                             <?= $this->Html->link(
                                 '<i class="material-icons">directions_run</i> ' . __('Log out'),

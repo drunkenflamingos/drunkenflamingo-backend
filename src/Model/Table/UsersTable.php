@@ -124,10 +124,10 @@ class UsersTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
-    public function validationDefault(Validator $validator): \Cake\Validation\Validator
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->uuid('id')
@@ -185,6 +185,17 @@ class UsersTable extends Table
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
+
+        $rules->add(function (User $user) {
+            if ($user->isDirty('password') && $user->getOriginal('password') !== null) {
+                return !empty($user->password);
+            }
+
+            return true;
+        }, 'passwordCantBeDeleted', [
+            'errorField' => 'password',
+            'message' => __('When password is already set you cannot delete it'),
+        ]);
 
         return $rules;
     }

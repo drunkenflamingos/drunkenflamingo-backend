@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Controller\AppController;
+use App\Form\ResetPasswordForm;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Network\Exception\BadRequestException;
@@ -18,13 +19,15 @@ use ReCaptcha\ReCaptcha;
  */
 class UsersController extends AppController
 {
+    public $modelClass = 'App.Users';
+
     public function initialize()
     {
         parent::initialize();
 
-        $this->Auth->allow(['register', 'loginOauth', 'oauthGoogle']);
+        $this->Auth->allow(['register', 'loginOauth', 'oauthGoogle', 'login']);
 
-        $this->Crud->disable(['add', 'index', 'view', 'edit', 'delete']);
+        $this->Crud->disable(['add', 'index', 'view', 'delete']);
 
         $this->Crud->mapAction('register', [
             'className' => 'CrudUsers.Register',
@@ -70,6 +73,37 @@ class UsersController extends AppController
         $this->loadModel('Users');
     }
 
+    public function edit($id = null)
+    {
+        if ($id !== $this->Auth->user('id')) {
+            return $this->redirect(['action' => 'edit', $this->Auth->user('id')]);
+        }
+
+        return $this->Crud->execute();
+    }
+
+    public function changePassword($id = null)
+    {
+        if ($id !== $this->Auth->user('id')) {
+            return $this->redirect(['action' => 'changePassword', $this->Auth->user('id')]);
+        }
+
+        $user = $this->Users->get($this->Auth->user('id'));
+
+        $resetPassword = new ResetPasswordForm();
+        if ($this->request->is('post')) {
+            if ($resetPassword->execute($this->request->getData())) {
+                $this->Flash->success('Password was changed');
+
+                return $this->redirect(['action' => 'edit']);
+            } else {
+                $this->Flash->error('Could not change password - please check the details below');
+            }
+        }
+
+        $this->set(compact('resetPassword', 'user'));
+    }
+
     public function login()
     {
         if (!empty($this->Auth->user('id'))) {
@@ -87,10 +121,6 @@ class UsersController extends AppController
                 $this->Flash->error(__('Captcha failed...'));
                 return $this->redirect($this->referer());
             }
-        });
-
-        $this->Crud->on('afterLogin', function (Event $event) {
-            //Post-login logic
         });
 
         return $this->Crud->execute();
