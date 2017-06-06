@@ -92,21 +92,6 @@ $fields = collection($fields)
             %>
             <td class="actions">
                 <?= $this->Table->actions([
-                $this->Html->link(__('View'),
-                ['action' => 'view', $homework->id]
-                ),
-                $this->Html->link(__('Edit'),
-                ['action' => 'edit', $homework->id]
-                ),
-                $this->Form->postLink(__('Delete'),
-                ['action' => 'delete', $homework->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $homework->name),]
-                ),
-                ]) ?>
-
-            </td>
-            <td class="actions">
-                <?= $this->Table->actions([
                 $this->Html->link(__('View'), ['action' => 'view', <%= $pk %>], ['title' => __('View')]),
                 $this->Html->link(__('Edit'), ['action' => 'edit', <%= $pk %>], ['title' => __('Edit')]),
                 $this->Form->postLink(__('Delete'), ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'title' => __('Delete')])
