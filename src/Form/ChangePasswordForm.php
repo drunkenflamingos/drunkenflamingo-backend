@@ -9,9 +9,9 @@ use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
- * ResetPassword Form.
+ * ChangePassword Form.
  */
-class ResetPasswordForm extends Form
+class ChangePasswordForm extends Form
 {
     /**
      * Builds the schema for the modelless form

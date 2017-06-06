@@ -161,7 +161,7 @@ class UsersTable extends Table
             ->allowEmpty('file_name');
 
         $validator
-            ->allowEmpty('reset_token');
+            ->allowEmpty('token');
 
         $validator
             ->dateTime('reset_expires')

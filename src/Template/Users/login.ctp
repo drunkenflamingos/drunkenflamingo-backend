@@ -65,5 +65,12 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
         ], [
             'class' => 'btn btn-lg btn-block btn-default btn-raised',
         ]); ?>
+
+        <?= $this->Html->link(__('Forgot pasword'), [
+            'controller' => 'ResetPasswords',
+            'action' => 'forgotPassword',
+        ], [
+            'class' => 'btn btn-lg btn-block btn-default btn-raised',
+        ]) ?>
     </div>
 </div>

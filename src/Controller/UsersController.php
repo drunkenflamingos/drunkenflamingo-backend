@@ -3,12 +3,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\AppController;
-use App\Form\ResetPasswordForm;
+use App\Form\ChangePasswordForm;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Network\Exception\BadRequestException;
-use Cake\Routing\Router;
 use League\OAuth2\Client\Provider\Google;
 use ReCaptcha\ReCaptcha;
 
@@ -64,13 +62,8 @@ class UsersController extends AppController
                 ],
             ],
         ]);
-    }
 
-    public function beforeFilter(Event $event)
-    {
-        parent::beforeFilter($event);
 
-        $this->loadModel('Users');
     }
 
     public function edit($id = null)
@@ -90,9 +83,9 @@ class UsersController extends AppController
 
         $user = $this->Users->get($this->Auth->user('id'));
 
-        $resetPassword = new ResetPasswordForm();
+        $changePasswordForm = new ChangePasswordForm();
         if ($this->request->is('post')) {
-            if ($resetPassword->execute($this->request->getData())) {
+            if ($changePasswordForm->execute($this->request->getData())) {
                 $this->Flash->success('Password was changed');
 
                 return $this->redirect(['action' => 'edit']);
@@ -101,7 +94,12 @@ class UsersController extends AppController
             }
         }
 
-        $this->set(compact('resetPassword', 'user'));
+        $this->set(compact('changePasswordForm', 'user'));
+    }
+
+    public function resetPassword()
+    {
+        return $this->Crud->execute();
     }
 
     public function login()

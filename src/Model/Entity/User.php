@@ -4,8 +4,12 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\Auth\DefaultPasswordHasher;
+use Cake\I18n\Time;
+use Cake\Mailer\MailerAwareTrait;
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
 use Cake\Utility\Security;
+use Cake\Utility\Text;
 use Firebase\JWT\JWT;
 
 /**
@@ -24,12 +28,12 @@ use Firebase\JWT\JWT;
  * @property int $file_size
  * @property string $file_type
  * @property string $file_name
- * @property string $reset_token
- * @property \Cake\I18n\Time $reset_expires
+ * @property string $token
+ * @property Time $reset_expires
  * @property bool $is_activated
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
- * @property \Cake\I18n\Time $deleted
+ * @property Time $created
+ * @property Time $modified
+ * @property Time $deleted
  *
  * @property \App\Model\Entity\Organization $active_organization
  * @property \App\Model\Entity\User $created_by
@@ -39,7 +43,7 @@ use Firebase\JWT\JWT;
  */
 class User extends Entity
 {
-
+    use MailerAwareTrait;
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -96,5 +100,15 @@ class User extends Entity
             ],
             Security::salt()
         );
+    }
+
+    public function sendForgotPasswordMail()
+    {
+        $this->token = Text::uuid();
+        $this->reset_expires = Time::now()->addDays(7);
+
+        if (TableRegistry::get('Users')->save($this)) {
+            $this->getMailer('User')->send('forgotPassword', [$this]);
+        }
     }
 }

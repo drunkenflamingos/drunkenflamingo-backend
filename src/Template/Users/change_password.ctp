@@ -12,7 +12,7 @@ $this->extend('/Layout/dashboard'); ?>
 <?php $this->start('content_buttons'); ?>
 <?php $this->end(); ?>
 
-<?= $this->Form->create($resetPassword); ?>
+<?= $this->Form->create($changePassword); ?>
 <fieldset>
 
     <?= $this->Form->control('user_id', [
