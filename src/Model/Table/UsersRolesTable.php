@@ -58,6 +58,11 @@ class UsersRolesTable extends Table
                     'created_by_id' => 'new',
                     'modified_by_id' => 'always',
                 ],
+                'Model.beforeRules' => [
+                    'created_by_id' => 'new',
+                    'modified_by_id' => 'always',
+                    'organization_id' => 'always',
+                ],
             ],
             'propertiesMap' => [
                 'created_by_id' => '_footprint.id',
@@ -106,6 +111,26 @@ class UsersRolesTable extends Table
         $rules->add($rules->existsIn(['user_id'], 'Users'));
         $rules->add($rules->existsIn(['role_id'], 'Roles'));
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
+
+        $rules->add(function (UsersRole $usersRole) {
+            if ($usersRole->isDirty('role_id') && !$usersRole->isNew()) {
+                return false;
+            }
+            return true;
+        }, [
+            'errorField' => 'role_id',
+            'message' => __('You cannot change your role id'),
+        ]);
+
+        $rules->add(function (UsersRole $usersRole) {
+            if ($usersRole->isDirty('organization_id') && !$usersRole->isNew()) {
+                return false;
+            }
+            return true;
+        }, [
+            'errorField' => 'organization_id',
+            'message' => __("You cannot change your role's organization"),
+        ]);
 
         return $rules;
     }
