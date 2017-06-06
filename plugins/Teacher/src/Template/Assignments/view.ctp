@@ -52,17 +52,15 @@ $this->extend('/Layout/dashboard'); ?>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
             <td><?= __('Correctly answered tasks') ?></td>
-            <td><?= __('TODO') ?></td>
+            <td><?= $wordsWithoutErrors ?></td>
         </tr>
         <tr>
             <td><?= __('Incorrectly answered tasks') ?></td>
-            <td><?= __('TODO') ?></td>
+            <td><?= $wordsWithErrors ?></td>
         </tr>
         <tr>
             <td><?= __('Skipped tasks') ?></td>
-            <td><?= __('TODO') ?></td>
+            <td><?= $skippedWords ?></td>
         </tr>
     </table>
-
 </div>
-

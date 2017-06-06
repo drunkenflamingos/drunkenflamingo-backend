@@ -4,11 +4,13 @@ declare(strict_types=1);
 namespace Teacher\Controller;
 
 use Cake\Event\Event;
+use Cake\ORM\Query;
 
 /**
  * Assignments Controller
  *
  * @property \App\Model\Table\AssignmentsTable $Assignments
+ * @property \App\Model\Table\AnswerWordsTable $AnswerWords
  */
 class AssignmentsController extends AppController
 {
@@ -22,6 +24,8 @@ class AssignmentsController extends AppController
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
+
+        $this->loadModel('AnswerWords');
 
         $this->Crud->on('beforeFind', function (Event $event) {
             $event->getSubject()->query->where([
@@ -50,9 +54,45 @@ class AssignmentsController extends AppController
             $event->getSubject()->query->contain([
                 "CreatedBy",
                 "ModifiedBy",
-                "Organizations"
+                "Organizations",
             ]);
         });
+
+        $this->Crud->on('afterFind', function (Event $event) {
+            $wordsWithErrors = $this->AnswerWords->find()
+                ->matching('Answers.Assignments', function (Query $q) {
+                    return $q->where(['Assignments.organization_id' => $this->Auth->user('active_organization_id')]);
+                })
+                ->matching('AnswerWordFeedbacks', function (Query $q) {
+                    return $q->where(['AnswerWordFeedbacks.score <' => 100]);
+                })
+                ->count();
+
+            $wordsWithoutErrors = $this->AnswerWords->find()
+                ->matching('Answers.Assignments', function (Query $q) {
+                    return $q->where(['Assignments.organization_id' => $this->Auth->user('active_organization_id')]);
+                })
+                ->matching('AnswerWordFeedbacks', function (Query $q) {
+                    return $q->where(['AnswerWordFeedbacks.score' => 100]);
+                })
+                ->count();
+
+            $skippedWords = $this->AnswerWords->find()
+                ->where([
+                    'AnswerWords.is_skipped' => true,
+                ])
+                ->matching('Answers.Assignments', function (Query $q) {
+                    return $q->where(['Assignments.organization_id' => $this->Auth->user('active_organization_id')]);
+                })
+                ->count();
+
+            $this->set(compact(
+                'wordsWithErrors',
+                'wordsWithoutErrors',
+                'skippedWords'
+            ));
+        });
+
         return $this->Crud->execute();
     }
 
