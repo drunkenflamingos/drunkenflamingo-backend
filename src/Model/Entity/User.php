@@ -41,6 +41,7 @@ use Firebase\JWT\JWT;
  * @property \App\Model\Entity\Language $language
  * @property \App\Model\Entity\Role[] $roles
  * @property \App\Model\Entity\LoginAttempt[] $loginAttempts
+ * @property \App\Model\Entity\Answer[] $answers
  */
 class User extends Entity
 {

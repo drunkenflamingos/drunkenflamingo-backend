@@ -27,6 +27,7 @@ use League\OAuth2\Client\Token\AccessToken;
  * @property \Cake\ORM\Association\HasMany $UsersRoles
  * @property \Cake\ORM\Association\HasMany $UserOauthTokens
  * @property \Cake\ORM\Association\HasMany $LoginAttempts
+ * @property \Cake\ORM\Association\HasMany $Answers
  * @property \Cake\ORM\Association\BelongsToMany $Roles
  * @property \Cake\ORM\Association\BelongsToMany $Organizations
  *
@@ -87,6 +88,21 @@ class UsersTable extends Table
             'foreignKey' => 'language_id',
             'joinType' => 'INNER',
             'finder' => 'withTrashed',
+        ]);
+
+        $this->hasMany('Answers', [
+            'foreignKey' => 'created_by_id',
+        ]);
+        $this->hasMany('DoneAnswers', [
+            'className' => 'Answers',
+            'foreignKey' => 'created_by_id',
+            'conditions' => [
+                'is_done' => true,
+            ],
+        ]);
+
+        $this->hasMany('AnswerWords', [
+            'foreignKey' => 'created_by_id',
         ]);
 
         $this->hasMany('UsersRoles');

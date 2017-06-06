@@ -3,6 +3,7 @@
 namespace Teacher\Controller;
 
 use Cake\Event\Event;
+use Cake\ORM\Query;
 
 /**
  * Users Controller
@@ -11,7 +12,7 @@ use Cake\Event\Event;
  */
 class UsersController extends AppController
 {
-    public $modelClass = 'Users';
+    public $modelClass = 'App.Users';
 
     public function initialize()
     {
@@ -48,6 +49,50 @@ class UsersController extends AppController
 
     public function view($id = null)
     {
+        $this->Crud->on('beforeFind', function (Event $event) {
+            $event->getSubject()->query
+                ->contain([
+                    'Answers',
+                    'DoneAnswers',
+                    'AnswerWords',
+                ]);
+        });
+
+        $this->Crud->on('afterFind', function (Event $event) {
+            $wordsWithErrors = $this->Users->AnswerWords->find()
+                ->where(['AnswerWords.created_by_id' => $this->Auth->user('id')])
+                ->matching('AnswerWordFeedbacks', function (Query $q) {
+                    return $q->where(['AnswerWordFeedbacks.score <' => 100]);
+                })
+                ->count();
+
+            $wordsWithoutErrors = $this->Users->AnswerWords->find()
+                ->where(['AnswerWords.created_by_id' => $this->Auth->user('id')])
+                ->matching('AnswerWordFeedbacks', function (Query $q) {
+                    return $q->where(['AnswerWordFeedbacks.score' => 100]);
+                })
+                ->count();
+
+            $skippedWords = $this->Users->AnswerWords->find()
+                ->where([
+                    'AnswerWords.is_skipped' => true,
+                    'AnswerWords.created_by_id' => $this->Auth->user('id'),
+                ])
+                ->count();
+
+            $wordsWithouFeedback = $this->Users->AnswerWords->find()
+                ->where(['AnswerWords.created_by_id' => $this->Auth->user('id')])
+                ->notMatching('AnswerWordFeedbacks')
+                ->count();
+
+            $this->set(compact(
+                'wordsWithErrors',
+                'wordsWithoutErrors',
+                'skippedWords',
+                'wordsWithouFeedback'
+            ));
+        });
+
         return $this->Crud->execute();
     }
 }

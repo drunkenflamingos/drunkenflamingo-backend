@@ -2,41 +2,40 @@
 declare(strict_types=1);
 /* @var $this \Cake\View\View */
 $this->extend('Layout/dashboard');
+
+$answersInTotal = count($user->answers);
+$doneAnswers = count($user->done_answers);
+$answerWordsCreated = count($user->answer_words);
+
 ?>
 
-<?php $this->start('content_header'); ?>
-<h1><?= h($user->name); ?></h1>
-<?php $this->end(); ?>
 
-<div class="container-fluid">
-    <div class="main">
-        <div class="row">
-            <div class="col-xs-12 col-md-offset-1 col-md-10">
-                <h1>Statistics</h1>
-            </div>
-        </div>
+<h1><?= __('Statistics for {0}', [h($user->name)]) ?></h1>
 
-        <div class="row">
-            <div class="col-xs-12 col-md-offset-1 col-md-10">
-                <table class="table table-striped" cellpadding="0" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Tasks done</th>
-                            <th>Tasks with error</th>
-                            <th>Tasks skipped</th>
-                        </tr>
-                    </thead>
+<div class="well">
+    <table class="table table-striped" cellpadding="0" cellspacing="0">
+        <thead>
+        <tr>
+            <th><?= __('Answers created'); ?></th>
+            <th><?= __('Answers done'); ?></th>
+            <th><?= __('Words submitted'); ?></th>
+            <th><?= __('Words with no errors'); ?></th>
+            <th><?= __('Words with error'); ?></th>
+            <th><?= __('Words skipped'); ?></th>
+            <th><?= __('Words without feedback'); ?></th>
+        </tr>
+        </thead>
 
-                    <tbody>
-                        <tr>
-                            <td>assignment 1</td>
-                            <td>assignment 2</td>
-                            <td>assignment 3</td>
-                        </tr>
-                        <tr>
-                            <td>assignment 4</td>
-                            <td>assignment 5</td>
-                            <td>assignment 6</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <tbody>
+        <tr>
+            <td><?= $answersInTotal ?></td>
+            <td><?= $doneAnswers ?></td>
+            <td><?= $answerWordsCreated ?></td>
+            <td><?= $wordsWithoutErrors ?>    </td>
+            <td><?= $wordsWithErrors ?></td>
+            <td><?= $skippedWords ?></td>
+            <td><?= $wordsWithouFeedback ?></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
