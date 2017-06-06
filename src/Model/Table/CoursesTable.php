@@ -53,6 +53,11 @@ class CoursesTable extends Table
                     'modified_by_id' => 'always',
                     'organization_id' => 'new',
                 ],
+                'Model.beforeRules' => [
+                    'created_by_id' => 'new',
+                    'modified_by_id' => 'always',
+                    'organization_id' => 'always',
+                ],
             ],
             'propertiesMap' => [
                 'created_by_id' => '_footprint.id',
@@ -117,9 +122,10 @@ class CoursesTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
-        $rules->add($rules->isUnique(['grade', 'name', 'organization_id'],
-            __('You can only have 1 combination per organization')
-        ));
+        $rules->add($rules->isUnique(['grade', 'name', 'organization_id']), [
+            'errorField' => 'name',
+            'message' => __('You can only have 1 combination of grade and name'),
+        ]);
 
         return $rules;
     }
