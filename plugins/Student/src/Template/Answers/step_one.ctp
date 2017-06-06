@@ -138,6 +138,7 @@ $answerId = $this->request->getParam('pass')[0];
             .data('answerWordId', answerWord.id);
     }
 
+    //Splits the text into individual words using lettering.js
     $(function () {
         $(".hoverableText").lettering('words').children('span').addClass('assignmentWord');
 
