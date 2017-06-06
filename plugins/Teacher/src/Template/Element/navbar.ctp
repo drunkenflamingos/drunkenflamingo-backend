@@ -79,12 +79,14 @@ declare(strict_types=1);
                 </li>
 
                 <li>
+                    <?php /*
                     <?= $this->Html->link(
                         '<i class="material-icons">show_chart</i> ' . __('Statistics'),
                         [
                             'controller' => 'Statistics',
                             'action' => 'index',
                         ], ['escape' => false,]) ?>
+                    */ ?>
                 </li>
 
                 <li class="dropdown">

@@ -37,9 +37,10 @@ class Answer extends Entity
      * @var array
      */
     protected $_accessible = [
+        'answer_feedbacks' => true,
+        'answer_words' => true,
         'assignment_id' => true,
         'homework_id' => true,
         'is_done' => true,
-        'answer_words' => true,
     ];
 }

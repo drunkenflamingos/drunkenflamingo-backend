@@ -48,17 +48,25 @@ class AnswerWordFeedbacksTable extends Table
                     'created_by_id' => 'new',
                     'modified_by_id' => 'always',
                 ],
+                'Model.beforeRules' => [
+                    'created_by_id' => 'new',
+                    'modified_by_id' => 'always',
+                ],
             ],
             'propertiesMap' => [
                 'created_by_id' => '_footprint.id',
                 'modified_by_id' => '_footprint.id',
             ],
         ]);
+        $this->addBehavior('Search.Search'); // Search!
 
         $this->belongsTo('AnswerWords', [
             'foreignKey' => 'answer_word_id',
             'joinType' => 'INNER',
         ]);
+
+        $this->searchManager()
+            ->value('answer_word_id');
     }
 
     /**
@@ -74,8 +82,12 @@ class AnswerWordFeedbacksTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('text', 'create')
-            ->notEmpty('text');
+            ->uuid('answer_word_id')
+            ->requirePresence('answer_word_id', 'create')
+            ->notEmpty('answer_word_id', 'create');
+
+        $validator
+            ->allowEmpty('text');
 
         $validator
             ->integer('score')
@@ -94,6 +106,7 @@ class AnswerWordFeedbacksTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['answer_word_id'], 'AnswerWords'));
+        $rules->add($rules->isUnique(['answer_word_id', 'created_by_id']));
 
         return $rules;
     }

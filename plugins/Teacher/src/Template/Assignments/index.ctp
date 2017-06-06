@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /* @var $this \Cake\View\View */
 $this->extend('/Layout/dashboard'); ?>
 

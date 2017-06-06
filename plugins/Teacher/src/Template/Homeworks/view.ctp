@@ -336,7 +336,7 @@ $this->extend('/Layout/dashboard');
 <?php
 /**
  *
- * Assignments
+ * Answers
  *
  */
 ?>
@@ -379,11 +379,10 @@ $this->extend('/Layout/dashboard');
                     <?= $this->Table->actions([
                         $this->Html->link(__('View'), [
                             'controller' => 'Answers',
-                            'action' => 'view',
+                            'action' => 'edit',
                             $answer->id,
                         ]),
                     ]) ?>
-                </td>
                 </td>
             </tr>
         <?php endforeach; ?>

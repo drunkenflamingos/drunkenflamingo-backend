@@ -53,6 +53,10 @@ class AnswerFeedbacksTable extends Table
                     'created_by_id' => 'new',
                     'modified_by_id' => 'always',
                 ],
+                'Model.beforeRules' => [
+                    'created_by_id' => 'new',
+                    'modified_by_id' => 'always',
+                ],
             ],
             'propertiesMap' => [
                 'created_by_id' => '_footprint.id',
@@ -99,6 +103,7 @@ class AnswerFeedbacksTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['answer_id'], 'Answers'));
+        $rules->add($rules->isUnique(['answer_id', 'created_by_id']));
 
         return $rules;
     }
