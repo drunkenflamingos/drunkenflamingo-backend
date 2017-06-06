@@ -12,9 +12,7 @@ $this->extend('/Layout/dashboard'); ?>
 <h1><?= __('<%= $singularHumanName %>'); ?></h1>
 <?php $this->end(); ?>
 
-<?php
-$this->start('content_buttons');
-?>
+<?php $this->start('content_buttons'); ?>
 <div class="btn-group-raised">
     <?= $this->Html->link('<i class="material-icons">add</i> ' . __('New <%= $singularHumanName %>'), [
             'action' => 'add'
@@ -38,7 +36,6 @@ foreach ($associations as $type => $data):
 endforeach;
 %>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('content_buttons') . '</ul>'); ?>
 
 <%
 $fields = collection($fields)
