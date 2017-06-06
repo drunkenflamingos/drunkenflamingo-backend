@@ -165,7 +165,11 @@ class HomeworksController extends AppController
                 'Assignments.is_locked' => true,
             ])
             ->notMatching('Homeworks', function (Query $q) use ($homework) {
-                return $q->where(['Homeworks.id' => $homework->id]);
+                return $q
+                    ->where([
+                        'Homeworks.id' => $homework->id,
+                        'HomeworksAssignments.deleted IS' => null
+                    ]);
             });
 
         $this->set('assignments', $this->paginate($assignments));
