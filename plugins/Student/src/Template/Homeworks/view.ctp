@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var \Cake\View\View $this
+ */
 declare(strict_types=1);
 
 $this->extend('/Layout/dashboard');
@@ -24,19 +27,61 @@ $this->extend('/Layout/dashboard'); ?>
 <table class="table table-striped">
     <thead>
     <tr>
-        <th></th>
+        <th><?= __('Name'); ?></th>
+        <th class="actions"></th>
     </tr>
     </thead>
     <tbody>
-    <?php if (!empty($homework->assignments)): ?>
-        <?php foreach ($homework->assignments as $assignment): ?>
+    <?php if (!empty($assignments)): ?>
+        <?php foreach ($assignments as $assignment): ?>
             <tr>
-                <td></td>
+                <td>
+                    <?= $this->Html->link(h($assignment->title), [
+                        'controller' => 'Assignments',
+                        'action' => 'view',
+                        $assignment->id,
+                    ]) ?>
+                </td>
+                <td>
+                    <?php if (!empty($assignment->answers)): ?>
+                        <?php if (count($assignment->answers) > 1): ?>
+                            <?php foreach ($assignment->answers as $key => $answer): ?>
+                                <?= $key !== 0 ? $this->Table->actionSeparator() : null; ?>
+                                <?= $this->Html->link(__('Answer {0}', [$key + 1]), [
+                                    'controller' => 'Answers',
+                                    'action' => 'view',
+                                    $answer->id,
+                                ]) ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php $isDone = $assignment->answers[0]->is_done; ?>
+                            <?= $this->Html->link(
+                                $isDone ?
+                                    __('Edit (from {0})', [$assignment->answers[0]->modified->i18nFormat()]) :
+                                    __('Continue'), [
+                                'controller' => 'Answers',
+                                'action' => 'stepOne',
+                                $assignment->answers[0]->id,
+                            ]) ?>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <?= $this->Form->postLink(__('Start'), [
+                            'controller' => 'Answers',
+                            'action' => 'add',
+                        ], [
+                            'data' => [
+                                'assignment_id' => $assignment->id,
+                            ],
+                        ]) ?>
+                    <?php endif; ?>
+                </td>
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
         <tr>
-            <td colspan=""></td>
+            <td>
+                <?= __('No assignments found'); ?>
+            </td>
         </tr>
     <?php endif; ?>
     </tbody>

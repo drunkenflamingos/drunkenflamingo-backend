@@ -25,6 +25,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\User $created_by
  * @property \App\Model\Entity\User $modified_by
  * @property \App\Model\Entity\WordClass $word_class
+ * @property \App\Model\Entity\Answer $answer
  * @property \App\Model\Entity\AnswerWordFeedback[] $answer_word_feedbacks
  */
 class AnswerWord extends Entity
@@ -41,6 +42,7 @@ class AnswerWord extends Entity
      */
     protected $_accessible = [
         'word_class_id' => true,
+        'answer_id' => true,
         'word_placement' => true,
         'definition' => true,
         'synonym' => true,

@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace Teacher\Controller;
+namespace StudentApi\Controller;
 
 use Cake\Event\Event;
 
 /**
- * Assignments Controller
+ * AnswerWords Controller
  *
- * @property \App\Model\Table\AssignmentsTable $Assignments
+ * @property \App\Model\Table\AnswerWordsTable $AnswerWords
  */
-class AssignmentsController extends AppController
+class AnswerWordsController extends AppController
 {
-    public $modelClass = 'App.Assignments';
+    public $modelClass = 'App.AnswerWords';
 
     public function initialize()
     {
@@ -24,20 +24,12 @@ class AssignmentsController extends AppController
         parent::beforeFilter($event);
 
         $this->Crud->on('beforeFind', function (Event $event) {
-            $event->getSubject()->query->where([
-                'organization_id' => $this->Auth->user('active_organization_id'),
-            ]);
+            $event->getSubject()->query->where(['AnswerWords.created_by_id' => $this->Auth->user('id')]);
         });
 
         $this->Crud->on('beforePaginate', function (Event $event) {
-            $event->getSubject()->query->where([
-                'organization_id' => $this->Auth->user('active_organization_id'),
-            ]);
+            $event->getSubject()->query->where(['AnswerWords.created_by_id' => $this->Auth->user('id')]);
         });
-
-        //Because of bugs with homeworks._ids.0 not being recognized correctly
-        $this->Security->setConfig('unlockedActions', ['add']);
-
     }
 
     public function index()

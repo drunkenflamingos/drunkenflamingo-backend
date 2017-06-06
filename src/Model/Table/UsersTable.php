@@ -57,7 +57,6 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
-
         $this->addBehavior('CreatedModifiedBy');
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [

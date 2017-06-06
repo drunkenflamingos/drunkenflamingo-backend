@@ -18,13 +18,11 @@ declare(strict_types=1);
             </button>
 
             <div class="navbar-brand">
-                <div class="navbar-brand">
-                    <?= $this->Html->image('logo_white_transparent.png', [
-                        'class' => 'img-responsive',
-                        'style' => 'height: 32px;',
-                        'url' => \Cake\Routing\Router::url(['controller' => 'Dashboard', 'action' => 'index']),
-                    ]) ?>
-                </div>
+                <?= $this->Html->image('logo_white_transparent.png', [
+                    'class' => 'img-responsive',
+                    'style' => 'height: 32px;',
+                    'url' => \Cake\Routing\Router::url(['controller' => 'Dashboard', 'action' => 'index']),
+                ]) ?>
             </div>
 
         </div>

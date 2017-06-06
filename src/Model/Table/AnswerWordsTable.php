@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  * AnswerWords Model
  *
  * @property \Cake\ORM\Association\BelongsTo $WordClasses
+ * @property \Cake\ORM\Association\BelongsTo $Answers
  * @property \Cake\ORM\Association\HasMany $AnswerWordFeedbacks
  *
  * @method AnswerWord get($primaryKey, $options = [])
@@ -42,9 +43,14 @@ class AnswerWordsTable extends Table
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
         $this->addBehavior('CreatedModifiedBy');
+        $this->addBehavior('Search.Search'); // Search!
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
+                    'created_by_id' => 'new',
+                    'modified_by_id' => 'always',
+                ],
+                'Model.beforeRules' => [
                     'created_by_id' => 'new',
                     'modified_by_id' => 'always',
                 ],
@@ -59,9 +65,19 @@ class AnswerWordsTable extends Table
             'foreignKey' => 'word_class_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('Answers', [
+            'foreignKey' => 'answer_id',
+            'joinType' => 'INNER',
+        ]);
+
         $this->hasMany('AnswerWordFeedbacks', [
             'foreignKey' => 'answer_word_id',
         ]);
+
+        $this->searchManager()
+            ->value('answer_id')
+            ->value('word_class_id')
+            ->value('word_placement');
     }
 
     /**
@@ -75,6 +91,11 @@ class AnswerWordsTable extends Table
         $validator
             ->uuid('id')
             ->allowEmpty('id', 'create');
+
+        $validator
+            ->uuid('answer_id')
+            ->requirePresence('answer_id')
+            ->notEmpty('answer_id', 'create');
 
         $validator
             ->integer('word_placement')
@@ -110,6 +131,8 @@ class AnswerWordsTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['word_class_id'], 'WordClasses'));
+        $rules->add($rules->existsIn(['answer_id'], 'Answers'));
+        $rules->add($rules->isUnique(['created_by_id', 'answer_id', 'word_placement']));
 
         return $rules;
     }

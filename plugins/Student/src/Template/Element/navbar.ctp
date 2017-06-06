@@ -34,15 +34,6 @@ declare(strict_types=1);
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <?= $this->Html->link(
-                        '<i class="material-icons">home</i>',
-                        [
-                            'controller' => 'Dashboard',
-                            'action' => 'index',
-                        ], ['escape' => false,]) ?>
-                </li>
-
-                <li>
-                    <?= $this->Html->link(
                         '<i class="material-icons">mode_edit</i> ' . __('Homework'),
                         [
                             'controller' => 'Homeworks',

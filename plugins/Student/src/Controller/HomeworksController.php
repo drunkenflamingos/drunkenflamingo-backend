@@ -50,15 +50,6 @@ class HomeworksController extends AppController
                 ]);
         });
 
-        $this->Crud->on('beforeFind', function (Event $event) {
-            $event->getSubject()->query
-                ->contain([
-                    'Assignments.Answers' => function (Query $q) {
-                        return $q->where(['Answers.created_by_id' => $this->Auth->user('id')]);
-                    },
-                ]);
-        });
-
         $this->set(compact('type'));
     }
 
@@ -69,6 +60,24 @@ class HomeworksController extends AppController
 
     public function view($id = null)
     {
+        $this->Crud->on('afterFind', function (Event $event) {
+            $homework = $event->getSubject()->entity;
+
+            $assignments = $this->Homeworks->Assignments->find()
+                ->matching('Homeworks', function (Query $q) use ($homework) {
+                    return $q->where(['Homeworks.id' => $homework->id]);
+                })
+                ->contain([
+                    'Answers' => function (Query $q) {
+                        return $q->where(['Answers.created_by_id' => $this->Auth->user('id')]);
+                    },
+                ])
+                ->order(['Assignments.title' => 'ASC'])
+                ->distinct(['Assignments.id']);
+
+            $this->set(compact('assignments'));
+        });
+
         return $this->Crud->execute();
     }
 }

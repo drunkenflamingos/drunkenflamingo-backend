@@ -14,7 +14,7 @@ $this->extend('/Layout/dashboard');
             <h1><?= __('Add assignment'); ?></h1>
 
             <?php if (!empty($this->request->getQuery('homework_id'))): ?>
-                <?= $this->Form->hidden('homeworks._ids', [
+                <?= $this->Form->hidden('homeworks._ids.0', [
                     'value' => $this->request->getQuery('homework_id'),
                 ]); ?>
             <?php endif; ?>
