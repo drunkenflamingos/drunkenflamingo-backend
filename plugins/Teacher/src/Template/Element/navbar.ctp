@@ -104,6 +104,16 @@ declare(strict_types=1);
                                 ], ['escape' => false,]) ?>
                         </li>
 
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="material-icons">settings</i> ' . __('Settings'),
+                                [
+                                    'plugin' => false,
+                                    'controller' => 'Users',
+                                    'action' => 'edit',
+                                ], ['escape' => false,]) ?>
+                        </li>
+
                         <li class="divider"></li>
 
                         <li>

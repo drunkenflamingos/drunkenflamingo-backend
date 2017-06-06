@@ -76,7 +76,6 @@ declare(strict_types=1);
                                     'action' => 'index',
                                 ], ['escape' => false,]) ?>
                         </li>
-                        <li class="divider"></li>
 
                         <li>
                             <?= $this->Html->link(
@@ -92,8 +91,9 @@ declare(strict_types=1);
                             <?= $this->Html->link(
                                 '<i class="material-icons">settings</i> ' . __('Settings'),
                                 [
-                                    'controller' => 'Dashboard',
-                                    'action' => 'index',
+                                    'plugin' => false,
+                                    'controller' => 'Users',
+                                    'action' => 'edit',
                                 ], ['escape' => false,]) ?>
                         </li>
 
