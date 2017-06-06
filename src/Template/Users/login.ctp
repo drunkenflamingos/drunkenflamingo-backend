@@ -27,12 +27,12 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
 
         <div>
             <?= $this->Form->control('email', [
-                'placeholder' => __('jens.a@gmail.com'),
+                'placeholder' => __('Enter email...'),
                 'label' => false,
             ]); ?>
 
             <?= $this->Form->control('password', [
-                'placeholder' => '*********',
+                'placeholder' => __('Enter password...'),
                 'label' => false,
             ]); ?>
 
