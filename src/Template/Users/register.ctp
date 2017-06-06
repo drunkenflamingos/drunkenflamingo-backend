@@ -22,6 +22,11 @@ $this->extend('/Layout/dashboard');
     <div class="well well-lg">
         <?= $this->Form->create($user, ['type' => 'POST']); ?>
 
+        <?= $this->Form->control('is_activated', [
+            'type' => 'hidden',
+            'value' => 1,
+        ]); ?>
+
         <h2><?= __('Create user'); ?></h2>
 
         <?= $this->Form->control('email', [

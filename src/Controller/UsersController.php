@@ -84,9 +84,9 @@ class UsersController extends AppController
 
         $user = $this->Users->get($this->Auth->user('id'));
 
-        $changePasswordForm = new ChangePasswordForm();
+        $changePassword = new ChangePasswordForm();
         if ($this->request->is('post')) {
-            if ($changePasswordForm->execute($this->request->getData())) {
+            if ($changePassword->execute($this->request->getData())) {
                 $this->Flash->success('Password was changed');
 
                 return $this->redirect(['action' => 'edit']);
@@ -95,7 +95,7 @@ class UsersController extends AppController
             }
         }
 
-        $this->set(compact('changePasswordForm', 'user'));
+        $this->set(compact('changePassword', 'user'));
     }
 
     public function resetPassword()

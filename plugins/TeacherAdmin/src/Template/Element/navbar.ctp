@@ -103,6 +103,7 @@ use Cake\Routing\Router;
                             <?= $this->Html->link(
                                 '<i class="material-icons">settings</i> ' . __('Settings'),
                                 [
+                                    'prefix' => false,
                                     'plugin' => false,
                                     'controller' => 'Users',
                                     'action' => 'edit',
