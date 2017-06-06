@@ -1,39 +1,23 @@
 <?php
-declare(strict_types=1);
-/**
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link      http://cakephp.org CakePHP(tm) Project
- * @since     0.2.9
- * @license   http://www.opensource.org/licenses/mit-license.php MIT License
- */
 
-namespace App\Controller;
+namespace Api\Controller;
 
-use Cake\Controller\Controller;
+use Cake\Controller\Controller as BaseController;
 use Cake\Core\Configure;
 use Cake\Datasource\Exception\MissingModelException;
+use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Inflector;
+use Crud\Controller\Component\CrudComponent;
 use Crud\Controller\ControllerTrait;
 use Muffin\Footprint\Auth\FootprintAwareTrait;
 use UnexpectedValueException;
 
 /**
- * Application Controller
- *
- * Add your application-wide methods in the class below, your controllers
- * will inherit them.
- *
- * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
- * @property \Crud\Controller\Component\CrudComponent $Crud
+ * @property CrudComponent $Crud
  */
-class AppController extends Controller
+class AppController extends BaseController
 {
     use ControllerTrait;
     use FootprintAwareTrait;
@@ -66,57 +50,31 @@ class AppController extends Controller
      */
     protected $searchActions = ['index', 'lookup'];
 
-    /**
-     * Initialization hook method.
-     *
-     * Use this method to add common initialization code like loading components.
-     *
-     * e.g. `$this->loadComponent('Security');`
-     *
-     * @return void
-     */
     public function initialize()
     {
         parent::initialize();
 
         $this->loadComponent('Auth', [
             'authenticate' => [
-                'Form' => [
+                'ADmad/JwtAuth.Jwt' => [
                     'userModel' => 'Users',
-                    'fields' => ['username' => 'email', 'password' => 'password'],
+                    'scope' => ['Users.is_activated' => 1],
+                    'fields' => [
+                        'username' => 'id',
+                    ],
+                    'parameter' => 'token',
+                    // Boolean indicating whether the "sub" claim of JWT payload
+                    'queryDatasource' => true,
                 ],
-                'Muffin/OAuth2.OAuth' => [
-                    'userModel' => 'Users',
-                    'fields' => ['username' => 'email', 'password' => 'password'],
+                'Form' => [
+                    'scope' => ['Users.is_activated' => 1],
                 ],
             ],
             'authorize' => 'Controller',
-            'loginAction' => [
-                'prefix' => false,
-                'plugin' => null,
-                'controller' => 'Login',
-                'action' => 'index',
-            ],
-            'logoutRedirect' => [
-                'prefix' => false,
-                'plugin' => null,
-                'controller' => 'Login',
-                'action' => 'index',
-            ],
-            'loginRedirect' => [
-                'prefix' => false,
-                'plugin' => null,
-                'controller' => 'Organizations',
-                'action' => 'picker',
-            ],
-            'unauthorizedRedirect' => [
-                'prefix' => false,
-                'plugin' => null,
-                'controller' => 'Organizations',
-                'action' => 'picker',
-            ],
-            'authError' => __('Du skal logge ind for at se denne side'),
-            'storage' => 'Session',
+            'authError' => __('This page requires authentication'),
+            'loginAction' => false,
+            'unauthorizedRedirect' => false,
+            'storage' => 'Memory',
             'checkAuthIn' => 'Controller.initialize',
         ]);
 
@@ -185,13 +143,13 @@ class AppController extends Controller
                 'Crud.Api',
                 'Crud.ApiPagination',
                 'Crud.ApiQueryLog',
+                'CrudJsonApi.JsonApi',
                 'Crud.RelatedModels',
                 'Crud.Redirect',
             ],
         ]);
 
         $this->loadComponent('Security', ['blackHoleCallback' => 'forceSSL']);
-        $this->loadComponent('Csrf');
 
         if (!Configure::read('debug')) {
             $this->Security->requireSecure();
@@ -216,61 +174,85 @@ class AppController extends Controller
         }
     }
 
-    /**
-     * Before filter callback.
-     *
-     * @param \Cake\Event\Event $event The beforeRender event.
-     * @return void
-     * @throws \Cake\Core\Exception\Exception
-     */
     public function beforeFilter(Event $event)
     {
         parent::beforeFilter($event);
 
-        if ($this->Crud->isActionMapped()) {
-            $this->Crud->action()->setConfig('scaffold.brand', Configure::read('App.name'));
+        $this->Security->setConfig('unlockedActions', [$this->request->getParam('action')]);
+
+//        TODO
+//        $this->loadModel('Languages');
+//
+//        if (!empty($this->Auth->user('language_id'))) {
+//            $language = $this->Languages->get($this->Auth->user('language_id'));
+//        } else {
+//            $language = $this->Languages->find()->where(['Languages.short_code' => 'en_US'])->firstOrFail();
+//        }
+//
+//        I18n::locale($language->short_code);
+
+        //Enable someurl?include=companies,languages$
+        if ($this->request->getQuery('include') !== null) {
+            $includeParams = explode(',', $this->request->getQuery('include'));
+
+            foreach ($includeParams as $param) {
+                $param = Inflector::camelize($param);
+                $this->paginate['contain'][] = $param;
+            }
+
+            //Enable for view also
+            $this->Crud->on('beforeFind', function (Event $event) {
+                foreach ($this->paginate['contain'] as $param) {
+                    $event->getSubject()->query->contain($param);
+                }
+            });
         }
 
-        $isRest = in_array($this->response->type(), ['application/json', 'application/xml'], true);
-        $isAdmin = $this->isAdmin || in_array($this->request->action, $this->adminActions);
+        $this->Crud->on('afterPaginate', function (Event $event) {
+            foreach ($event->getSubject()->entities as $entity) {
+                unset($entity->_matchingData);
+            }
+        });
 
-        if (!$isRest && $isAdmin) {
-            $this->viewBuilder()->setClassName('CrudView\View\CrudView');
-        }
-    }
-
-    /**
-     * Before render callback.
-     *
-     * @param \Cake\Event\Event $event The beforeRender event.
-     * @return \Cake\Network\Response|null|void
-     */
-    public function beforeRender(Event $event)
-    {
-        parent::beforeRender($event);
-        $isRest = in_array($this->response->type(), ['application/json', 'application/xml']);
-
-        if (!array_key_exists('_serialize', $this->viewVars) && $isRest) {
-            $this->set('_serialize', true);
-        }
-    }
-
-
-    /**
-     * Forces usage of SSL on all of the system.
-     *
-     * @param $type
-     * @return \Cake\Http\Response|null
-     */
-    public function forceSSL($type)
-    {
-        if ($type === 'secure') {
-            return $this->redirect('https://' . env('SERVER_NAME') . $this->request->getUri()->getPath());
-        }
+        $this->Crud->on('afterFind', function (Event $event) {
+            unset($event->getSubject()->entity->_matchingData);
+        });
     }
 
     public function isAuthorized(array $user): bool
     {
-        return true;
+        $organizationId = $user['active_organization_id'];
+        $userId = $user['id'];
+
+        try {
+            $usersRole = TableRegistry::get('UsersRoles')->find()
+                ->where([
+                    'UsersRoles.user_id' => $userId,
+                    'UsersRoles.organization_id' => $organizationId,
+                ])
+//                TODO
+//                ->matching('Roles', function (Query $q) {
+//                    return $q->where(['Roles.identifier' => 'student']);
+//                })
+                ->firstOrFail();
+        } catch (RecordNotFoundException $e) {
+            return false;
+        }
+
+        return $usersRole !== null;
+    }
+
+    public function beforeRender(Event $event)
+    {
+        parent::beforeRender($event);
+
+        if (!array_key_exists('_serialize', $this->viewVars)) {
+            $this->set('_serialize', true);
+        }
+
+        //Default
+        if ($this->viewBuilder()->getClassName() === null) {
+            $this->viewBuilder()->setClassName('Json');
+        }
     }
 }

@@ -1,7 +1,7 @@
 <?php
-declare(strict_types=1);
 
-namespace StudentApi\Controller;
+namespace TeacherApi\Controller;
+
 
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\ORM\Query;
@@ -21,7 +21,7 @@ class AppController extends \Api\Controller\AppController
                     'UsersRoles.organization_id' => $organizationId,
                 ])
                 ->matching('Roles', function (Query $q) {
-                    return $q->where(['Roles.identifier' => 'student']);
+                    return $q->where(['Roles.identifier' => 'teacher']);
                 })
                 ->contain(['Roles'])
                 ->firstOrFail();
@@ -29,6 +29,7 @@ class AppController extends \Api\Controller\AppController
             return false;
         }
 
-        return $usersRole->role->identifier === 'student' && parent::isAuthorized($user);
+        return $usersRole->role->identifier === 'teacher' && parent::isAuthorized($user);
     }
+
 }

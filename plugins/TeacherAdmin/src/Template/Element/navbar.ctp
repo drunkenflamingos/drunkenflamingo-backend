@@ -5,6 +5,7 @@ declare(strict_types=1);
  * @var \Cake\View\View $this
  */
 use Cake\Core\Configure;
+use Cake\Routing\Router;
 
 ?>
 <div class="navbar navbar-fixed-top" role="navigation">
@@ -22,7 +23,11 @@ use Cake\Core\Configure;
                 <?= $this->Html->image('logo_white_transparent.png', [
                     'class' => 'img-responsive',
                     'style' => 'height: 32px;',
-                    'url' => \Cake\Routing\Router::url(['controller' => 'Dashboard', 'action' => 'index']),
+                    'url' => Router::url([
+                        'prefix' => false,
+                        'controller' => 'Dashboard',
+                        'action' => 'index',
+                    ]),
                 ]) ?>
             </div>
 

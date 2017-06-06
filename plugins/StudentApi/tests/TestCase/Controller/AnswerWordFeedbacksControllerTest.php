@@ -1,13 +1,13 @@
 <?php
-namespace Student\Test\TestCase\Controller;
+namespace StudentApi\Test\TestCase\Controller;
 
 use Cake\TestSuite\IntegrationTestCase;
-use Student\Controller\AnswersController;
+use StudentApi\Controller\AnswerWordFeedbacksController;
 
 /**
- * Student\Controller\AnswersController Test Case
+ * StudentApi\Controller\AnswerWordFeedbacksController Test Case
  */
-class AnswersControllerTest extends IntegrationTestCase
+class AnswerWordFeedbacksControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,26 +16,29 @@ class AnswersControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'plugin.student.answers',
-        'plugin.student.created_by',
-        'plugin.student.languages',
-        'plugin.student.modified_by',
-        'plugin.student.users_roles',
-        'plugin.student.users',
-        'plugin.student.user_oauth_tokens',
-        'plugin.student.courses',
-        'plugin.student.courses_users',
-        'plugin.student.organizations',
-        'plugin.student.countries',
-        'plugin.student.currencies',
-        'plugin.student.contact_people',
-        'plugin.student.roles',
-        'plugin.student.assignments',
-        'plugin.student.homeworks',
-        'plugin.student.homeworks_courses',
-        'plugin.student.homeworks_users',
-        'plugin.student.homeworks_assignments',
-        'plugin.student.answer_feedbacks'
+        'plugin.student_api.answer_word_feedbacks',
+        'plugin.student_api.created_by',
+        'plugin.student_api.languages',
+        'plugin.student_api.modified_by',
+        'plugin.student_api.users_roles',
+        'plugin.student_api.users',
+        'plugin.student_api.user_oauth_tokens',
+        'plugin.student_api.courses',
+        'plugin.student_api.courses_users',
+        'plugin.student_api.organizations',
+        'plugin.student_api.countries',
+        'plugin.student_api.currencies',
+        'plugin.student_api.contact_people',
+        'plugin.student_api.roles',
+        'plugin.student_api.answer_words',
+        'plugin.student_api.word_classes',
+        'plugin.student_api.answers',
+        'plugin.student_api.assignments',
+        'plugin.student_api.homeworks',
+        'plugin.student_api.homeworks_courses',
+        'plugin.student_api.homeworks_users',
+        'plugin.student_api.homeworks_assignments',
+        'plugin.student_api.answer_feedbacks'
     ];
 
     /**

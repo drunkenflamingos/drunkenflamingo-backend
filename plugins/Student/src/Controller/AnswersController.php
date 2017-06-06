@@ -86,6 +86,10 @@ class AnswersController extends AppController
 
     public function index()
     {
+        $this->Crud->on('beforePaginate', function (Event $event) {
+            $event->getSubject()->query->contain(['Assignments', 'Homeworks']);
+        });
+
         return $this->Crud->execute();
     }
 
@@ -233,7 +237,7 @@ class AnswersController extends AppController
             if ($this->Answers->save($answer)) {
                 $this->Flash->success(__('Assignment was finished successfully'));
 
-                return $this->redirect(['controller' => 'Assignments', 'action' => 'index']);
+                return $this->redirect(['controller' => 'Answers', 'action' => 'index']);
             }
 
             $this->Flash->error(__('An error happened'));

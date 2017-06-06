@@ -25,6 +25,11 @@ class AnswersController extends AppController
     {
         parent::beforeFilter($event);
 
+        $user = $this->Answers->CreatedBy->get($this->Auth->user('id'));
+        $jwtToken = $user->getJwtToken();
+
+        $this->set(compact('jwtToken'));
+
         $this->Crud->on('beforeFind', function (Event $event) {
             $event->getSubject()->query->matching('Homeworks', function (\Cake\ORM\Query $q) {
                 return $q->where(['Homeworks.organization_id' => $this->Auth->user('active_organization_id')]);

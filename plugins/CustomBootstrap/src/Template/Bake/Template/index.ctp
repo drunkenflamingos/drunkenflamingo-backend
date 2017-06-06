@@ -12,9 +12,7 @@ $this->extend('/Layout/dashboard'); ?>
 <h1><?= __('<%= $singularHumanName %>'); ?></h1>
 <?php $this->end(); ?>
 
-<?php
-$this->start('content_buttons');
-?>
+<?php $this->start('content_buttons'); ?>
 <div class="btn-group-raised">
     <?= $this->Html->link('<i class="material-icons">add</i> ' . __('New <%= $singularHumanName %>'), [
             'action' => 'add'
@@ -38,7 +36,6 @@ foreach ($associations as $type => $data):
 endforeach;
 %>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('content_buttons') . '</ul>'); ?>
 
 <%
 $fields = collection($fields)
@@ -90,21 +87,6 @@ $fields = collection($fields)
 
             $pk = '$' . $singularVar . '->' . $primaryKey[0];
             %>
-            <td class="actions">
-                <?= $this->Table->actions([
-                $this->Html->link(__('View'),
-                ['action' => 'view', $homework->id]
-                ),
-                $this->Html->link(__('Edit'),
-                ['action' => 'edit', $homework->id]
-                ),
-                $this->Form->postLink(__('Delete'),
-                ['action' => 'delete', $homework->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $homework->name),]
-                ),
-                ]) ?>
-
-            </td>
             <td class="actions">
                 <?= $this->Table->actions([
                 $this->Html->link(__('View'), ['action' => 'view', <%= $pk %>], ['title' => __('View')]),

@@ -249,8 +249,12 @@ Plugin::load('Admin', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('Teacher', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('TeacherAdmin', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('Student', ['bootstrap' => false, 'routes' => true]);
-Plugin::load('StudentApi', ['bootstrap' => false, 'routes' => true]);
+
 Plugin::load('CustomBootstrap');
+
+Plugin::load('Api', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('TeacherApi', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('StudentApi', ['bootstrap' => false, 'routes' => true]);
 
 Plugin::load('AssetCompress', ['bootstrap' => true]);
 Plugin::load('BootstrapUI');
