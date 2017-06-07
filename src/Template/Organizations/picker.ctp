@@ -8,7 +8,7 @@ declare(strict_types=1);
 $this->extend('../Layout/dashboard');
 ?>
 
-<div class="col-xs-12">
+<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
     <?= $this->Html->link('<i class="material-icons">add_circle_outline</i> ' . __('Create'), [
         'action' => 'add',
     ], [
@@ -17,7 +17,7 @@ $this->extend('../Layout/dashboard');
     ]) ?>
 </div>
 
-<div class="col-xs-12">
+<div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
     <?php foreach ($organizations as $organization) : ?>
         <?php foreach ($organization->users_roles as $userRoles) : ?>
             <?= $this->Form->postLink(sprintf(

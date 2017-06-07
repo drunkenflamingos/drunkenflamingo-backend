@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2017-06-07 15:33+0000\n"
+"POT-Creation-Date: 2017-06-07 20:01+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -17,7 +17,7 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/Admin/src/Controller/AppController.php:43
 #: /var/www/drunkenflamingo/plugins/Admin/src/Template/Element/navbar.ctp:47;66
 #: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:8
-#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:82
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:73
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:101
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:93
 #: Template/Element/navbar.ctp:53
@@ -48,7 +48,7 @@ msgid "Dashboard"
 msgstr ""
 
 #: /var/www/drunkenflamingo/plugins/Admin/src/Template/Element/navbar.ctp:76
-#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:92
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:83
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:111
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:104
 #: Template/Element/navbar.ctp:63
@@ -56,7 +56,7 @@ msgid "Settings"
 msgstr ""
 
 #: /var/www/drunkenflamingo/plugins/Admin/src/Template/Element/navbar.ctp:88
-#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:104
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:95
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:123
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:117
 #: Template/Element/navbar.ctp:75
@@ -64,7 +64,6 @@ msgid "Log out"
 msgstr ""
 
 #: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/add.ctp:12
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:326
 msgid "Add {0}"
 msgstr ""
 
@@ -106,7 +105,6 @@ msgstr ""
 #: Template/ResetPasswords/reset_password.ctp:34
 #: Template/Users/change_password.ctp:42
 #: Template/Users/edit.ctp:33
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Listener/ViewListener.php:590
 msgid "Save"
 msgstr ""
 
@@ -131,13 +129,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:49
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:48
 #: Template/Organizations/index.ctp:26
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:30
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:42;68
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:63;159
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:41
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:151
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/table.ctp:23
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/bulk_actions/form_end.ctp:15
 msgid "Actions"
 msgstr ""
 
@@ -155,11 +146,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:122
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:58
 #: Template/Organizations/index.ctp:37
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:103
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:168
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:79
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:162
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:56
 msgid "View"
 msgstr ""
 
@@ -173,11 +159,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:123
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:59
 #: Template/Organizations/index.ctp:39
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:104
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:169
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:80
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:163
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:57
 msgid "Edit"
 msgstr ""
 
@@ -202,13 +183,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:124
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:60
 #: Template/Organizations/index.ctp:42
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:33
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:105
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:170
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:22
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:81
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:164
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:58
 msgid "Delete"
 msgstr ""
 
@@ -226,8 +200,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:137
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:72
 #: Template/Organizations/index.ctp:52
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:114
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:89
 msgid "previous"
 msgstr ""
 
@@ -245,8 +217,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:139
 #: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:74
 #: Template/Organizations/index.ctp:54
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:116
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:91
 msgid "next"
 msgstr ""
 
@@ -354,8 +324,6 @@ msgstr ""
 
 #: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/view.ctp:26
 #: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:164
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:29
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:32
 msgid "Message"
 msgstr ""
 
@@ -368,7 +336,6 @@ msgstr ""
 #: Template/Layout/error.ctp:44
 #: Template/ResetPasswords/forgot_password.ctp:15
 #: Template/Users/register.ctp:12
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/form/buttons.ctp:12
 msgid "Back"
 msgstr ""
 
@@ -400,9 +367,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:41
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:247
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:38
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:132
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:118
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:176
 msgid "Yes"
 msgstr ""
 
@@ -410,9 +374,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:41
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:247
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:38
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:132
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:118
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:177
 msgid "No"
 msgstr ""
 
@@ -542,12 +503,20 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:55
-msgid "Feedback"
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Dashboard/index.ctp:23
+msgid "Welcome, {0}"
 msgstr ""
 
-#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:73
-msgid "Badges"
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Dashboard/index.ctp:28
+msgid "Awesome! You're on a streak with {0} days in a row!"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Dashboard/index.ctp:30
+msgid "You're on the right direction! This is your {0} day in a streak!"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:55
+msgid "Feedback"
 msgstr ""
 
 #: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:17
@@ -624,12 +593,6 @@ msgstr ""
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:67
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:114
 #: Template/Organizations/index.ctp:41
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:35
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:105
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:65;170
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:25
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:81
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:53;164
 msgid "Are you sure you want to delete # {0}?"
 msgstr ""
 
@@ -790,7 +753,6 @@ msgid "No courses"
 msgstr ""
 
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:111;114;117;197;200;203
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:191;208
 msgid "N/A"
 msgstr ""
 
@@ -823,7 +785,6 @@ msgid "No assignments"
 msgstr ""
 
 #: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:349
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:28
 msgid "Time"
 msgstr ""
 
@@ -1050,7 +1011,7 @@ msgid "Delete user"
 msgstr ""
 
 #: Controller/AppController.php:119
-msgid "Du skal logge ind for at se denne side"
+msgid "You have to be authenticated to see this content"
 msgstr ""
 
 #: Controller/UsersController.php:109
@@ -1192,7 +1153,6 @@ msgid "Enter password..."
 msgstr ""
 
 #: Template/Users/login.ctp:42
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/login.ctp:29
 msgid "Login"
 msgstr ""
 
@@ -1240,674 +1200,11 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:39
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:66
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:30
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:54
-msgid "List <%= $pluralHumanName %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:46
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:50
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:74
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:37
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:61
-msgid "List <%= $this->_pluralHumanName($alias) %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:47
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:51
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:38
-msgid "New <%= $this->_singularHumanName($alias) %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:59
-msgid "<%= Inflector::humanize($action) %> <%= $singularHumanName %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:102
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php:1895
-msgid "Submit"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:43
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:67
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:10
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:55
-msgid "New <%= $singularHumanName %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:61
-msgid "<%= $pluralHumanName %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:113
-msgid "first"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:117
-msgid "last"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:119
-msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/login.ctp:25
-msgid "Please enter your username and password"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:64
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:52
-msgid "Edit <%= $singularHumanName %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:65
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:53
-msgid "Delete <%= $singularHumanName %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:75
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:18
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:62
-msgid "New <%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:93
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:89
-msgid "<%= Inflector::humanize($details["
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:98;115;131;140;157
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:92;101;117;125;149
-msgid "<%= Inflector::humanize($field) %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:107
-msgid "<%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:152
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:142
-msgid "Related <%= $otherPluralHumanName %>"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:54
-msgid "<%= Inflector::humanize($action) %> {0}"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:17
-msgid "List <%= Inflector::humanize($details[\"controller\"]) %>"
-msgstr ""
-
 #: Template/Error/error400.ctp:39
 msgid "The requested address {0} was not found on this server."
 msgstr ""
 
 #: Template/Error/error500.ctp:41
 msgid "An Internal Error Has Occurred"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php:496
-msgid "You are not authorized to access that location."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Controller/Component/CsrfComponent.php:155
-msgid "Missing CSRF token cookie"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Controller/Component/CsrfComponent.php:159
-msgid "CSRF token mismatch."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Error/ExceptionRenderer.php:258
-msgid "Not Found"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Error/ExceptionRenderer.php:260
-msgid "An Internal Error Has Occurred."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Http/Response.php:2258
-msgid "The requested file contains `..` and will not be read."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Http/Response.php:2269
-msgid "The requested file was not found"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:90
-msgid "{0,number,#,###.##} KB"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:92
-msgid "{0,number,#,###.##} MB"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:94
-msgid "{0,number,#,###.##} GB"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:96
-msgid "{0,number,#,###.##} TB"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:88
-msgid "{0,number,integer} Byte"
-msgid_plural "{0,number,integer} Bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:80
-msgid "{0} from now"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:80
-msgid "{0} ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:83
-msgid "{0} after"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:83
-msgid "{0} before"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:114
-msgid "just now"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:151
-msgid "about a second ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:152
-msgid "about a minute ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:153
-msgid "about an hour ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:154;332
-msgid "about a day ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:155;333
-msgid "about a week ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:156;334
-msgid "about a month ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:157;335
-msgid "about a year ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:168
-msgid "in about a second"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:169
-msgid "in about a minute"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:170
-msgid "in about an hour"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:171;346
-msgid "in about a day"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:172;347
-msgid "in about a week"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:173;348
-msgid "in about a month"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:174;349
-msgid "in about a year"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:304
-msgid "today"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:370
-msgid "%s ago"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:371
-msgid "on %s"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:47;126;316
-msgid "{0} year"
-msgid_plural "{0} years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:51;129;319
-msgid "{0} month"
-msgid_plural "{0} months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:57;132;322
-msgid "{0} week"
-msgid_plural "{0} weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:59;135;325
-msgid "{0} day"
-msgid_plural "{0} days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:64;138
-msgid "{0} hour"
-msgid_plural "{0} hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:68;141
-msgid "{0} minute"
-msgid_plural "{0} minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:72;144
-msgid "{0} second"
-msgid_plural "{0} seconds"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/ORM/RulesChecker.php:57
-msgid "This value is already in use"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/ORM/RulesChecker.php:104
-msgid "This value does not exist"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/ORM/RulesChecker.php:128
-msgid "The count does not match {0}{1}"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Utility/Text.php:899
-msgid "and"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Validation/Validator.php:103
-msgid "This field is required"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Validation/Validator.php:104
-msgid "This field cannot be left empty"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Validation/Validator.php:1801
-msgid "The provided value is invalid"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php:1016
-msgid "New %s"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php:1019
-msgid "Edit %s"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/HtmlHelper.php:793
-msgid "Home"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:540
-msgid "January"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:541
-msgid "February"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:542
-msgid "March"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:543
-msgid "April"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:544
-msgid "May"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:545
-msgid "June"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:546
-msgid "July"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:547
-msgid "August"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:548
-msgid "September"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:549
-msgid "October"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:550
-msgid "November"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:551
-msgid "December"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/DebugTimer.php:135
-msgid "Core Processing (Derived from $_SERVER[\"REQUEST_TIME\"])"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:53
-msgid "Controller initialization"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:62
-msgid "Controller action start"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:63;68
-msgid "Controller action"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:73;74;94
-msgid "View Render start"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:83;88
-msgid "Render {0}"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:95
-msgid "Controller shutdown"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:45
-msgid "-> Testing :url"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:72
-msgid "Total Requests made: :requests"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:73
-msgid "Total Time elapsed: :duration (seconds)"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:77
-msgid "Requests/Second: :rps req/sec"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:81
-msgid "Average request time: :average-time seconds"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:85
-msgid "Standard deviation of average request time: :std-dev"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:89
-msgid "Longest/shortest request: :longest sec/:shortest sec"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:147
-msgid "Allows you to obtain some rough benchmarking statisticsabout a fully qualified URL."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:153
-msgid "The URL to request."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:158
-msgid "Number of iterations to perform."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:162
-msgid "Maximum total time for all iterations, in seconds.If a single iteration takes more than the timeout, only one request will be made"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:168
-msgid "Example Use: `cake benchmark --n 10 --t 100 http://localhost/testsite`. <info>Note:</info> this benchmark does not include browser render times."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:21
-msgid "There were no cache operations this request."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:25
-msgid "{0} Metrics"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:31
-msgid "Metric"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:32
-msgid "Total"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:28
-msgid "Application Constants"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:49
-msgid "No application environment available."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:53
-msgid "CakePHP Constants"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:74
-msgid "CakePHP environment unavailable."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:78
-msgid "PHP Environment"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:99
-msgid "PHP environment unavailable."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:104
-msgid "Hidef Environment"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:125
-msgid "No Hidef environment available."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/history_panel.ctp:23
-msgid "No previous requests logged."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/history_panel.ctp:25
-msgid "previous requests available"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/history_panel.ctp:29;53
-msgid "Back to current request"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:21
-msgid "There were no log entries made this request"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:24
-msgid "{0} Messages"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:22
-msgid "{0} not found"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:27
-msgid "Direct dependencies only"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:32
-msgid "Requirements ({0})"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:58
-msgid "Dev Requirements ({0})"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:31
-msgid "Headers already sent at file {0} and line {1}."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:40
-msgid "No post data."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:49
-msgid "No querystring data."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:59
-msgid "No Cookie data."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/routes_panel.ctp:11
-msgid "Route name"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/routes_panel.ctp:12
-msgid "URI template"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/routes_panel.ctp:13
-msgid "Defaults"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:58
-msgid "Total Time: {0} ms &mdash; Total Queries: {1} &mdash; Total Rows: {2}"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:71
-msgid "Query"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:72
-msgid "Rows"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:73
-msgid "Took (ms)"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:91
-msgid "No active database connections"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:23
-msgid "Memory"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:25
-msgid "Peak Memory Use:"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:33
-msgid "Memory Use"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:48
-msgid "Timers"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:50
-msgid "Total Request Time:"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:57
-msgid "Event"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:58
-msgid "Time in ms"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:59
-msgid "Timeline"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/variables_panel.ctp:28
-msgid "Sort variables by name"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/View/Helper/SimpleGraphHelper.php:76
-msgid "Starting {0}ms into the request, taking {1}ms"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/View/Helper/TidyHelper.php:110
-msgid "No markup errors found"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/WhitespaceShell.php:98
-msgid "Absolute path or relative to APP."
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud/src/Error/Exception/ValidationException.php:42
-msgid "A validation error occurred"
-msgid_plural "{0} validation errors occurred"
-msgstr[0] ""
-msgstr[1] ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/actions.ctp:20
-msgid "Are you sure you want to delete record #{0}?"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/form/buttons.ctp:6
-msgid "Save & continue editing"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/form/buttons.ctp:9
-msgid "Save & create new"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/bulk_actions/form_end.ctp:6
-msgid "Apply"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/bulk_actions/form_end.ctp:12
-msgid "Bulk Actions"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:18
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_one.ctp:12
-msgid "Related {0}"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_one.ctp:16
-msgid "View {0}"
-msgstr ""
-
-#: /var/www/drunkenflamingo/vendor/wyrihaximus/fly-pie/src/Template/Element/filesystem_panel.ctp:29
-msgid "No configured filesystem found"
 msgstr ""
 

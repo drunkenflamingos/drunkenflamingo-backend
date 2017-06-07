@@ -25,7 +25,7 @@ class Gravatar
      */
     public static function getGravatarUrl(
         $email,
-        $size = 80,
+        $size = '80px',
         $imageSetSize = 'mm',
         $maxRating = 'x',
         $img = false,

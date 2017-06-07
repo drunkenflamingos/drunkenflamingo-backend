@@ -116,7 +116,7 @@ class AppController extends Controller
                 'controller' => 'Organizations',
                 'action' => 'picker',
             ],
-            'authError' => __('Du skal logge ind for at se denne side'),
+            'authError' => __('You have to be authenticated to see this content'),
             'storage' => 'Session',
             'checkAuthIn' => 'Controller.initialize',
         ]);
@@ -238,7 +238,7 @@ class AppController extends Controller
         if (!empty($this->Auth->user('id'))) {
             $user = $this->Users->get($this->Auth->user('id'));
 
-            $gravatarUrl = $user->getGravatarImageUrl();
+            $gravatarUrl = $user->getGravatarImageUrl('320px');
 
             $this->set(compact('gravatarUrl'));
 
