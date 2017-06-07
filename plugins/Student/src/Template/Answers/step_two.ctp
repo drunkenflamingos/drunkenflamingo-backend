@@ -114,7 +114,6 @@ $words = mb_split(' ', $assignment->text);
                     <?= $this->Form->control('answer_words.' . $key . '.definition', [
                         'type' => 'text',
                         'label' => false,
-                        'class' => 'input-sm',
                         'placeholder' => __('Enter definition') . '...',
                         'tabindex' => $key + 1,
                     ]) ?>
@@ -123,7 +122,6 @@ $words = mb_split(' ', $assignment->text);
                         <?= $this->Form->control('answer_words.' . $key . '.help_text', [
                             'type' => 'text',
                             'label' => false,
-                            'class' => 'input-sm',
                             'placeholder' => __('Enter your question(s)'),
                         ]) ?>
                     </div>

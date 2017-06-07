@@ -34,12 +34,12 @@ $this->extend('Layout/dashboard');
                 echo $this->Form->control('homeworks_courses.0.published_from', [
                     'type' => 'datetime',
                     'value' => Time::now(),
-                    'label' => __('Tilgængelig fra'),
+                    'label' => __('Available from'),
                 ]);
                 echo $this->Form->control('homeworks_courses.0.published_to', [
                     'type' => 'datetime',
                     'value' => Time::now()->addDays(1),
-                    'label' => __('Tilgængelig til'),
+                    'label' => __('Available to'),
                 ]);
                 echo $this->Form->control('homeworks_courses.0.deadline', [
                     'value' => Time::now()->addDays(1),

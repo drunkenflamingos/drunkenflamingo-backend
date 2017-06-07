@@ -17,17 +17,6 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
 <?php $this->end(); ?>
 
 <div class="col-xs-12 col-md-8 col-md-offset-2">
-
-    <div class="btn-group">
-        <?= $this->Html->link('<i class="material-icons">arrow_left</i> ' . __('Back'),
-            [
-                'controller' => 'Users',
-                'action' => 'login',
-            ], [
-                'class' => 'btn',
-                'escape' => false,
-            ]) ?>
-    </div>
     <div class="well well-lg">
         <?= $this->Form->create(null, [
             'type' => 'POST',

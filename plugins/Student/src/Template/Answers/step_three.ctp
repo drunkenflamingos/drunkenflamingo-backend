@@ -124,7 +124,6 @@ $words = mb_split(' ', $assignment->text);
                     'type' => 'text',
                     'label' => __('Help'),
                     'placeholder' => __('Enter your question(s)'),
-                    'class' => 'input-sm',
                 ]) ?>
             </div>
         </div>
@@ -152,7 +151,6 @@ $words = mb_split(' ', $assignment->text);
                 <?= $this->Form->control('word_class_id', [
                     'type' => 'select',
                     'label' => false,
-                    'class' => 'input-sm',
                 ]) ?>
             </div>
         </div>
@@ -168,7 +166,6 @@ $words = mb_split(' ', $assignment->text);
                 <?= $this->Form->control('synonym', [
                     'type' => 'text',
                     'label' => false,
-                    'class' => 'input-sm',
                     'placeholder' => __('Enter synonym') . '...',
                 ]) ?>
             </div>
@@ -185,7 +182,6 @@ $words = mb_split(' ', $assignment->text);
                 <?= $this->Form->control('sentence', [
                     'type' => 'text',
                     'label' => false,
-                    'class' => 'input-sm',
                     'placeholder' => __('Enter sentence') . '...',
                 ]) ?>
             </div>

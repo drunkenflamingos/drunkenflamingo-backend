@@ -74,11 +74,8 @@ class AnswersController extends AppController
         $this->Crud->on('beforeFind', function (Event $event) {
             $event->getSubject()->query
                 ->contain([
-                    'CreatedBy',
-                    'AnswerWords' => [
-                        'WordClasses',
-                    ],
-                    'AnswerFeedbacks',
+                    'AnswerWords.WordClasses',
+                    'AnswerFeedbacks.CreatedBy',
                     'Assignments',
                     'Homeworks',
                 ]);

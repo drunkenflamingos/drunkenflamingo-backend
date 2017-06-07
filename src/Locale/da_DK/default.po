@@ -1,0 +1,1906 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2017-06-07 15:21+0000\n"
+"PO-Revision-Date: 2017-06-07 17:39+0200\n"
+"Last-Translator: Mikkel Bonde <mbc@apacta.com>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da_DK\n"
+"X-Generator: Poedit 2.0.2\n"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Controller/AppController.php:43
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Element/navbar.ctp:47;66
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:8
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:82
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:101
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:93
+#: Template/Element/navbar.ctp:53 Template/Organizations/index.ctp:8
+msgid "Organizations"
+msgstr "Organisationer"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Controller/AppController.php:48
+msgid "Currencies"
+msgstr "Valutaer"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Controller/AppController.php:52
+msgid "Languages"
+msgstr "Sprog"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Controller/AppController.php:56
+msgid "Roles"
+msgstr "Roller"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Controller/AppController.php:60
+msgid "Word classes"
+msgstr "Ordklasser"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Element/navbar.ctp:39
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:37
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:44
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Element/navbar.ctp:76
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:92
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:111
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:104
+#: Template/Element/navbar.ctp:63
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Element/navbar.ctp:88
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:104
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:123
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:117
+#: Template/Element/navbar.ctp:75
+msgid "Log out"
+msgstr "Log ud"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/add.ctp:12
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:326
+msgid "Add {0}"
+msgstr "Tilføj {0}"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/add.ctp:22
+msgid "Organization administrator"
+msgstr "Organisationsadministrator"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/add.ctp:26
+msgid "Google email"
+msgstr "Google email"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/add.ctp:33
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/CoursesUsers/add.ctp:40
+msgid "Add"
+msgstr "Tilføj"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/edit.ctp:13
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/edit.ctp:11
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/edit.ctp:11
+msgid "Edit {0}"
+msgstr "Rediger {0}"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/edit.ctp:19
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:360
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/add.ctp:33
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/edit.ctp:26
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:51
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/edit.ctp:30
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/add.ctp:50
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/edit.ctp:45
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/add.ctp:48
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/edit.ctp:45
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/add.ctp:21
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/edit.ctp:40
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/add.ctp:41
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/edit.ctp:32
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/add.ctp:41
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/edit.ctp:32
+#: Template/ResetPasswords/reset_password.ctp:34
+#: Template/Users/change_password.ctp:42 Template/Users/edit.ctp:33
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Listener/ViewListener.php:590
+msgid "Save"
+msgstr "Gem"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:13
+#: Template/Organizations/index.ctp:13 Template/Organizations/picker.ctp:12
+msgid "Create"
+msgstr "Opret"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:26
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:18
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:21
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:20
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:48
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Courses/index.ctp:19
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add_existing_assignment.ctp:45
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:95
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:96;182;277;352
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/index.ctp:36
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:27
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:67
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:49
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:48
+#: Template/Organizations/index.ctp:26
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:30
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:42;68
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:63;159
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:41
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:151
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/table.ctp:23
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/bulk_actions/form_end.ctp:15
+msgid "Actions"
+msgstr "Handlinger"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:35
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:30
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:45
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:34;49
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:59
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Courses/index.ctp:28
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add_existing_assignment.ctp:55
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:106
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:301;380
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/index.ctp:45
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:37
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:122
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:58
+#: Template/Organizations/index.ctp:37
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:103
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:168
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:79
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:162
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:56
+msgid "View"
+msgstr "Vis"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:37
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:52
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:37;50
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:62
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:109
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:29;121;207;306
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:41
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:123
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:59
+#: Template/Organizations/index.ctp:39
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:104
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:169
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:80
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:163
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:57
+msgid "Edit"
+msgstr "Rediger"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:39
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/edit.ctp:23
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:46
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:20
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:125
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/view.ctp:20
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:61
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/view.ctp:20
+msgid "Are you sure you want to delete {0}?"
+msgstr "Er du sikker på du vil slette {0}?"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:40
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:40;51;53
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:65
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:112
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:127;213;312
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:45
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:84
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:124
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:60
+#: Template/Organizations/index.ctp:42
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:33
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:105
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:170
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:22
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:81
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:164
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:58
+msgid "Delete"
+msgstr "Slet"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:50
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:39
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:64
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:97
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:63
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:77
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Courses/index.ctp:41
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add_existing_assignment.ctp:82
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:126
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/index.ctp:55
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:55
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:137
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:72
+#: Template/Organizations/index.ctp:52
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:114
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:89
+msgid "previous"
+msgstr "forrige"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/index.ctp:52
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:41
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:66
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:99
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:65
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:79
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Courses/index.ctp:43
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add_existing_assignment.ctp:84
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:128
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/index.ctp:57
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:57
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:139
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:74
+#: Template/Organizations/index.ctp:54
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:116
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:91
+msgid "next"
+msgstr "næste"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:13
+msgid "Id"
+msgstr "Id"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:17
+msgid "Created By Id"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:21
+msgid "Modified By Id"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:25
+msgid "Contact Person Id"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:29
+msgid "Default Language Id"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:33
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:30
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:92;178
+msgid "Name"
+msgstr "Navn"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:37
+msgid "Vat Number"
+msgstr "CVR nummer"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:41
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:17
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/view.ctp:30
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:84
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:238
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:29
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:50
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:36
+msgid "Created"
+msgstr "Oprettet"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:45
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:88
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:242
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:33
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:40
+msgid "Modified"
+msgstr "Redigeret"
+
+#: /var/www/drunkenflamingo/plugins/Admin/src/Template/Organizations/view.ctp:49
+msgid "Deleted"
+msgstr "Slettet"
+
+#: /var/www/drunkenflamingo/plugins/Api/src/Controller/AppController.php:75
+msgid "This page requires authentication"
+msgstr "Denne side kræver du er logget ind"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Controller/AnswersController.php:141;182
+msgid "You have to select words first"
+msgstr "Du skal vælge ord først"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Controller/AnswersController.php:243
+msgid "Assignment was finished successfully"
+msgstr "Opgaven blev færdiggjort"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Controller/AnswersController.php:245
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Controller/TeachersController.php:141
+#: Controller/UsersController.php:214
+msgid "An error happened"
+msgstr "Der skete en fejl"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Controller/AppController.php:22
+msgid "Unauthorized to student section"
+msgstr "Du kan ikke tilgå elev-modulet"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:8
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/view.ctp:8
+msgid "Answer Feedback"
+msgstr "Besvarelse feedback"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:14
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:48
+msgid "Teacher"
+msgstr "Lærer"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:15
+msgid "Assignment title"
+msgstr "Opgavetitel"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/index.ctp:16
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/view.ctp:22
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:159
+msgid "Subject"
+msgstr "Emne"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/view.ctp:18
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/add.ctp:12
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:52
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:202
+msgid "Answer"
+msgstr "Besvarelse"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/AnswerFeedbacks/view.ctp:26
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:164
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:29
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:32
+msgid "Message"
+msgstr "Besked"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:54
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/edit.ctp:14
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/add.ctp:15
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/edit.ctp:15
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/add.ctp:13
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/edit.ctp:15
+#: Template/Layout/error.ctp:44 Template/ResetPasswords/forgot_password.ctp:15
+#: Template/Users/register.ctp:12
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/form/buttons.ctp:12
+msgid "Back"
+msgstr "Tilbage"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:64
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:17
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:218
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:7
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:7
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:351
+msgid "Assignment"
+msgstr "Opgave"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:74
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:37
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:11
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:228
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:65
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:9
+msgid "Homework"
+msgstr "Lektie"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:92
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:19
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:246
+msgid "Completed"
+msgstr "Færdiggjort"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:93
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:41
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:247
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:38
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:132
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:118
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:176
+msgid "Yes"
+msgstr "Ja"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:93
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:41
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:247
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:38
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:132
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:118
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:177
+msgid "No"
+msgstr "Nej"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:99
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:253
+msgid "Words in answer"
+msgstr "Ord i besvarelse"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:108
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:262
+msgid "Skipped"
+msgstr "Sprunget over"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:116
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:135
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:269
+msgid "Definition"
+msgstr "Definition"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:121
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:147
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:274
+msgid "Word class"
+msgstr "Ordklasse"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:126
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:162
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:279
+msgid "Synonym"
+msgstr "Synonym"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:131
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:178
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:284
+msgid "Sentence"
+msgstr "Sætning"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:136
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:289
+msgid "Help text"
+msgstr "Hjælpetekst"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/finished.ctp:146
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:342
+msgid "General feedback"
+msgstr "Generel feedback"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:8
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:46
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:8
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:344;429
+msgid "Answers"
+msgstr "Svar"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/index.ctp:18
+msgid "Homework name"
+msgstr "Lektie navn"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_one.ctp:163
+msgid "Pick words from the text you don't know yet"
+msgstr "Vælg ordene du ikke kender endnu"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_one.ctp:170
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:67
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_two.ctp:78
+msgid "Ordnet.dk"
+msgstr "Ordnet.dk"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_one.ctp:194
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:210
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_two.ctp:135
+msgid "Next"
+msgstr "Næste"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:60
+msgid "TODO TEXT HERE"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:125
+msgid "Help"
+msgstr "Hjælp"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:126
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_two.ctp:125
+msgid "Enter your question(s)"
+msgstr "Skriv dine spørgsmål"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:169
+msgid "Enter synonym"
+msgstr "Skriv synonym"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:185
+msgid "Enter sentence"
+msgstr "Skriv sætning"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:198
+msgid "Previous"
+msgstr "Forrige"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_three.ctp:214
+msgid "Finish"
+msgstr "Afslut"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_two.ctp:57
+msgid "Write the meaning of the words"
+msgstr "Skriv ordenes mening"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Answers/step_two.ctp:117
+msgid "Enter definition"
+msgstr "Skriv definition"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Assignments/view.ctp:20
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:208
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:21
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:46
+msgid "Created by"
+msgstr "Oprettet af"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Assignments/view.ctp:24
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:25
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:42;275
+msgid "Title"
+msgstr "Titel"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Assignments/view.ctp:28
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:41
+msgid "Text"
+msgstr "Tekst"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:55
+msgid "Feedback"
+msgstr "Feedback"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Element/navbar.ctp:73
+msgid "Badges"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:17
+msgid "Show direct"
+msgstr "Vis direkte"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:22
+msgid "From course"
+msgstr "Fra klasse"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:35
+msgid "Solved"
+msgstr "Løst"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/index.ctp:55
+msgid "None"
+msgstr "Ingen"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:20
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:19
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/edit.ctp:27
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:93
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:58
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:26
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:74
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:243;424
+msgid "Assignments"
+msgstr "Opgaver"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:50
+msgid "Answer {0}"
+msgstr "Besvarelse {0}"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:60
+msgid "Edit (from {0})"
+msgstr "Rediger (fra {0})"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:61
+msgid "Continue"
+msgstr "Fortsæt"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:68
+msgid "Start"
+msgstr "Start"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Homeworks/view.ctp:84
+msgid "No assignments found"
+msgstr "Ingen opgaver fundet"
+
+#: /var/www/drunkenflamingo/plugins/Student/src/Template/Login/index.ctp:7
+msgid "Profile"
+msgstr "Profil"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Controller/AppController.php:22
+msgid "Unauthorized to teacher section"
+msgstr "Du kan ikke tilgå lærer-modulet"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Controller/HomeworksController.php:153
+msgid "Assignment added to homework"
+msgstr "Opgave tilføjet til lektie"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:297
+msgid "Enter feedback"
+msgstr "Skriv feedback"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/edit.ctp:331
+msgid "Mark all as correct"
+msgstr "Marker alle som korrekt"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Answers/index.ctp:42;52
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:67
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:114
+#: Template/Organizations/index.ctp:41
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:35
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:105
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:65;170
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:25
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:81
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:53;164
+msgid "Are you sure you want to delete # {0}?"
+msgstr "Er du sikker på du vil slette # {0}?"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/add.ctp:14
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add_existing_assignment.ctp:12
+msgid "Add assignment"
+msgstr "Opret opgave"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/add.ctp:26
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/edit.ctp:19
+msgid "Text content"
+msgstr "Tekstindhold"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/edit.ctp:14
+msgid "Edit assignment"
+msgstr "Rediger opgave"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:12
+msgid "New Assignment"
+msgstr "Ny opgave"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:26
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add_existing_assignment.ctp:24
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:73
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:85
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/index.ctp:17
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:28
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:29
+msgid "Search"
+msgstr "Søg"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/index.ctp:46
+msgid "Status"
+msgstr "Status"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:37
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:276
+msgid "Locked"
+msgstr "Låst"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:54
+msgid "Correctly answered tasks"
+msgstr "Korrekt besvarede opgaver"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:58
+msgid "Incorrectly answered tasks"
+msgstr "Forkert besvarede opgaver"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Assignments/view.ctp:62
+msgid "Skipped tasks"
+msgstr "Opgaver sprunget over"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Courses/index.ctp:8
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:56
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:412
+msgid "Courses"
+msgstr "Klasser"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Courses/view.ctp:12
+msgid "List courses"
+msgstr "Liste med klasser"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Element/navbar.ctp:46
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/index.ctp:9
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:49
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:64
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:9
+msgid "Pupils"
+msgstr "Elever"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:24
+msgid "Quick-add course"
+msgstr "Quick-tilføj klasse"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:31
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/add.ctp:30
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/add.ctp:28
+msgid "Choose"
+msgstr "Vælg"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:32
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/add.ctp:31
+msgid "Course"
+msgstr "Klasse"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:37
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/add.ctp:36
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/edit.ctp:31
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/add.ctp:34
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/edit.ctp:31
+msgid "Tilgængelig fra"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:42
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/add.ctp:41
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/edit.ctp:36
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/add.ctp:39
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/edit.ctp:36
+msgid "Tilgængelig til"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add.ctp:47
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:95;181
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/add.ctp:46
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksCourses/edit.ctp:41
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/add.ctp:44
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/edit.ctp:41
+msgid "Deadline"
+msgstr "Deadline"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/add_existing_assignment.ctp:62
+#: Template/Organizations/index.ctp:35
+msgid "Select"
+msgstr "Vælg"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:15
+msgid "New homework"
+msgstr "Ny lektie"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:30
+msgid "Without course"
+msgstr "Uden klasse"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:43
+msgid "Show only for"
+msgstr "Vis kun for"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/index.ctp:52
+msgid "All"
+msgstr "Alle"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:26;406
+msgid "Details"
+msgstr "Detaljer"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:54
+msgid "Last modified"
+msgstr "Sidst ændret"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:74
+msgid "Courses assigned"
+msgstr "Klasser tilknyttet"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:77
+msgid "Add course"
+msgstr "TIlføj klasse"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:93;179
+msgid "Published from"
+msgstr "Offentliggjort fra"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:94;180
+msgid "Published to"
+msgstr "Offentliggjort til"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:102
+msgid "No courses"
+msgstr "Ingen klasser"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:111;114;117;197;200;203
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/View/Helper/CrudViewHelper.php:191;208
+msgid "N/A"
+msgstr "N/A"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:134;220;321
+msgid "Are you sure you want to delete this?"
+msgstr "Er du sikker på du vil slette dette?"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:157
+msgid "Users assigned"
+msgstr "Brugere tilknyttet"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:160
+msgid "Add user"
+msgstr "TIlføj bruger"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:188
+msgid "No users found"
+msgstr "Ingen brugere fundet"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:246
+msgid "Add new assignment"
+msgstr "Tilføj ny opgave"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:259
+msgid "Add existing assignment"
+msgstr "Tilknyt eksisterende opgave"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:283
+msgid "No assignments"
+msgstr "Ingen opgaver"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:349
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:28
+msgid "Time"
+msgstr "Tid"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:350
+msgid "Pupil"
+msgstr "Elev"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:358
+msgid "No answers yet"
+msgstr "Ingen besvarelser endnu"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Homeworks/view.ctp:418
+msgid "Users"
+msgstr "Brugere"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/HomeworksUsers/add.ctp:29
+msgid "User"
+msgstr "Bruger"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:9
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/index.ctp:18
+msgid "Hardest words"
+msgstr "Sværeste ord"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:21
+msgid "Select course"
+msgstr "Vælg klasse"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:29;61
+msgid "Show all"
+msgstr "Vis alle"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:53
+msgid "Select pupil"
+msgstr "Vælg elev"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:102
+msgid "Word"
+msgstr "Ord"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:103
+msgid "Amount of errors"
+msgstr "Antal fejl"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/hardest_words.ctp:104
+msgid "Amount of skips"
+msgstr "Antal sprunget over"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/index.ctp:9
+msgid "Statistics"
+msgstr "Statistikker"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/index.ctp:22
+msgid "Pupil statistics"
+msgstr "Elevstatistik"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Statistics/index.ctp:26
+msgid "Course statistics"
+msgstr "Klassestatistik"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:13
+msgid "Statistics for {0}"
+msgstr "Statistik for {0}"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:19
+msgid "Answers created"
+msgstr "Besvarelser oprettet"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:20
+msgid "Answers done"
+msgstr "Besvarelser færdiggjorte"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:21
+msgid "Words submitted"
+msgstr "Ord sendt"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:22
+msgid "Words with no errors"
+msgstr "Ord uden fejl"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:23
+msgid "Words with error"
+msgstr "Ord med fejl"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:24
+msgid "Words skipped"
+msgstr "Ord sprunget over"
+
+#: /var/www/drunkenflamingo/plugins/Teacher/src/Template/Users/view.ctp:25
+msgid "Words without feedback"
+msgstr "Ord uden feedback"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Controller/AppController.php:17
+msgid "Unauthorized to Teacher administration"
+msgstr "Ingen adgang til læreradministrations-modulet"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Controller/TeachersController.php:105
+msgid "Teacher already has this role"
+msgstr "Lærer har allerede denne rolle"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Controller/TeachersController.php:118
+msgid "Role added toteacher"
+msgstr "Rolle tilføjet til lærer"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Controller/TeachersController.php:125
+msgid "Teacher only has this role"
+msgstr "Lærer har kun denne rolle"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Controller/TeachersController.php:136
+msgid "Role removed from teacher"
+msgstr "Rolle fjernet fra lærer"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/add.ctp:12
+msgid "Add class"
+msgstr "TIlføj klasse"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/edit.ctp:11;17
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:13
+msgid "Edit class"
+msgstr "Rediger klasse"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/edit.ctp:20
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:16
+msgid "Delete class"
+msgstr "Slet klasse"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/edit.ctp:25
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:24
+msgid "List classes"
+msgstr "Vis klasser"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/edit.ctp:26
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:13
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:25
+msgid "New class"
+msgstr "Ny klasse"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/index.ctp:8
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:8
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:54
+msgid "Classes"
+msgstr "Klasser"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:53
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/add.ctp:11
+msgid "Add pupil"
+msgstr "Tilføj elev"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/view.ctp:83
+msgid "Are you sure you want to delete {0} from class?"
+msgstr "Er du sikker på du vil fjerne {0} fra klassen?"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/CoursesUsers/add.ctp:11
+msgid "Add pupil to class"
+msgstr "Tilføj elev til klasse"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/CoursesUsers/add.ctp:17
+msgid "View class"
+msgstr "Vis klasse"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Courses/CoursesUsers/add.ctp:32
+msgid "Vælg"
+msgstr "Vælg"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Element/navbar.ctp:74
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:8
+msgid "Teachers"
+msgstr "Lærere"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/add.ctp:11
+msgid "Add teacher"
+msgstr "Tilføj lærer"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/add.ctp:16
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/view.ctp:22
+msgid "List teachers"
+msgstr "Vis lærere"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/add.ctp:36
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/edit.ctp:27
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/add.ctp:36
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/edit.ctp:27
+msgid "Save and create new"
+msgstr "Gem og opret ny"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/edit.ctp:16
+msgid "List Teachers"
+msgstr "Vis lærerer"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:13
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/view.ctp:23
+msgid "New teacher"
+msgstr "Ny lærer"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/index.ctp:47
+msgid "Admin"
+msgstr "Admin"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/view.ctp:13
+msgid "Edit teacher"
+msgstr "Rediger lærer"
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Teachers/view.ctp:16
+msgid "Delete teacher"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/add.ctp:16
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/edit.ctp:16
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/view.ctp:22
+msgid "List pupils"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/index.ctp:14
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/view.ctp:23
+msgid "New pupil"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/view.ctp:13
+msgid "Edit pupil"
+msgstr ""
+
+#: /var/www/drunkenflamingo/plugins/TeacherAdmin/src/Template/Users/view.ctp:16
+msgid "Delete user"
+msgstr ""
+
+#: Controller/AppController.php:119
+msgid "Du skal logge ind for at se denne side"
+msgstr ""
+
+#: Controller/UsersController.php:109
+msgid "You're already logged in! :-)"
+msgstr ""
+
+#: Controller/UsersController.php:127
+msgid "Captcha failed..."
+msgstr ""
+
+#: Controller/UsersController.php:197
+msgid "Invalid state"
+msgstr ""
+
+#: Controller/UsersController.php:205
+msgid "You got logged in"
+msgstr ""
+
+#: Form/ChangePasswordForm.php:42
+msgid "Passwords are not equal"
+msgstr ""
+
+#: Mailer/UserMailer.php:26
+msgid "Forgot password for Wordy"
+msgstr ""
+
+#: Model/Table/AssignmentsTable.php:135
+msgid "You cannot unlock an assignment after it has been because it's already in use"
+msgstr ""
+
+#: Model/Table/AssignmentsTable.php:147
+msgid "You cannot change an assignment after students have submitted answers"
+msgstr ""
+
+#: Model/Table/CoursesTable.php:127
+msgid "You can only have 1 combination of grade and name"
+msgstr ""
+
+#: Model/Table/UsersRolesTable.php:122
+msgid "You cannot change your role id"
+msgstr ""
+
+#: Model/Table/UsersRolesTable.php:132
+msgid "You cannot change your role's organization"
+msgstr ""
+
+#: Model/Table/UsersTable.php:215
+msgid "When password is already set you cannot delete it"
+msgstr ""
+
+#: Template/Cell/ShowOrganization/display.ctp:10
+msgid "No organization"
+msgstr ""
+
+#: Template/Email/html/forgot_password.ctp:9
+msgid "Hi {0}"
+msgstr ""
+
+#: Template/Email/html/forgot_password.ctp:11
+msgid "Go here to reset your password: {0}"
+msgstr ""
+
+#: Template/Email/html/forgot_password.ctp:13
+msgid "Best regards, Wordy"
+msgstr ""
+
+#: Template/Email/text/forgot_password.ctp:9
+msgid "Hi {0}! Go here to reset your password: {1}"
+msgstr ""
+
+#: Template/Layout/error.ctp:36 Template/Error/error400.ctp:38
+#: Template/Error/error500.ctp:43
+msgid "Error"
+msgstr ""
+
+#: Template/Organizations/waiting.ctp:8
+msgid "Thank you for signing up - we will be in touch!"
+msgstr ""
+
+#: Template/Pages/welcome.ctp:9
+msgid "Welcome."
+msgstr ""
+
+#: Template/Pages/welcome.ctp:14
+msgid "Lets make reading great again!"
+msgstr ""
+
+#: Template/Pages/welcome.ctp:31
+msgid "I just want a user..."
+msgstr ""
+
+#: Template/ResetPasswords/forgot_password.ctp:31
+msgid "Forgot password"
+msgstr ""
+
+#: Template/ResetPasswords/forgot_password.ctp:34
+msgid "We will send you an email with a link to reset your password"
+msgstr ""
+
+#: Template/ResetPasswords/forgot_password.ctp:37 Template/Users/login.ctp:31
+msgid "Enter email..."
+msgstr ""
+
+#: Template/ResetPasswords/forgot_password.ctp:41
+msgid "Reset my password"
+msgstr ""
+
+#: Template/ResetPasswords/reset_password.ctp:18
+msgid "Reset password"
+msgstr ""
+
+#: Template/ResetPasswords/reset_password.ctp:25
+#: Template/Users/change_password.ctp:33
+msgid "New password"
+msgstr ""
+
+#: Template/ResetPasswords/reset_password.ctp:31
+#: Template/Users/change_password.ctp:39
+msgid "Repeat new password"
+msgstr ""
+
+#: Template/Users/change_password.ctp:9 Template/Users/edit.ctp:14
+msgid "Change password"
+msgstr ""
+
+#: Template/Users/edit.ctp:9
+msgid "Edit user"
+msgstr ""
+
+#: Template/Users/login.ctp:26
+msgid "Welcome back!"
+msgstr ""
+
+#: Template/Users/login.ctp:36
+msgid "Enter password..."
+msgstr ""
+
+#: Template/Users/login.ctp:42
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/login.ctp:29
+msgid "Login"
+msgstr ""
+
+#: Template/Users/login.ctp:46
+msgid "Register new user"
+msgstr ""
+
+#: Template/Users/login.ctp:58
+msgid "Or..."
+msgstr ""
+
+#: Template/Users/login.ctp:61
+msgid "Login with Google"
+msgstr ""
+
+#: Template/Users/login.ctp:70
+msgid "Forgot pasword"
+msgstr ""
+
+#: Template/Users/register.ctp:30
+msgid "Create user"
+msgstr ""
+
+#: Template/Users/register.ctp:33
+msgid "jens.a@gmail.com"
+msgstr ""
+
+#: Template/Users/register.ctp:34
+msgid "Email"
+msgstr ""
+
+#: Template/Users/register.ctp:39
+msgid "Password"
+msgstr ""
+
+#: Template/Users/register.ctp:43
+msgid "Jens Andersen"
+msgstr ""
+
+#: Template/Users/register.ctp:44
+msgid "Your name"
+msgstr ""
+
+#: Template/Users/register.ctp:47
+msgid "Register"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:39
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:66
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:30
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:54
+msgid "List <%= $pluralHumanName %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:46
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:50
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:74
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:37
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:61
+msgid "List <%= $this->_pluralHumanName($alias) %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:47
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:51
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:38
+msgid "New <%= $this->_singularHumanName($alias) %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:59
+msgid "<%= Inflector::humanize($action) %> <%= $singularHumanName %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Element/form.ctp:102
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php:1895
+msgid "Submit"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:43
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:67
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:10
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:55
+msgid "New <%= $singularHumanName %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:61
+msgid "<%= $pluralHumanName %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:113
+msgid "first"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:117
+msgid "last"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/index.ctp:119
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/login.ctp:25
+msgid "Please enter your username and password"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:64
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:52
+msgid "Edit <%= $singularHumanName %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:65
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:53
+msgid "Delete <%= $singularHumanName %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:75
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:18
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:62
+msgid "New <%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:93
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:89
+msgid "<%= Inflector::humanize($details["
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:98;115;131;140;157
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:92;101;117;125;149
+msgid "<%= Inflector::humanize($field) %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:107
+msgid "<%= Inflector::humanize(Inflector::singularize(Inflector::underscore($alias))) %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/bake/src/Template/Bake/Template/view.ctp:152
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/view.ctp:142
+msgid "Related <%= $otherPluralHumanName %>"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Element/form.ctp:54
+msgid "<%= Inflector::humanize($action) %> {0}"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/bootstrap-ui/src/Template/Bake/Template/index.ctp:17
+msgid "List <%= Inflector::humanize($details[\"controller\"]) %>"
+msgstr ""
+
+#: Template/Error/error400.ctp:39
+msgid "The requested address {0} was not found on this server."
+msgstr ""
+
+#: Template/Error/error500.ctp:41
+msgid "An Internal Error Has Occurred"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Controller/Component/AuthComponent.php:496
+msgid "You are not authorized to access that location."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Controller/Component/CsrfComponent.php:155
+msgid "Missing CSRF token cookie"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Controller/Component/CsrfComponent.php:159
+msgid "CSRF token mismatch."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Error/ExceptionRenderer.php:258
+msgid "Not Found"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Error/ExceptionRenderer.php:260
+msgid "An Internal Error Has Occurred."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Http/Response.php:2258
+msgid "The requested file contains `..` and will not be read."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Http/Response.php:2269
+msgid "The requested file was not found"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:90
+msgid "{0,number,#,###.##} KB"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:92
+msgid "{0,number,#,###.##} MB"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:94
+msgid "{0,number,#,###.##} GB"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:96
+msgid "{0,number,#,###.##} TB"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/Number.php:88
+msgid "{0,number,integer} Byte"
+msgid_plural "{0,number,integer} Bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:80
+msgid "{0} from now"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:80
+msgid "{0} ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:83
+msgid "{0} after"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:83
+msgid "{0} before"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:114
+msgid "just now"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:151
+msgid "about a second ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:152
+msgid "about a minute ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:153
+msgid "about an hour ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:154;332
+msgid "about a day ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:155;333
+msgid "about a week ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:156;334
+msgid "about a month ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:157;335
+msgid "about a year ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:168
+msgid "in about a second"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:169
+msgid "in about a minute"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:170
+msgid "in about an hour"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:171;346
+msgid "in about a day"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:172;347
+msgid "in about a week"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:173;348
+msgid "in about a month"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:174;349
+msgid "in about a year"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:304
+msgid "today"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:370
+msgid "%s ago"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:371
+msgid "on %s"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:47;126;316
+msgid "{0} year"
+msgid_plural "{0} years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:51;129;319
+msgid "{0} month"
+msgid_plural "{0} months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:57;132;322
+msgid "{0} week"
+msgid_plural "{0} weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:59;135;325
+msgid "{0} day"
+msgid_plural "{0} days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:64;138
+msgid "{0} hour"
+msgid_plural "{0} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:68;141
+msgid "{0} minute"
+msgid_plural "{0} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/I18n/RelativeTimeFormatter.php:72;144
+msgid "{0} second"
+msgid_plural "{0} seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/ORM/RulesChecker.php:57
+msgid "This value is already in use"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/ORM/RulesChecker.php:104
+msgid "This value does not exist"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/ORM/RulesChecker.php:128
+msgid "The count does not match {0}{1}"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Utility/Text.php:899
+msgid "and"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Validation/Validator.php:103
+msgid "This field is required"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Validation/Validator.php:104
+msgid "This field cannot be left empty"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/Validation/Validator.php:1801
+msgid "The provided value is invalid"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php:1016
+msgid "New %s"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/FormHelper.php:1019
+msgid "Edit %s"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Helper/HtmlHelper.php:793
+msgid "Home"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:540
+msgid "January"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:541
+msgid "February"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:542
+msgid "March"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:543
+msgid "April"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:544
+msgid "May"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:545
+msgid "June"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:546
+msgid "July"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:547
+msgid "August"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:548
+msgid "September"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:549
+msgid "October"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:550
+msgid "November"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/cakephp/src/View/Widget/DateTimeWidget.php:551
+msgid "December"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/DebugTimer.php:135
+msgid "Core Processing (Derived from $_SERVER[\"REQUEST_TIME\"])"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:53
+msgid "Controller initialization"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:62
+msgid "Controller action start"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:63;68
+msgid "Controller action"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:73;74;94
+msgid "View Render start"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:83;88
+msgid "Render {0}"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Panel/TimerPanel.php:95
+msgid "Controller shutdown"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:45
+msgid "-> Testing :url"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:72
+msgid "Total Requests made: :requests"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:73
+msgid "Total Time elapsed: :duration (seconds)"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:77
+msgid "Requests/Second: :rps req/sec"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:81
+msgid "Average request time: :average-time seconds"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:85
+msgid "Standard deviation of average request time: :std-dev"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:89
+msgid "Longest/shortest request: :longest sec/:shortest sec"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:147
+msgid "Allows you to obtain some rough benchmarking statisticsabout a fully qualified URL."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:153
+msgid "The URL to request."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:158
+msgid "Number of iterations to perform."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:162
+msgid "Maximum total time for all iterations, in seconds.If a single iteration takes more than the timeout, only one request will be made"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/BenchmarkShell.php:168
+msgid "Example Use: `cake benchmark --n 10 --t 100 http://localhost/testsite`. <info>Note:</info> this benchmark does not include browser render times."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:21
+msgid "There were no cache operations this request."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:25
+msgid "{0} Metrics"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:31
+msgid "Metric"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/cache_panel.ctp:32
+msgid "Total"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:28
+msgid "Application Constants"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:49
+msgid "No application environment available."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:53
+msgid "CakePHP Constants"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:74
+msgid "CakePHP environment unavailable."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:78
+msgid "PHP Environment"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:99
+msgid "PHP environment unavailable."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:104
+msgid "Hidef Environment"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/environment_panel.ctp:125
+msgid "No Hidef environment available."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/history_panel.ctp:23
+msgid "No previous requests logged."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/history_panel.ctp:25
+msgid "previous requests available"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/history_panel.ctp:29;53
+msgid "Back to current request"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:21
+msgid "There were no log entries made this request"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/log_panel.ctp:24
+msgid "{0} Messages"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:22
+msgid "{0} not found"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:27
+msgid "Direct dependencies only"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:32
+msgid "Requirements ({0})"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/packages_panel.ctp:58
+msgid "Dev Requirements ({0})"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:31
+msgid "Headers already sent at file {0} and line {1}."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:40
+msgid "No post data."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:49
+msgid "No querystring data."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/request_panel.ctp:59
+msgid "No Cookie data."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/routes_panel.ctp:11
+msgid "Route name"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/routes_panel.ctp:12
+msgid "URI template"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/routes_panel.ctp:13
+msgid "Defaults"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:58
+msgid "Total Time: {0} ms &mdash; Total Queries: {1} &mdash; Total Rows: {2}"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:71
+msgid "Query"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:72
+msgid "Rows"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:73
+msgid "Took (ms)"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/sql_log_panel.ctp:91
+msgid "No active database connections"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:23
+msgid "Memory"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:25
+msgid "Peak Memory Use:"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:33
+msgid "Memory Use"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:48
+msgid "Timers"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:50
+msgid "Total Request Time:"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:57
+msgid "Event"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:58
+msgid "Time in ms"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/timer_panel.ctp:59
+msgid "Timeline"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Template/Element/variables_panel.ctp:28
+msgid "Sort variables by name"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/View/Helper/SimpleGraphHelper.php:76
+msgid "Starting {0}ms into the request, taking {1}ms"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/View/Helper/TidyHelper.php:110
+msgid "No markup errors found"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/cakephp/debug_kit/src/Shell/WhitespaceShell.php:98
+msgid "Absolute path or relative to APP."
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud/src/Error/Exception/ValidationException.php:42
+msgid "A validation error occurred"
+msgid_plural "{0} validation errors occurred"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/actions.ctp:20
+msgid "Are you sure you want to delete record #{0}?"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/form/buttons.ctp:6
+msgid "Save & continue editing"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/form/buttons.ctp:9
+msgid "Save & create new"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/bulk_actions/form_end.ctp:6
+msgid "Apply"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/index/bulk_actions/form_end.ctp:12
+msgid "Bulk Actions"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_many.ctp:18
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_one.ctp:12
+msgid "Related {0}"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/friendsofcake/crud-view/src/Template/Element/view/related/has_one.ctp:16
+msgid "View {0}"
+msgstr ""
+
+#: /var/www/drunkenflamingo/vendor/wyrihaximus/fly-pie/src/Template/Element/filesystem_panel.ctp:29
+msgid "No configured filesystem found"
+msgstr ""

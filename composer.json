@@ -74,6 +74,7 @@
   },
   "scripts": {
     "compile": [
+      "composer dumpautoload",
       "bin/cake migrations migrate",
       "bin/cake asset_compress clear",
       "bin/cake asset_compress build"

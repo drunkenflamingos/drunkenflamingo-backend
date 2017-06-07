@@ -5,51 +5,54 @@ declare(strict_types=1);
 $this->extend('/Layout/dashboard'); ?>
 
 <?php $this->start('content_header'); ?>
-<h1><?= __('Answer'); ?></h1>
+<h1><?= __('Answers'); ?></h1>
 <?php $this->end(); ?>
 
-<?php
-$this->start('content_buttons');
-?>
-<div class="btn-group-raised">
-    <?= $this->Html->link('<i class="material-icons">add</i> ' . __('New Answer'), [
-        'action' => 'add',
-    ], [
-        'class' => 'btn btn-primary',
-        'escape' => false,
-    ]) ?>
-</div>
+<?php $this->start('content_buttons'); ?>
 <?php $this->end(); ?>
 
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
     <tr>
-        <th><?= $this->Paginator->sort('Assignments.title'); ?></th>
-        <th><?= $this->Paginator->sort('Homeworks.name'); ?></th>
-        <th><?= $this->Paginator->sort('is_done', __('Completed')); ?></th>
-        <th><?= $this->Paginator->sort('created'); ?></th>
+        <th><?= $this->Paginator->sort('Assignments.title', __('Assignment')); ?></th>
+        <th><?= $this->Paginator->sort('Homeworks.name', __('Homework name')); ?></th>
+        <th><?= $this->Paginator->sort('Answers.is_done', __('Completed')); ?></th>
+        <th><?= $this->Paginator->sort('Answers.created'); ?></th>
         <th class="actions"><?= __('Actions'); ?></th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($answers as $answer): ?>
         <tr>
-            <td><?= h($answer->assignment->title) ?></td>
-            <td><?= h($answer->homework->name) ?></td>
+            <td>
+                <?= $this->Html->link(h($answer->assignment->title), [
+                    'controller' => 'Assignments',
+                    'action' => 'view',
+                    $answer->assignment_id,
+                ]) ?>
+            </td>
+            <td>
+                <?= $this->Html->link(h($answer->homework->name), [
+                    'controller' => 'Homeworks',
+                    'action' => 'view',
+                    $answer->homework_id,
+                ]) ?>
+            </td>
             <td><?= h($answer->is_done ? __('Yes') : __('No')) ?></td>
             <td><?= h($answer->created) ?></td>
-            <td class="actions">
-                <?= $this->Table->actions([
-                    $this->Html->link(__('View'),
-                        ['action' => 'view', $answer->id]
-                    ),
-                    $this->Html->link(__('Edit'),
-                        ['action' => 'edit', $answer->id]
-                    ),
-                    $this->Form->postLink(__('Delete'),
-                        ['action' => 'delete', $answer->id],
-                        ['confirm' => __('Are you sure you want to delete # {0}?', $answer->id),]
-                    ),
+            <td>
+                <?php if ($answer->is_done): ?>
+                    <?= $this->Html->link(__('View'), [
+                        'controller' => 'Answers',
+                        'action' => 'finished',
+                        $answer->id,
+                    ]) ?>
+                    <?= $this->Table->actionSeparator(); ?>
+                <?php endif ?>
+                <?= $this->Html->link(__('Edit'), [
+                    'controller' => 'Answers',
+                    'action' => 'stepOne',
+                    $answer->id,
                 ]) ?>
             </td>
         </tr>

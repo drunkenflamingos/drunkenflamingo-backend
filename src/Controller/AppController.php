@@ -20,6 +20,7 @@ use Cake\Controller\Controller;
 use Cake\Core\Configure;
 use Cake\Datasource\Exception\MissingModelException;
 use Cake\Event\Event;
+use Cake\I18n\I18n;
 use Crud\Controller\ControllerTrait;
 use Muffin\Footprint\Auth\FootprintAwareTrait;
 use UnexpectedValueException;
@@ -230,6 +231,23 @@ class AppController extends Controller
         if ($this->Crud->isActionMapped()) {
             $this->Crud->action()->setConfig('scaffold.brand', Configure::read('App.name'));
         }
+
+        $this->loadModel('Languages');
+        $this->loadModel('Users');
+
+        if (!empty($this->Auth->user('id'))) {
+            $user = $this->Users->get($this->Auth->user('id'));
+
+            $gravatarUrl = $user->getGravatarImageUrl();
+
+            $this->set(compact('gravatarUrl'));
+
+            $language = $this->Languages->get($user->language_id);
+        } else {
+            $language = $this->Languages->find()->where(['Languages.iso_code' => 'en-US'])->firstOrFail();
+        }
+
+        I18n::locale($language->iso_code);
 
         $isRest = in_array($this->response->type(), ['application/json', 'application/xml'], true);
         $isAdmin = $this->isAdmin || in_array($this->request->action, $this->adminActions);

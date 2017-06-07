@@ -14,6 +14,14 @@ use Cake\Routing\Router;
 class AnswersController extends AppController
 {
     public $modelClass = 'App.Answers';
+    public $paginate = [
+        'sortWhitelist' => [
+            'Answers.is_done',
+            'Answers.created',
+            'Assignments.title',
+            'Homeworks.name',
+        ],
+    ];
 
     public function initialize()
     {
@@ -93,11 +101,6 @@ class AnswersController extends AppController
         return $this->Crud->execute();
     }
 
-    public function view($id = null)
-    {
-        return $this->Crud->execute();
-    }
-
     public function add()
     {
         $this->Crud->on('beforeRedirect', function (Event $event) {
@@ -107,16 +110,6 @@ class AnswersController extends AppController
             ]);
         });
 
-        return $this->Crud->execute();
-    }
-
-    public function edit($id = null)
-    {
-        return $this->Crud->execute();
-    }
-
-    public function delete($id = null)
-    {
         return $this->Crud->execute();
     }
 
@@ -228,19 +221,30 @@ class AnswersController extends AppController
 
     public function finished($id = null)
     {
+        $this->Crud->on('beforeFind', function (Event $event) {
+            $event->getSubject()->query
+                ->contain([
+                    'CreatedBy',
+                    'AnswerWords.WordClasses',
+                    'AnswerFeedbacks.CreatedBy',
+                    'Assignments',
+                    'Homeworks',
+                ]);
+        });
+
         $this->Crud->on('afterFind', function (Event $event) {
             $answer = $event->getSubject()->entity;
-            $answer = $this->Answers->patchEntity($answer, [
-                'is_done' => true,
-            ]);
+            if (!$answer->is_done) {
+                $answer = $this->Answers->patchEntity($answer, [
+                    'is_done' => true,
+                ]);
 
-            if ($this->Answers->save($answer)) {
-                $this->Flash->success(__('Assignment was finished successfully'));
-
-                return $this->redirect(['controller' => 'Answers', 'action' => 'index']);
+                if ($this->Answers->save($answer)) {
+                    $this->Flash->success(__('Assignment was finished successfully'));
+                } else {
+                    $this->Flash->error(__('An error happened'));
+                }
             }
-
-            $this->Flash->error(__('An error happened'));
         });
 
         return $this->Crud->execute();

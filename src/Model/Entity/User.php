@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Entity;
 
+use App\Utility\Gravatar;
 use Cake\Auth\DefaultPasswordHasher;
 use Cake\I18n\Time;
 use Cake\Mailer\MailerAwareTrait;
@@ -126,5 +127,10 @@ class User extends Entity
         ]);
 
         $loginAttempts->save($loginAttempt);
+    }
+
+    public function getGravatarImageUrl($size = '80px')
+    {
+        return Gravatar::getGravatarUrl($this->email, $size);
     }
 }

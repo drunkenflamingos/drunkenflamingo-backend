@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\Datasource\Exception\MissingModelException;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
+use Cake\I18n\I18n;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use Crud\Controller\Component\CrudComponent;
@@ -180,18 +181,18 @@ class AppController extends BaseController
 
         $this->Security->setConfig('unlockedActions', [$this->request->getParam('action')]);
 
-//        TODO
-//        $this->loadModel('Languages');
-//
-//        if (!empty($this->Auth->user('language_id'))) {
-//            $language = $this->Languages->get($this->Auth->user('language_id'));
-//        } else {
-//            $language = $this->Languages->find()->where(['Languages.short_code' => 'en_US'])->firstOrFail();
-//        }
-//
-//        I18n::locale($language->short_code);
+        $this->loadModel('Languages');
+
+        if (!empty($this->Auth->user('language_id'))) {
+            $language = $this->Languages->get($this->Auth->user('language_id'));
+        } else {
+            $language = $this->Languages->find()->where(['Languages.short_code' => 'en_US'])->firstOrFail();
+        }
+
+        I18n::locale($language->short_code);
 
         //Enable someurl?include=companies,languages$
+        //TODO Use whitelisting for includes in the API so you can only include select associations
         if ($this->request->getQuery('include') !== null) {
             $includeParams = explode(',', $this->request->getQuery('include'));
 
@@ -230,10 +231,6 @@ class AppController extends BaseController
                     'UsersRoles.user_id' => $userId,
                     'UsersRoles.organization_id' => $organizationId,
                 ])
-//                TODO
-//                ->matching('Roles', function (Query $q) {
-//                    return $q->where(['Roles.identifier' => 'student']);
-//                })
                 ->firstOrFail();
         } catch (RecordNotFoundException $e) {
             return false;

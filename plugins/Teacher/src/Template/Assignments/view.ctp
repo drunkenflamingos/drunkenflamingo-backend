@@ -18,7 +18,7 @@ $this->extend('/Layout/dashboard'); ?>
     </div>
     <table class="table table-striped" cellpadding="0" cellspacing="0">
         <tr>
-            <td><?= __('Created By Id') ?></td>
+            <td><?= __('Created by') ?></td>
             <td><?= h($assignment->created_by->name) ?></td>
         </tr>
         <tr>

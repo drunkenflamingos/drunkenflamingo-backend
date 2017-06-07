@@ -15,6 +15,12 @@ use Student\Controller\AppController;
 class AnswerFeedbacksController extends AppController
 {
     public $modelClass = 'App.AnswerFeedbacks';
+    public $paginate = [
+        'AnswerFeedbacks.title',
+        'AnswerFeedbacks.created',
+        'CreatedBy.name',
+        'Answers.Homeworks.name',
+    ];
 
     public function initialize()
     {
@@ -42,6 +48,10 @@ class AnswerFeedbacksController extends AppController
 
     public function index()
     {
+        $this->Crud->on('beforePaginate', function (Event $event) {
+            $event->getSubject()->query->contain(['CreatedBy','Answers.Assignments']);
+        });
+
         return $this->Crud->execute();
     }
 
