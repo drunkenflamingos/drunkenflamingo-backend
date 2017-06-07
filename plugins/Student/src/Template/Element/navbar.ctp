@@ -70,15 +70,6 @@ declare(strict_types=1);
                     <ul class="dropdown-menu">
                         <li>
                             <?= $this->Html->link(
-                                '<i class="material-icons">stars</i> ' . __('Badges'),
-                                [
-                                    'controller' => 'Badges',
-                                    'action' => 'index',
-                                ], ['escape' => false,]) ?>
-                        </li>
-
-                        <li>
-                            <?= $this->Html->link(
                                 '<i class="material-icons">domain</i> ' . __('Organizations'),
                                 [
                                     'plugin' => null,

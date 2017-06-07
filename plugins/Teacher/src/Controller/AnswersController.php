@@ -78,6 +78,7 @@ class AnswersController extends AppController
                     'AnswerFeedbacks.CreatedBy',
                     'Assignments',
                     'Homeworks',
+                    'CreatedBy'
                 ]);
         });
 
