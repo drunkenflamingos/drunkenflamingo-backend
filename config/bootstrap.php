@@ -213,6 +213,17 @@ Configure::write('Muffin/OAuth2', [
                 'email' => 'emails.0.value',
             ],
         ],
+        'facebook' => [
+            'className' => League\OAuth2\Client\Provider\Facebook::class,
+            'options' => [
+                'clientId' => Configure::read('Facebook.auth.client.id'),
+                'clientSecret' => Configure::read('Facebook.auth.client.secret'),
+                'redirectUri' => Configure::read('Facebook.auth.redirecturi'),
+                'graphApiVersion' => 'v2.9',
+            ],
+            'mapFields' => [
+            ],
+        ],
     ],
 ]);
 

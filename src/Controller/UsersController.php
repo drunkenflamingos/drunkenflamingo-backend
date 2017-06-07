@@ -8,6 +8,7 @@ use App\Utility\GetIp;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Network\Exception\BadRequestException;
+use League\OAuth2\Client\Provider\Facebook;
 use League\OAuth2\Client\Provider\Google;
 use ReCaptcha\ReCaptcha;
 
@@ -24,7 +25,7 @@ class UsersController extends AppController
     {
         parent::initialize();
 
-        $this->Auth->allow(['register', 'loginOauth', 'oauthGoogle', 'login']);
+        $this->Auth->allow(['register', 'loginOauth', 'oauthGoogle', 'oauthFacebook', 'login']);
 
         $this->Crud->disable(['add', 'index', 'view', 'delete']);
 
@@ -176,6 +177,23 @@ class UsersController extends AppController
     public function oauthGoogle()
     {
         $provider = new Google(Configure::read('Muffin/OAuth2.providers.google.options'));
+
+        //$authUrl = $provider->getAuthorizationUrl(['approval_prompt' => 'force']);
+        $authUrl = $provider->getAuthorizationUrl();
+
+        $session = $this->request->session();
+        $session->write('oauth2state', $provider->getState());
+
+        if ($this->request->getQuery('redirect') !== null) {
+            $session->write('oauth2redirectAfterLogin', $this->request->getQuery('redirect'));
+        }
+
+        return $this->redirect($authUrl);
+    }
+
+    public function oauthFacebook()
+    {
+        $provider = new Facebook(Configure::read('Muffin/OAuth2.providers.facebook.options'));
 
         $authUrl = $provider->getAuthorizationUrl();
 

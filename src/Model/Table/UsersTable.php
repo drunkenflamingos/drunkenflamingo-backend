@@ -179,7 +179,7 @@ class UsersTable extends Table
             ->allowEmpty('file_name');
 
         $validator
-            ->allowEmpty('token');
+            ->allowEmpty('reset_token');
 
         $validator
             ->dateTime('reset_expires')
@@ -288,7 +288,6 @@ class UsersTable extends Table
             'email' => $data['email'],
             'password' => null,
             'is_activated' => true,
-            //'file' => file_get_contents($data['image']['url']),
             'user_oauth_tokens' => [
                 [
                     'type' => 'google',

@@ -9,6 +9,11 @@ use Cake\Core\Configure;
 $this->extend('/Layout/dashboard');
 
 $preferredBrowserLang = $this->request->acceptLanguage()[0];
+
+$hasFacebook = Configure::read('Muffin/OAuth2.providers.facebook.options.clientSecret') !== null;
+$hasGoogle = Configure::read('Muffin/OAuth2.providers.google.options.clientSecret') !== null;
+
+
 ?>
 
 <?php $this->start('script'); ?>
@@ -57,15 +62,29 @@ $preferredBrowserLang = $this->request->acceptLanguage()[0];
 
             <h4 class="text-center"><?= __('Or...'); ?></h4>
 
-            <?= $this->Form->postLink(
-                __('Login with Google'), [
-                'action' => 'oauthGoogle',
-                '?' => [
-                    'redirect' => $this->request->getQuery('redirect'),
-                ],
-            ], [
-                'class' => 'btn btn-lg btn-block btn-default btn-raised',
-            ]); ?>
+            <?php if ($hasGoogle): ?>
+                <?= $this->Form->postLink(
+                    __('Login with Google'), [
+                    'action' => 'oauthGoogle',
+                    '?' => [
+                        'redirect' => $this->request->getQuery('redirect'),
+                    ],
+                ], [
+                    'class' => 'btn btn-lg btn-block btn-default btn-raised',
+                ]); ?>
+            <?php endif; ?>
+
+            <?php if ($hasFacebook): ?>
+                <?= $this->Form->postLink(
+                    __('Login with Facebook'), [
+                    'action' => 'oauthFacebook',
+                    '?' => [
+                        'redirect' => $this->request->getQuery('redirect'),
+                    ],
+                ], [
+                    'class' => 'btn btn-lg btn-block btn-default btn-raised',
+                ]); ?>
+            <?php endif; ?>
 
             <?= $this->Html->link(__('Forgot pasword'), [
                 'controller' => 'ResetPasswords',

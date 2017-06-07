@@ -55,11 +55,11 @@ class ResetPasswordsController extends AppController
 
     public function resetPassword()
     {
-        $this->Crud->on('verifyToken', function (\Cake\Event\Event $event) {
+        $this->Crud->on('verifyToken', function (Event $event) {
             $token = $event->getSubject()->token;
             $user = $event->getSubject()->query->first();
 
-            if ($token === $user->token) {
+            if ($token === $user->reset_token) {
                 $event->getSubject()->verified = true;
             }
         });

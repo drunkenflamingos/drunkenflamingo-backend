@@ -29,7 +29,7 @@ use Firebase\JWT\JWT;
  * @property int $file_size
  * @property string $file_type
  * @property string $file_name
- * @property string $token
+ * @property string $reset_token
  * @property Time $reset_expires
  * @property bool $is_activated
  * @property Time $created
@@ -107,7 +107,7 @@ class User extends Entity
 
     public function sendForgotPasswordMail()
     {
-        $this->token = Text::uuid();
+        $this->reset_token = Text::uuid();
         $this->reset_expires = Time::now()->addDays(7);
 
         if (TableRegistry::get('Users')->save($this)) {

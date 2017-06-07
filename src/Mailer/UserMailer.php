@@ -31,7 +31,7 @@ class UserMailer extends Mailer
                     'plugin' => false,
                     'controller' => 'ResetPasswords',
                     'action' => 'resetPassword',
-                    $user->token,
+                    $user->reset_token,
                 ], true),
             ]);
     }
