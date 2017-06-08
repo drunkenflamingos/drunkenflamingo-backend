@@ -56,13 +56,22 @@ $words = mb_split(' ', $assignment->text);
 
 <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
     <div class="well well-sm">
-        <h3 class="text-center">
-            <?= __('TODO TEXT HERE'); ?>
-        </h3>
+        <h1 class="text-center">
+            <?= h(ucfirst($words[$answerWord->word_placement])) ?>
+        </h1>
     </div>
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <!--<div class="pull-left">
+        <?= $this->Html->link('<i class="material-icons">help_outline</i>',
+        '#', [
+            'class' => 'answerWordHelp',
+            'data-answerwordid' => $answerWord->id,
+            'escape' => false,
+            'class' => 'btn btn-default',
+        ]) ?>
+    </div>-->
     <div class="pull-right">
         <?= $this->Html->link('<i class="material-icons">open_in_new</i> ' . __('Ordnet.dk'),
             'http://ordnet.dk/ddo', [
@@ -73,10 +82,24 @@ $words = mb_split(' ', $assignment->text);
     </div>
 </div>
 
-<?= $this->Form->create($answerWord); ?>
+<?= $this->Form->create($answer); ?>
+
+<?= $this->Form->control('answer_words.0.id', [
+    'type' => 'hidden',
+    'value' => $answerWord->id,
+]) ?>
+
+<?= $this->Form->control('answer_words.0.answer_id', [
+    'type' => 'hidden',
+    'value' => $answerWord->answer_id,
+]) ?>
+
+<?= $this->Form->control('answer_words.0.word_placement', [
+    'type' => 'hidden',
+    'value' => $answerWord->word_placement,
+]) ?>
+
 <?php if (empty($nextAnswerWord)): ?>
-    <?php
-    ?>
     <?= $this->Form->control('redirect_url', [
         'type' => 'hidden',
         'value' => Router::url([
@@ -100,27 +123,13 @@ $words = mb_split(' ', $assignment->text);
 
         <!--Word-->
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                <div class="panel-title text-center">
-                    <?= h($words[$answerWord->word_placement]) ?>
-                    <div class="pull-right">
-                        <?= $this->Html->link('<i style="font-size: 14pt;" class="material-icons">help_outline</i>',
-                            '#', [
-                                'class' => 'answerWordHelp',
-                                'data-answerwordid' => $answerWord->id,
-                                'escape' => false,
-                                'style' => 'color:white;',
-                            ]) ?>
-                    </div>
-                </div>
-            </div>
             <div class="panel-body <?= !empty($answerWord->help_text) ? '' : 'hidden' ?>"
                  id="<?= $answerWord->id ?>_help">
-                <?= $this->Form->control('is_skipped', [
+                <?= $this->Form->control('answer_words.0.is_skipped', [
                     'type' => 'hidden',
                     'id' => $answerWord->id . '_is_skipped',
                 ]) ?>
-                <?= $this->Form->control('help_text', [
+                <?= $this->Form->control('answer_words.0.help_text', [
                     'type' => 'text',
                     'label' => __('Help'),
                     'placeholder' => __('Enter your question(s)'),
@@ -148,7 +157,7 @@ $words = mb_split(' ', $assignment->text);
                 </div>
             </div>
             <div class="panel-body">
-                <?= $this->Form->control('word_class_id', [
+                <?= $this->Form->control('answer_words.0.word_class_id', [
                     'type' => 'select',
                     'label' => false,
                 ]) ?>
@@ -163,7 +172,7 @@ $words = mb_split(' ', $assignment->text);
                 </div>
             </div>
             <div class="panel-body">
-                <?= $this->Form->control('synonym', [
+                <?= $this->Form->control('answer_words.0.synonym', [
                     'type' => 'text',
                     'label' => false,
                     'placeholder' => __('Enter synonym') . '...',
@@ -179,7 +188,7 @@ $words = mb_split(' ', $assignment->text);
                 </div>
             </div>
             <div class="panel-body">
-                <?= $this->Form->control('sentence', [
+                <?= $this->Form->control('answer_words.0.sentence', [
                     'type' => 'text',
                     'label' => false,
                     'placeholder' => __('Enter sentence') . '...',

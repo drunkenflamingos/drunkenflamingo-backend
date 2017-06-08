@@ -13,14 +13,14 @@ $this->extend('/Layout/dashboard'); ?>
 
 <?php $this->start('content_buttons'); ?>
 <div class="btn-group-raised">
-    <?php if ($this->request->getQuery('type') === 'courses'): ?>
+    <?php if ($type === 'courses'): ?>
         <?= $this->Html->link(__('Show direct'),
-            ['?' => ['type' => 'user'] + $this->request->getQuery()],
+            ['?' => ['type' => 'user', 'sort' => null] + $this->request->getQuery()],
             ['class' => 'btn']
         ) ?>
     <?php else: ?>
         <?= $this->Html->link(__('From course'),
-            ['?' => ['type' => 'courses'] + $this->request->getQuery()],
+            ['?' => ['type' => 'courses', 'sort' => null] + $this->request->getQuery()],
             ['class' => 'btn']
         ) ?>
     <?php endif ?>
@@ -30,8 +30,12 @@ $this->extend('/Layout/dashboard'); ?>
 <table class="table table-striped" cellpadding="0" cellspacing="0">
     <thead>
     <tr>
-        <th><?= $this->Paginator->sort('name'); ?></th>
-        <th><?= $this->Paginator->sort('deadline'); ?></th>
+        <th><?= $this->Paginator->sort('Homeworks.name', __('Name')); ?></th>
+        <?php if ($type === 'user'): ?>
+            <th><?= $this->Paginator->sort('HomeworksUsers.deadline', __('Deadline')); ?></th>
+        <?php else: ?>
+            <th><?= $this->Paginator->sort('HomeworksCourses.deadline', __('Deadline')); ?></th>
+        <?php endif; ?>
         <th><?= __('Solved'); ?></th>
     </tr>
     </thead>

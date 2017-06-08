@@ -105,7 +105,7 @@ $words = mb_split(' ', $assignment->text);
 
                         <?php if ($answerWord->is_skipped): ?>
                             <div class="pull-right">
-                                <span class="label label-danger"><?= __('Skipped'); ?></span>
+                                <span class="label label-danger"><?= __('Help wanted'); ?></span>
                             </div>
                         <?php endif; ?>
                     </h3>
@@ -132,10 +132,12 @@ $words = mb_split(' ', $assignment->text);
                         <td><?= $this->Text->autoParagraph($answerWord->sentence) ?></td>
                     </tr>
 
+                    <?php if(!empty($answerWord->help_text)): ?>
                     <tr>
                         <td><?= __('Help text'); ?></td>
                         <td><?= h($answerWord->help_text) ?></td>
                     </tr>
+                    <?php endif?>
                 </table>
 
             </div>

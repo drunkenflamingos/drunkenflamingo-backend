@@ -43,6 +43,7 @@ class AnswersTable extends Table
         parent::initialize($config);
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Search.Search'); // Search!
         $this->addBehavior('Muffin/Trash.Trash');
         $this->addBehavior('CreatedModifiedBy');
         $this->addBehavior('Muffin/Footprint.Footprint', [
@@ -74,6 +75,11 @@ class AnswersTable extends Table
         $this->hasMany('AnswerWords', [
             'foreignKey' => 'answer_id',
         ]);
+
+        $this->searchManager()
+            ->value('assignment_id')
+            ->value('homework_id')
+            ->value('is_done');
     }
 
     /**

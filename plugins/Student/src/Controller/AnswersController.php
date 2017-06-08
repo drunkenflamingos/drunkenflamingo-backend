@@ -64,6 +64,7 @@ class AnswersController extends AppController
             'className' => 'Crud.View',
             'messages' => [
                 'success' => [
+                    'message' => __(''),
                     'params' => ['class' => 'alert alert-success alert-dismissible'],
                 ],
                 'error' => [
@@ -152,12 +153,31 @@ class AnswersController extends AppController
             $event->getSubject()->query->contain(['AnswerWords', 'Assignments']);
         });
 
+        $this->Crud->on('beforeSave', function (Event $event) {
+            $answerWords = $this->request->getData('answer_words');
+            $answer = $event->getSubject()->entity;
+            if (!empty($answerWords)) {
+                foreach ($answerWords as $key => $answerWord) {
+                    if ($answerWord['is_skipped'] !== '1' && empty($answerWord['help_text'])) {
+                        $answer->answer_words[$key]->help_text = null;
+                    }
+                }
+            }
+        });
+
 
         return $this->Crud->execute();
     }
 
     public function stepThree($id = null)
     {
+        $this->Answers->AnswerWords->setSaveStrategy('append');
+        $this->Crud->action()->setConfig('saveOptions', [
+            'associated' => [
+                'AnswerWords',
+            ],
+        ]);
+
         $this->loadModel('WordClasses');
 
         $wordClasses = $this->WordClasses->find('list')->order(['WordClasses.title'])->toArray();
@@ -165,7 +185,13 @@ class AnswersController extends AppController
         $this->set(compact('wordClasses'));
 
         $this->Crud->on('beforeFind', function (Event $event) {
-            $event->getSubject()->query->contain(['Assignments']);
+            $event->getSubject()->query
+                ->contain([
+                    'Assignments',
+                    'AnswerWords' => function (\Cake\ORM\Query $q) {
+                        return $q->where(['AnswerWords.id' => $this->request->getQuery('answer_word_id')]);
+                    },
+                ]);
         });
 
         $this->Crud->on('afterFind', function (Event $event) {
@@ -239,9 +265,7 @@ class AnswersController extends AppController
                     'is_done' => true,
                 ]);
 
-                if ($this->Answers->save($answer)) {
-                    $this->Flash->success(__('Assignment was finished successfully'));
-                } else {
+                if (!$this->Answers->save($answer)) {
                     $this->Flash->error(__('An error happened'));
                 }
             }

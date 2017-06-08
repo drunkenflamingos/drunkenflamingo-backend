@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Student\Controller;
+namespace StudentApi\Controller;
 
 use Cake\Event\Event;
 use Cake\I18n\Time;
@@ -15,17 +15,12 @@ use Cake\ORM\Query;
 class HomeworksController extends AppController
 {
     public $modelClass = 'App.Homeworks';
-    public $paginate = [
-        'sortWhitelist' => [
-            'Homeworks.name',
-            'HomeworksUsers.deadline',
-            'HomeworksCourses.deadline',
-        ],
-    ];
 
     public function initialize()
     {
         parent::initialize();
+
+        $this->Crud->disable(['edit', 'delete']);
     }
 
     public function beforeFilter(Event $event)
@@ -33,6 +28,7 @@ class HomeworksController extends AppController
         parent::beforeFilter($event);
 
         $type = $this->request->getQuery('type') === 'user' ? 'user' : 'courses';
+
 
         $this->Crud->on('beforePaginate', function (Event $event) use ($type) {
             if ($type === 'user') {
@@ -56,8 +52,6 @@ class HomeworksController extends AppController
                     },
                 ]);
         });
-
-        $this->set(compact('type'));
     }
 
     public function index()
@@ -67,27 +61,11 @@ class HomeworksController extends AppController
 
     public function view($id = null)
     {
-        $this->Crud->on('afterFind', function (Event $event) {
-            $homework = $event->getSubject()->entity;
+        return $this->Crud->execute();
+    }
 
-            $assignments = $this->Homeworks->Assignments->find()
-                ->matching('Homeworks', function (Query $q) use ($homework) {
-                    return $q->where(['Homeworks.id' => $homework->id]);
-                })
-                ->contain([
-                    'Answers' => function (Query $q) {
-                        return $q->where(['Answers.created_by_id' => $this->Auth->user('id')]);
-                    },
-                ])
-                ->order(['Assignments.title' => 'ASC'])
-                ->distinct(['Assignments.id']);
-
-            $this->set(compact('assignments'));
-        });
-
+    public function add()
+    {
         return $this->Crud->execute();
     }
 }
-
-
-

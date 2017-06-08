@@ -38,12 +38,14 @@ class OrganizationsController extends AppController
         $organizations = $this->Organizations->find()
             ->contain([
                 'UsersRoles.Roles' => function (Query $q) {
-                    return $q->where(['UsersRoles.user_id' => $this->Auth->user('id')]);
+                    return $q
+                        ->where(['UsersRoles.user_id' => $this->Auth->user('id')]);
                 },
             ])
             ->matching('UsersRoles', function (Query $q) {
                 return $q->where(['UsersRoles.user_id' => $this->Auth->user('id')]);
             })
+            ->order(['Organizations.name' => 'ASC'])
             ->distinct('Organizations.id');
 
         if ($organizations->isEmpty()) {

@@ -94,7 +94,7 @@ class AnswerWordsTable extends Table
 
         $validator
             ->uuid('answer_id')
-            ->requirePresence('answer_id')
+            ->requirePresence('answer_id','create')
             ->notEmpty('answer_id', 'create');
 
         $validator

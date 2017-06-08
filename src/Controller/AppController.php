@@ -87,8 +87,7 @@ class AppController extends Controller
                     'fields' => ['username' => 'email', 'password' => 'password'],
                 ],
                 'Muffin/OAuth2.OAuth' => [
-                    'userModel' => 'Users',
-                    'fields' => ['username' => 'email', 'password' => 'password'],
+                    Configure::read('Muffin/OAuth2.providers'),
                 ],
             ],
             'authorize' => 'Controller',

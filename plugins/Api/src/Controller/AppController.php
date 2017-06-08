@@ -8,6 +8,7 @@ use Cake\Datasource\Exception\MissingModelException;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
 use Cake\I18n\I18n;
+use Cake\Network\Exception\UnauthorizedException;
 use Cake\ORM\TableRegistry;
 use Cake\Utility\Inflector;
 use Crud\Controller\Component\CrudComponent;
@@ -62,12 +63,18 @@ class AppController extends BaseController
                     'scope' => ['Users.is_activated' => 1],
                     'fields' => [
                         'username' => 'id',
+                        'password' => 'password',
                     ],
                     'parameter' => 'token',
                     // Boolean indicating whether the "sub" claim of JWT payload
                     'queryDatasource' => true,
+                    'unauthenticatedException' => UnauthorizedException::class,
                 ],
                 'Form' => [
+                    'fields' => [
+                        'username' => 'email',
+                        'password' => 'password',
+                    ],
                     'scope' => ['Users.is_activated' => 1],
                 ],
             ],
@@ -186,10 +193,10 @@ class AppController extends BaseController
         if (!empty($this->Auth->user('language_id'))) {
             $language = $this->Languages->get($this->Auth->user('language_id'));
         } else {
-            $language = $this->Languages->find()->where(['Languages.short_code' => 'en_US'])->firstOrFail();
+            $language = $this->Languages->find()->where(['Languages.iso_code' => 'en-US'])->firstOrFail();
         }
 
-        I18n::locale($language->short_code);
+        I18n::locale($language->iso_code);
 
         //Enable someurl?include=companies,languages$
         //TODO Use whitelisting for includes in the API so you can only include select associations
@@ -218,6 +225,19 @@ class AppController extends BaseController
         $this->Crud->on('afterFind', function (Event $event) {
             unset($event->getSubject()->entity->_matchingData);
         });
+    }
+
+    /**
+     * Forces usage of SSL on all of the system.
+     *
+     * @param $type
+     * @return \Cake\Http\Response|null
+     */
+    public function forceSSL($type)
+    {
+        if ($type === 'secure') {
+            return $this->redirect('https://' . env('SERVER_NAME') . $this->request->getUri()->getPath());
+        }
     }
 
     public function isAuthorized(array $user): bool

@@ -212,6 +212,9 @@ Configure::write('Muffin/OAuth2', [
             'mapFields' => [
                 'email' => 'emails.0.value',
             ],
+            'fields' => [
+                'username' => 'email',
+            ],
         ],
         'facebook' => [
             'className' => League\OAuth2\Client\Provider\Facebook::class,
@@ -222,6 +225,9 @@ Configure::write('Muffin/OAuth2', [
                 'graphApiVersion' => 'v2.9',
             ],
             'mapFields' => [
+            ],
+            'fields' => [
+                'username' => 'email',
             ],
         ],
     ],
