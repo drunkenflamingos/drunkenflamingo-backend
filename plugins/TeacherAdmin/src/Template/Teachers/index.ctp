@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /* @var $this \Cake\View\View */
 $this->extend('/Layout/dashboard');
 ?>
@@ -43,22 +44,78 @@ $this->extend('/Layout/dashboard');
     <tr>
         <th><?= $this->Paginator->sort('name'); ?></th>
         <th><?= $this->Paginator->sort('email'); ?></th>
-        <th><?= __('Role(s)'); ?></th>
+        <th><?= __('Admin'); ?></th>
+        <th><?= __('Teacher'); ?></th>
         <th class="actions"><?= __('Actions'); ?></th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($teachers as $teacher): ?>
         <?php
-        $isTeacherAdmin = !collection($teacher->users_roles)->match(['role.identifier' => 'teacher_admin'])->isEmpty();
-        $isNormalTeacher = !collection($teacher->users_roles)->match(['role.identifier' => 'teacher'])->isEmpty();
+        $isTeacherAdmin = false;
+        $isNormalTeacher = false;
+
+        if (!empty($teacher->users_roles)) {
+            $isTeacherAdmin = !collection($teacher->users_roles)->match(['role.identifier' => 'teacher_admin'])->isEmpty();
+        }
+        if (!empty($teacher->users_roles)) {
+            $isNormalTeacher = !collection($teacher->users_roles)->match(['role.identifier' => 'teacher'])->isEmpty();
+        }
         ?>
         <tr>
             <td><?= h($teacher->name) ?></td>
             <td><?= h($teacher->email) ?></td>
             <td>
-                <?= $isTeacherAdmin ? sprintf('<div class="label label-primary">%s</div>', __('Admin')) : null ?>
-                <?= $isNormalTeacher ? sprintf('<div class="label label-primary">%s</div>', __('Teacher')) : null ?>
+                <?php if ($isTeacherAdmin): ?>
+                    <?= $this->Form->postLink('<i class="material-icons text-success">check_cirle</i>', [
+                        'action' => 'changeRole',
+                        $teacher->id,
+                    ], [
+                        'escape' => false,
+                        'data' => [
+                            'action' => 'delete',
+                            'type' => 'teacher_admin',
+                        ],
+                    ]) ?>
+
+                <?php else: ?>
+                    <?= $this->Form->postLink('<i class="material-icons text-danger">remove_circle</i>', [
+                        'action' => 'changeRole',
+                        $teacher->id,
+                    ], [
+                        'escape' => false,
+                        'data' => [
+                            'action' => 'add',
+                            'type' => 'teacher_admin',
+                        ],
+                    ]) ?>
+                <?php endif; ?>
+            </td>
+            <td>
+                <?php if ($isNormalTeacher): ?>
+                    <?= $this->Form->postLink('<i class="material-icons text-success">check_cirle</i>', [
+                        'action' => 'changeRole',
+                        $teacher->id,
+                    ], [
+                        'escape' => false,
+                        'data' => [
+                            'action' => 'delete',
+                            'type' => 'teacher',
+                        ],
+                    ]) ?>
+
+                <?php else: ?>
+                    <?= $this->Form->postLink('<i class="material-icons text-danger">remove_circle</i>', [
+                        'action' => 'changeRole',
+                        $teacher->id,
+                    ], [
+                        'escape' => false,
+                        'data' => [
+                            'action' => 'add',
+                            'type' => 'teacher',
+                        ],
+                    ]) ?>
+                <?php endif; ?>
             </td>
             <td class="actions">
                 <?= $this->Table->actions([
@@ -66,7 +123,7 @@ $this->extend('/Layout/dashboard');
                     $this->Html->link(__('Edit'), ['action' => 'edit', $teacher->id]),
                     $this->Form->postLink(__('Delete'), ['action' => 'delete', $teacher->id], [
                         'confirm' => __('Are you sure you want to delete {0}?', $teacher->name),
-                    ])
+                    ]),
                 ]) ?>
 
             </td>

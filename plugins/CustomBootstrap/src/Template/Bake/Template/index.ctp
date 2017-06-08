@@ -3,11 +3,24 @@
 use Cake\Utility\Inflector;
 %>
 <?php
+declare(strict_types=1);
+
 /* @var $this \Cake\View\View */
-$this->extend('/Layout/dashboard');
-$this->start('tb_actions');
-?>
-    <li><?= $this->Html->link(__('New <%= $singularHumanName %>'), ['action' => 'add']); ?></li>
+$this->extend('/Layout/dashboard'); ?>
+
+<?php $this->start('content_header'); ?>
+<h1><?= __('<%= $singularHumanName %>'); ?></h1>
+<?php $this->end(); ?>
+
+<?php $this->start('content_buttons'); ?>
+<div class="btn-group-raised">
+    <?= $this->Html->link('<i class="material-icons">add</i> ' . __('New <%= $singularHumanName %>'), [
+            'action' => 'add'
+    ], [
+        'class' => 'btn btn-primary',
+        'escape' => false,
+    ]) ?>
+</div>
 <%
 $done = [];
 foreach ($associations as $type => $data):
@@ -23,7 +36,6 @@ foreach ($associations as $type => $data):
 endforeach;
 %>
 <?php $this->end(); ?>
-<?php $this->assign('tb_sidebar', '<ul class="nav nav-sidebar">' . $this->fetch('tb_actions') . '</ul>'); ?>
 
 <%
 $fields = collection($fields)
@@ -76,15 +88,17 @@ $fields = collection($fields)
             $pk = '$' . $singularVar . '->' . $primaryKey[0];
             %>
             <td class="actions">
-                <?= $this->Html->link('', ['action' => 'view', <%= $pk %>], ['title' => __('View'), 'class' => 'btn btn-default glyphicon glyphicon-eye-open']) ?>
-                <?= $this->Html->link('', ['action' => 'edit', <%= $pk %>], ['title' => __('Edit'), 'class' => 'btn btn-default glyphicon glyphicon-pencil']) ?>
-                <?= $this->Form->postLink('', ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'title' => __('Delete'), 'class' => 'btn btn-default glyphicon glyphicon-trash']) ?>
+                <?= $this->Table->actions([
+                $this->Html->link(__('View'), ['action' => 'view', <%= $pk %>], ['title' => __('View')]),
+                $this->Html->link(__('Edit'), ['action' => 'edit', <%= $pk %>], ['title' => __('Edit')]),
+                $this->Form->postLink(__('Delete'), ['action' => 'delete', <%= $pk %>], ['confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>), 'title' => __('Delete')])
+                ]) ?>
             </td>
         </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-<div class="paginator">
+<div class="paginator text-center">
     <ul class="pagination">
         <?= $this->Paginator->prev('< ' . __('previous')) ?>
         <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>

@@ -1,7 +1,10 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+use App\Model\Entity\Currency;
+
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -12,15 +15,16 @@ use Cake\Validation\Validator;
  * @property \Cake\ORM\Association\BelongsTo $CreatedBy
  * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
  *
- * @method \App\Model\Entity\Currency get($primaryKey, $options = [])
- * @method \App\Model\Entity\Currency newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Currency[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Currency|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Currency patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Currency[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Currency findOrCreate($search, callable $callback = null, $options = [])
+ * @method Currency get($primaryKey, $options = [])
+ * @method Currency newEntity($data = null, array $options = [])
+ * @method Currency[] newEntities(array $data, array $options = [])
+ * @method Currency|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method Currency patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method Currency[] patchEntities($entities, array $data, array $options = [])
+ * @method Currency findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \App\Model\Behavior\CreatedModifiedByBehavior
  */
 class CurrenciesTable extends Table
 {
@@ -35,9 +39,7 @@ class CurrenciesTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('currencies');
-        $this->displayField('name');
-        $this->primaryKey('id');
+        $this->setDisplayField('name');
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
@@ -61,10 +63,10 @@ class CurrenciesTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->uuid('id')
@@ -76,6 +78,7 @@ class CurrenciesTable extends Table
 
         $validator
             ->requirePresence('iso_code', 'create')
+            ->add('iso_code', 'unique', ['rule' => 'validateUnique', 'provider' => 'table'])
             ->notEmpty('iso_code');
 
         $validator
@@ -89,11 +92,13 @@ class CurrenciesTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
+        $rules->isUnique('iso_code');
+
         return $rules;
     }
 }

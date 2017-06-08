@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -19,6 +20,7 @@ use Cake\Controller\Controller;
 use Cake\Core\Configure;
 use Cake\Datasource\Exception\MissingModelException;
 use Cake\Event\Event;
+use Cake\I18n\I18n;
 use Crud\Controller\ControllerTrait;
 use Muffin\Footprint\Auth\FootprintAwareTrait;
 use UnexpectedValueException;
@@ -114,7 +116,7 @@ class AppController extends Controller
                 'controller' => 'Organizations',
                 'action' => 'picker',
             ],
-            'authError' => __('Du skal logge ind for at se denne side'),
+            'authError' => __('You have to be authenticated to see this content'),
             'storage' => 'Session',
             'checkAuthIn' => 'Controller.initialize',
         ]);
@@ -230,6 +232,23 @@ class AppController extends Controller
             $this->Crud->action()->setConfig('scaffold.brand', Configure::read('App.name'));
         }
 
+        $this->loadModel('Languages');
+        $this->loadModel('Users');
+
+        if (!empty($this->Auth->user('id'))) {
+            $user = $this->Users->get($this->Auth->user('id'));
+
+            $gravatarUrl = $user->getGravatarImageUrl('320px');
+
+            $this->set(compact('gravatarUrl'));
+
+            $language = $this->Languages->get($user->language_id);
+        } else {
+            $language = $this->Languages->find()->where(['Languages.iso_code' => 'en-US'])->firstOrFail();
+        }
+
+        I18n::locale($language->iso_code);
+
         $isRest = in_array($this->response->type(), ['application/json', 'application/xml'], true);
         $isAdmin = $this->isAdmin || in_array($this->request->action, $this->adminActions);
 
@@ -263,7 +282,9 @@ class AppController extends Controller
      */
     public function forceSSL($type)
     {
-        return $this->redirect('https://' . env('SERVER_NAME') . $this->request->getUri()->getPath());
+        if ($type === 'secure') {
+            return $this->redirect('https://' . env('SERVER_NAME') . $this->request->getUri()->getPath());
+        }
     }
 
     public function isAuthorized(array $user): bool

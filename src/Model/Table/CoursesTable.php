@@ -1,8 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
+
+use Cake\Database\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -23,6 +25,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Course findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \App\Model\Behavior\CreatedModifiedByBehavior
  */
 class CoursesTable extends Table
 {
@@ -42,13 +45,18 @@ class CoursesTable extends Table
         $this->addBehavior('Search.Search'); // Search!
         $this->addBehavior('Timestamp');
         $this->addBehavior('CreatedModifiedBy');
-
+        $this->addBehavior('Muffin/Trash.Trash');
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
                     'created_by_id' => 'new',
                     'modified_by_id' => 'always',
                     'organization_id' => 'new',
+                ],
+                'Model.beforeRules' => [
+                    'created_by_id' => 'new',
+                    'modified_by_id' => 'always',
+                    'organization_id' => 'always',
                 ],
             ],
             'propertiesMap' => [
@@ -58,8 +66,8 @@ class CoursesTable extends Table
             ],
         ]);
 
-        $this->belongsToMany('Users',[
-            'through' => 'CoursesUsers'
+        $this->belongsToMany('Users', [
+            'through' => 'CoursesUsers',
         ]);
         $this->belongsTo('Organizations', [
             'foreignKey' => 'organization_id',
@@ -86,7 +94,7 @@ class CoursesTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -108,13 +116,27 @@ class CoursesTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['organization_id'], 'Organizations'));
+        $rules->add($rules->isUnique(['grade', 'name', 'organization_id']), [
+            'errorField' => 'name',
+            'message' => __('You can only have 1 combination of grade and name'),
+        ]);
 
         return $rules;
+    }
+
+    /**
+     * @param Query $q
+     * @param array $options
+     * @return Query
+     */
+    public function findDefaultOrder(Query $q, array $options): Query
+    {
+        return $q->order(['Courses.grade', 'Courses.name']);
     }
 }

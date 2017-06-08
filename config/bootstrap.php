@@ -50,23 +50,19 @@ require __DIR__ . '/paths.php';
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
 
 use Cake\Cache\Cache;
-use Cake\Console\ConsoleErrorHandler;
-use Cake\Core\App;
 use Cake\Core\Configure;
 use Cake\Core\Configure\Engine\PhpConfig;
 use Cake\Core\Plugin;
 use Cake\Database\Type;
 use Cake\Datasource\ConnectionManager;
-use Cake\Error\ErrorHandler;
 use Cake\Event\EventManager;
+use Cake\I18n\I18n;
 use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Network\Request;
 use Cake\ORM\TableRegistry;
 use Cake\Routing\Router;
-use Cake\Utility\Inflector;
 use Cake\Utility\Security;
-use Josegonzalez\CakeQueuesadilla\Queue\Queue;
 
 /*
  * Read configuration file and inject configuration into various
@@ -198,6 +194,8 @@ Type::build('datetime')
 Type::build('timestamp')
     ->useImmutable();
 
+I18n::locale('en_US');
+
 Configure::write('Muffin/OAuth2', [
     'providers' => [
         'google' => [
@@ -213,6 +211,17 @@ Configure::write('Muffin/OAuth2', [
             ],
             'mapFields' => [
                 'email' => 'emails.0.value',
+            ],
+        ],
+        'facebook' => [
+            'className' => League\OAuth2\Client\Provider\Facebook::class,
+            'options' => [
+                'clientId' => Configure::read('Facebook.auth.client.id'),
+                'clientSecret' => Configure::read('Facebook.auth.client.secret'),
+                'redirectUri' => Configure::read('Facebook.auth.redirecturi'),
+                'graphApiVersion' => 'v2.9',
+            ],
+            'mapFields' => [
             ],
         ],
     ],
@@ -250,16 +259,16 @@ if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
 
-// Handle the CakeQueuesadilla
-Plugin::load('Josegonzalez/CakeQueuesadilla');
-Queue::config(Configure::consume('Queuesadilla'));
-
 Plugin::load('Admin', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('Teacher', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('TeacherAdmin', ['bootstrap' => false, 'routes' => true]);
 Plugin::load('Student', ['bootstrap' => false, 'routes' => true]);
-Plugin::load('StudentApi', ['bootstrap' => false, 'routes' => true]);
+
 Plugin::load('CustomBootstrap');
+
+Plugin::load('Api', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('TeacherApi', ['bootstrap' => false, 'routes' => true]);
+Plugin::load('StudentApi', ['bootstrap' => false, 'routes' => true]);
 
 Plugin::load('AssetCompress', ['bootstrap' => true]);
 Plugin::load('BootstrapUI');
@@ -269,10 +278,8 @@ Plugin::load('CrudUsers');
 
 Plugin::load('Josegonzalez/Upload');
 Plugin::load('Josegonzalez/Version', ['bootstrap' => true]);
+Plugin::load('MailgunEmail');
 
-Plugin::load('ADmad/Glide');
-
-Plugin::load('ShadowTranslate');
 Plugin::load('Search');
 
 Plugin::load('Muffin/Footprint');

@@ -1,8 +1,9 @@
 <?php
+declare(strict_types=1);
+
 /**
  * @var \Cake\View\View $this
  */
-use Cake\Core\Configure;
 
 ?>
 <div class="navbar navbar-fixed-top" role="navigation">
@@ -16,16 +17,13 @@ use Cake\Core\Configure;
                 <span class="icon-bar"></span>
             </button>
 
-            <?= $this->Html->link(
-                $this->cell('ShowOrganization') . ' <b class="caret"></b>',
-                [
-                    'plugin' => null,
-                    'controller' => 'Organizations',
-                    'action' => 'picker',
-                ], [
-                'class' => 'navbar-brand',
-                'escape' => false,
-            ]) ?>
+            <div class="navbar-brand">
+                <?= $this->Html->image('logo_white_transparent.png', [
+                    'class' => 'img-responsive',
+                    'style' => 'height: 32px;',
+                    'url' => \Cake\Routing\Router::url(['controller' => 'Dashboard', 'action' => 'index']),
+                ]) ?>
+            </div>
 
         </div>
         <div class="navbar-collapse collapse">
@@ -34,7 +32,6 @@ use Cake\Core\Configure;
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-divider"></li>
                 <li>
                     <?= $this->Html->link(
                         '<i class="material-icons">show_chart</i> ' . __('Dashboard'),
@@ -44,7 +41,53 @@ use Cake\Core\Configure;
                         ], ['escape' => false,]) ?>
                 </li>
 
-                <li class="nav-divider"></li>
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">group</i> ' . __('Pupils'),
+                        [
+                            'prefix' => false,
+                            'controller' => 'Users',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">class</i> ' . __('Courses'),
+                        [
+                            'controller' => 'Courses',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">show_chart</i> ' . __('Homework'),
+                        [
+                            'controller' => 'Homeworks',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">show_chart</i> ' . __('Assignments'),
+                        [
+                            'controller' => 'Assignments',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+
+                <li>
+                    <?php /*
+                    <?= $this->Html->link(
+                        '<i class="material-icons">show_chart</i> ' . __('Statistics'),
+                        [
+                            'controller' => 'Statistics',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                    */ ?>
+                </li>
 
                 <li class="dropdown">
                     <a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown"
@@ -59,7 +102,17 @@ use Cake\Core\Configure;
                                 [
                                     'plugin' => null,
                                     'controller' => 'Organizations',
-                                    'action' => 'index',
+                                    'action' => 'picker',
+                                ], ['escape' => false,]) ?>
+                        </li>
+
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="material-icons">settings</i> ' . __('Settings'),
+                                [
+                                    'plugin' => false,
+                                    'controller' => 'Users',
+                                    'action' => 'edit',
                                 ], ['escape' => false,]) ?>
                         </li>
 

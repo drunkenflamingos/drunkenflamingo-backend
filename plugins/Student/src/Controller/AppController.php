@@ -1,9 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace Student\Controller;
 
 use App\Controller\AppController as BaseController;
+use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Event\Event;
+use Cake\ORM\Query;
+use Cake\ORM\TableRegistry;
 
 /**
  * @property \App\Model\Table\UsersTable $Users
@@ -47,12 +51,14 @@ class AppController extends BaseController
                     'UsersRoles.user_id' => $userId,
                     'UsersRoles.organization_id' => $organizationId,
                 ])
-                ->contain(['Roles'])
+                ->matching('Roles', function (Query $q) {
+                    return $q->where(['Roles.identifier' => 'student']);
+                })
                 ->firstOrFail();
         } catch (RecordNotFoundException $e) {
             return false;
         }
 
-        return $usersRole->role->identifier === 'student' && parent::isAuthorized($user);
+        return $usersRole !== null && parent::isAuthorized($user);
     }
 }

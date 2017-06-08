@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controller;
 
 use Cake\Event\Event;
 use Cake\ORM\Query;
+use Cake\Utility\Inflector;
 
 /**
  * Organizations Controller
@@ -41,7 +43,8 @@ class OrganizationsController extends AppController
             ])
             ->matching('UsersRoles', function (Query $q) {
                 return $q->where(['UsersRoles.user_id' => $this->Auth->user('id')]);
-            });
+            })
+            ->distinct('Organizations.id');
 
         if ($organizations->isEmpty()) {
             return $this->redirect([
@@ -66,7 +69,7 @@ class OrganizationsController extends AppController
 
         $role = $this->Roles->get($this->request->getData('role_id'));
 
-        $defaultPlugin = \Cake\Utility\Inflector::classify($role->identifier);
+        $defaultPlugin = Inflector::classify($role->identifier);
 
         $user = $this->Users->get($this->Auth->user('id'));
         $user->active_organization_id = $organization->id;

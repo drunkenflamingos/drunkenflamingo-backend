@@ -1,9 +1,11 @@
 <?php
+declare(strict_types=1);
+
 namespace App\Model\Table;
 
 use App\Model\Entity\Organization;
 use Cake\Datasource\EntityInterface;
-use Cake\ORM\Query;
+
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -27,6 +29,7 @@ use Cake\Validation\Validator;
  * @method Organization findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin \App\Model\Behavior\CreatedModifiedByBehavior
  */
 class OrganizationsTable extends Table
 {
@@ -41,7 +44,7 @@ class OrganizationsTable extends Table
     {
         parent::initialize($config);
 
-        $this->displayField('name');
+        $this->setDisplayField('name');
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
@@ -50,7 +53,6 @@ class OrganizationsTable extends Table
         ]);
 
         $this->addBehavior('CreatedModifiedBy');
-
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
                 'Model.beforeSave' => [
@@ -72,6 +74,12 @@ class OrganizationsTable extends Table
             'foreignKey' => 'country_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('ContactPeople', [
+            'foreignKey' => 'contact_person_id',
+            'joinType' => 'INNER',
+            'className' => 'Users',
+        ]);
+
         $this->hasMany('UsersRoles', [
             'foreignKey' => 'organization_id',
         ]);
@@ -94,7 +102,7 @@ class OrganizationsTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): \Cake\Validation\Validator
     {
         $validator
             ->uuid('id')
@@ -150,7 +158,7 @@ class OrganizationsTable extends Table
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
      * @return \Cake\ORM\RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): \Cake\ORM\RulesChecker
     {
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
         $rules->add($rules->existsIn(['country_id'], 'Countries'));

@@ -40,6 +40,8 @@ $groupedFields += ['number' => [], 'string' => [], 'boolean' => [], 'date' => []
 $pk = "\$$singularVar->{$primaryKey[0]}";
 %>
 <?php
+declare(strict_types=1);
+
 $this->extend('/Layout/dashboard');
 
 <% foreach (['tb_actions', 'tb_sidebar'] as $block): %>

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * @var \Cake\View\View $this
  */
@@ -29,7 +30,7 @@ $this->extend('../Layout/cover');
 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
     <?= $this->Html->link(__('I just want a user...'), [
         'controller' => 'Users',
-        'action' => 'login',
+        'action' => 'register',
     ], [
         'class' => 'btn btn-sm btn-default btn-block',
     ]); ?>

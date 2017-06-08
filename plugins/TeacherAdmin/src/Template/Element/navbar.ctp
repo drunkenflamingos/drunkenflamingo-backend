@@ -1,8 +1,11 @@
 <?php
+declare(strict_types=1);
+
 /**
  * @var \Cake\View\View $this
  */
 use Cake\Core\Configure;
+use Cake\Routing\Router;
 
 ?>
 <div class="navbar navbar-fixed-top" role="navigation">
@@ -17,7 +20,15 @@ use Cake\Core\Configure;
             </button>
 
             <div class="navbar-brand">
-                <?= $this->cell('ShowOrganization') ?>
+                <?= $this->Html->image('logo_white_transparent.png', [
+                    'class' => 'img-responsive',
+                    'style' => 'height: 32px;',
+                    'url' => Router::url([
+                        'prefix' => false,
+                        'controller' => 'Dashboard',
+                        'action' => 'index',
+                    ]),
+                ]) ?>
             </div>
 
         </div>
@@ -85,6 +96,17 @@ use Cake\Core\Configure;
                                     'plugin' => null,
                                     'controller' => 'Organizations',
                                     'action' => 'picker',
+                                ], ['escape' => false,]) ?>
+                        </li>
+
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="material-icons">settings</i> ' . __('Settings'),
+                                [
+                                    'prefix' => false,
+                                    'plugin' => false,
+                                    'controller' => 'Users',
+                                    'action' => 'edit',
                                 ], ['escape' => false,]) ?>
                         </li>
 

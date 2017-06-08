@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /* @var $this \Cake\View\View */
 use Cake\Core\Configure;
 
@@ -13,7 +15,12 @@ $this->start('tb_body_start');
 
                 <div class="masthead clearfix">
                     <div class="inner">
-                        <h3 class="masthead-brand"><?= Configure::read('App.title') ?></h3>
+                        <h3 class="masthead-brand">
+                            <?= $this->Html->image('logo_white_transparent.png', [
+                                'class' => 'img-responsive',
+                                'style' => 'height: 64px;',
+                            ]) ?>
+                        </h3>
                         <?= $this->fetch('tb_topnav') ?>
                     </div>
                 </div>
@@ -42,7 +49,7 @@ $this->start('tb_body_start');
 $this->end();
 
 $this->start('tb_footer');
-//
+
 $this->end('tb_footer');
 
 $this->append('content', '</div>');

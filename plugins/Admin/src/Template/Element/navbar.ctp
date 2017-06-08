@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * @var \Cake\View\View $this
  */
@@ -16,16 +18,13 @@ use Cake\Core\Configure;
                 <span class="icon-bar"></span>
             </button>
 
-            <?= $this->Html->link(
-                $this->cell('ShowOrganization') . ' <b class="caret"></b>',
-                [
-                    'plugin' => null,
-                    'controller' => 'Organizations',
-                    'action' => 'picker',
-                ], [
-                'class' => 'navbar-brand',
-                'escape' => false,
-            ]) ?>
+            <div class="navbar-brand">
+                <?= $this->Html->image('logo_white_transparent.png', [
+                    'class' => 'img-responsive',
+                    'style' => 'height: 32px;',
+                    'url' => \Cake\Routing\Router::url(['controller' => 'Dashboard', 'action' => 'index']),
+                ]) ?>
+            </div>
 
         </div>
         <div class="navbar-collapse collapse">
@@ -40,6 +39,15 @@ use Cake\Core\Configure;
                         '<i class="material-icons">show_chart</i> ' . __('Dashboard'),
                         [
                             'controller' => 'Dashboard',
+                            'action' => 'index',
+                        ], ['escape' => false,]) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link(
+                        '<i class="material-icons">domain</i> ' . __('Organizations'),
+                        [
+                            'plugin' => 'admin',
+                            'controller' => 'Organizations',
                             'action' => 'index',
                         ], ['escape' => false,]) ?>
                 </li>
@@ -59,7 +67,17 @@ use Cake\Core\Configure;
                                 [
                                     'plugin' => null,
                                     'controller' => 'Organizations',
-                                    'action' => 'picker',
+                                    'action' => 'index',
+                                ], ['escape' => false,]) ?>
+                        </li>
+
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="material-icons">settings</i> ' . __('Settings'),
+                                [
+                                    'plugin' => false,
+                                    'controller' => 'Users',
+                                    'action' => 'edit',
                                 ], ['escape' => false,]) ?>
                         </li>
 

@@ -213,7 +213,7 @@ body .container-fluid .jumbotron-danger {
     outline: 0;
     cursor: pointer;
     text-decoration: none;
-    background: transparent;
+
 }
 
 .btn::-moz-focus-inner,
@@ -244,10 +244,6 @@ body .container-fluid .jumbotron-danger {
     color: #00bcd4;
 }
 
-.btn:not(.btn-raised).btn-success,
-.input-group-btn .btn:not(.btn-raised).btn-success {
-    color: #69F0AE;
-}
 
 .btn:not(.btn-raised).btn-info,
 .input-group-btn .btn:not(.btn-raised).btn-info {
@@ -259,10 +255,7 @@ body .container-fluid .jumbotron-danger {
     color: #F57C00;
 }
 
-.btn:not(.btn-raised).btn-danger,
-.input-group-btn .btn:not(.btn-raised).btn-danger {
-    color: #e91e63;
-}
+
 
 .btn:not(.btn-raised):not(.btn-link):hover,
 .input-group-btn .btn:not(.btn-raised):not(.btn-link):hover,
@@ -674,7 +667,7 @@ fieldset[disabled][disabled] .btn-group-vertical,
 .btn-group[disabled][disabled],
 .btn-group-vertical[disabled][disabled] {
     color: rgba(0, 0, 0, 0.26);
-    background: transparent;
+
 }
 
 .theme-dark fieldset[disabled][disabled] .btn,

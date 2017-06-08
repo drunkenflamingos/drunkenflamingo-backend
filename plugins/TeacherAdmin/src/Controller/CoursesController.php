@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TeacherAdmin\Controller;
 
@@ -12,6 +13,10 @@ use TeacherAdmin\Controller\AppController;
  */
 class CoursesController extends AppController
 {
+    public $paginate = [
+        'sort' => 'Courses.grade'
+    ];
+
     public $modelClass = 'App.Courses';
 
     public function initialize()

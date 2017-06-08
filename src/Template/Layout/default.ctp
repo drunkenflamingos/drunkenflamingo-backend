@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * @var \Cake\View\View $this
  */
@@ -77,7 +79,7 @@ $html5Shim =
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 HTML;
-$this->prepend('css', $this->AssetCompress->css('style'));
+$this->prepend('css', $this->AssetCompress->css('style', ['raw' => Configure::read('debug')]));
 
 $this->append('css', $html5Shim);
 
@@ -90,7 +92,7 @@ $this->prepend('script', $this->Html->script([
 
 ]));
 
-$this->prepend('script', $this->AssetCompress->script('bootstrap'));
+$this->prepend('script', $this->AssetCompress->script('bootstrap', ['raw' => Configure::read('debug')]));
 $this->append('script', '<script>$(function(){$.material.init(); $(".select2").select2();});</script>')
 
 ?>

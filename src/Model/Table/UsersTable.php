@@ -1,11 +1,15 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Behavior\CreatedModifiedByBehavior;
 use App\Model\Entity\User;
 use ArrayObject;
+use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
 use Cake\I18n\FrozenTime;
+use Cake\ORM\Behavior\TimestampBehavior;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -20,17 +24,23 @@ use League\OAuth2\Client\Token\AccessToken;
  * @property \Cake\ORM\Association\BelongsTo $CreatedBy
  * @property \Cake\ORM\Association\BelongsTo $ModifiedBy
  * @property \Cake\ORM\Association\BelongsTo $Languages
+ * @property \Cake\ORM\Association\HasMany $UsersRoles
+ * @property \Cake\ORM\Association\HasMany $UserOauthTokens
+ * @property \Cake\ORM\Association\HasMany $LoginAttempts
+ * @property \Cake\ORM\Association\HasMany $Answers
  * @property \Cake\ORM\Association\BelongsToMany $Roles
+ * @property \Cake\ORM\Association\BelongsToMany $Organizations
  *
  * @method User get($primaryKey, $options = [])
  * @method User newEntity($data = null, array $options = [])
  * @method User[] newEntities(array $data, array $options = [])
- * @method User|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method User patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method User|bool save(EntityInterface $entity, $options = [])
+ * @method User patchEntity(EntityInterface $entity, array $data, array $options = [])
  * @method User[] patchEntities($entities, array $data, array $options = [])
  * @method User findOrCreate($search, callable $callback = null, $options = [])
  *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @mixin TimestampBehavior
+ * @mixin CreatedModifiedByBehavior
  */
 class UsersTable extends Table
 {
@@ -49,7 +59,6 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
         $this->addBehavior('Muffin/Trash.Trash');
-
         $this->addBehavior('CreatedModifiedBy');
         $this->addBehavior('Muffin/Footprint.Footprint', [
             'events' => [
@@ -81,8 +90,24 @@ class UsersTable extends Table
             'finder' => 'withTrashed',
         ]);
 
+        $this->hasMany('Answers', [
+            'foreignKey' => 'created_by_id',
+        ]);
+        $this->hasMany('DoneAnswers', [
+            'className' => 'Answers',
+            'foreignKey' => 'created_by_id',
+            'conditions' => [
+                'is_done' => true,
+            ],
+        ]);
+
+        $this->hasMany('AnswerWords', [
+            'foreignKey' => 'created_by_id',
+        ]);
+
         $this->hasMany('UsersRoles');
         $this->hasMany('UserOauthTokens');
+        $this->hasMany('LoginAttempts');
 
         $this->belongsToMany('Courses', [
             'through' => 'CoursesUsers',
@@ -117,10 +142,10 @@ class UsersTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->uuid('id')
@@ -171,13 +196,24 @@ class UsersTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['language_id'], 'Languages'));
+
+        $rules->add(function (User $user) {
+            if ($user->isDirty('password') && $user->getOriginal('password') !== null) {
+                return !empty($user->password);
+            }
+
+            return true;
+        }, 'passwordCantBeDeleted', [
+            'errorField' => 'password',
+            'message' => __('When password is already set you cannot delete it'),
+        ]);
 
         return $rules;
     }
@@ -189,9 +225,27 @@ class UsersTable extends Table
         }
     }
 
-    public function findActive(Query $q, array $options)
+    /**
+     * @param Query $q
+     * @param array $options
+     * @return Query
+     */
+    public function findActive(Query $q, array $options): Query
     {
-        return $q->where(['Users.is_active' => true]);
+        return $q->where(['Users.is_activated' => true]);
+    }
+
+    /**
+     * Custom finder that is used to authenticate API usage
+     * TODO
+     *
+     * @param Query $q
+     * @param array $options
+     * @return Query
+     */
+    public function findApiAuth(Query $q, array $options): Query
+    {
+        return $q;
     }
 
     public function findInOrganizationWithRoleIdentifier(Query $q, array $options)
@@ -213,8 +267,7 @@ class UsersTable extends Table
                 $q = $q->where(['UsersRoles.role_id' => $options['role_id']]);
             }
 
-            return $q
-                ->where(['UsersRoles.organization_id' => $options['organization_id']]);
+            return $q->where(['UsersRoles.organization_id' => $options['organization_id']]);
         });
     }
 
@@ -235,7 +288,6 @@ class UsersTable extends Table
             'email' => $data['email'],
             'password' => null,
             'is_activated' => true,
-            //'file' => file_get_contents($data['image']['url']),
             'user_oauth_tokens' => [
                 [
                     'type' => 'google',

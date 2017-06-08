@@ -1,9 +1,17 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Entity;
 
+use App\Utility\Gravatar;
 use Cake\Auth\DefaultPasswordHasher;
+use Cake\I18n\Time;
+use Cake\Mailer\MailerAwareTrait;
 use Cake\ORM\Entity;
+use Cake\ORM\TableRegistry;
+use Cake\Utility\Security;
+use Cake\Utility\Text;
+use Firebase\JWT\JWT;
 
 /**
  * User Entity
@@ -22,21 +30,23 @@ use Cake\ORM\Entity;
  * @property string $file_type
  * @property string $file_name
  * @property string $reset_token
- * @property \Cake\I18n\Time $reset_expires
+ * @property Time $reset_expires
  * @property bool $is_activated
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $modified
- * @property \Cake\I18n\Time $deleted
+ * @property Time $created
+ * @property Time $modified
+ * @property Time $deleted
  *
  * @property \App\Model\Entity\Organization $active_organization
  * @property \App\Model\Entity\User $created_by
  * @property \App\Model\Entity\User $modified_by
  * @property \App\Model\Entity\Language $language
  * @property \App\Model\Entity\Role[] $roles
+ * @property \App\Model\Entity\LoginAttempt[] $loginAttempts
+ * @property \App\Model\Entity\Answer[] $answers
  */
 class User extends Entity
 {
-
+    use MailerAwareTrait;
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -80,5 +90,47 @@ class User extends Entity
         if (strlen($password) > 0) {
             return (new DefaultPasswordHasher)->hash($password);
         }
+
+        return null;
+    }
+
+    public function getJwtToken()
+    {
+        return JWT::encode(
+            [
+                'sub' => $this->id,
+                'exp' => time() + 604800,
+            ],
+            Security::salt()
+        );
+    }
+
+    public function sendForgotPasswordMail()
+    {
+        $this->reset_token = Text::uuid();
+        $this->reset_expires = Time::now()->addDays(7);
+
+        if (TableRegistry::get('Users')->save($this)) {
+            $this->getMailer('User')->send('forgotPassword', [$this]);
+        }
+    }
+
+    public function triggerSuccessfullLogin(string $ipv4 = null, string $ipv6 = null)
+    {
+        $loginAttempts = TableRegistry::get('LoginAttempts');
+
+        $loginAttempt = $loginAttempts->newEntity([
+            'user_id' => $this->id,
+            'ip4' => $ipv4,
+            'ip6' => $ipv6,
+            'success' => true,
+        ]);
+
+        $loginAttempts->save($loginAttempt);
+    }
+
+    public function getGravatarImageUrl($size = '80px')
+    {
+        return Gravatar::getGravatarUrl($this->email, $size);
     }
 }

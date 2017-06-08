@@ -1,12 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Controller\AppController;
+use App\Form\ChangePasswordForm;
+use App\Utility\GetIp;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\Network\Exception\BadRequestException;
-use Cake\Routing\Router;
+use League\OAuth2\Client\Provider\Facebook;
 use League\OAuth2\Client\Provider\Google;
 use ReCaptcha\ReCaptcha;
 
@@ -17,13 +19,15 @@ use ReCaptcha\ReCaptcha;
  */
 class UsersController extends AppController
 {
+    public $modelClass = 'App.Users';
+
     public function initialize()
     {
         parent::initialize();
 
-        $this->Auth->allow(['register', 'loginOauth', 'oauthGoogle']);
+        $this->Auth->allow(['register', 'loginOauth', 'oauthGoogle', 'oauthFacebook', 'login']);
 
-        $this->Crud->disable(['add', 'index', 'view', 'edit', 'delete']);
+        $this->Crud->disable(['add', 'index', 'view', 'delete']);
 
         $this->Crud->mapAction('register', [
             'className' => 'CrudUsers.Register',
@@ -60,13 +64,44 @@ class UsersController extends AppController
                 ],
             ],
         ]);
+
+
     }
 
-    public function beforeFilter(Event $event)
+    public function edit($id = null)
     {
-        parent::beforeFilter($event);
+        if ($id !== $this->Auth->user('id')) {
+            return $this->redirect(['action' => 'edit', $this->Auth->user('id')]);
+        }
 
-        $this->loadModel('Users');
+        return $this->Crud->execute();
+    }
+
+    public function changePassword($id = null)
+    {
+        if ($id !== $this->Auth->user('id')) {
+            return $this->redirect(['action' => 'changePassword', $this->Auth->user('id')]);
+        }
+
+        $user = $this->Users->get($this->Auth->user('id'));
+
+        $changePassword = new ChangePasswordForm();
+        if ($this->request->is('post')) {
+            if ($changePassword->execute($this->request->getData())) {
+                $this->Flash->success('Password was changed');
+
+                return $this->redirect(['action' => 'edit']);
+            } else {
+                $this->Flash->error('Could not change password - please check the details below');
+            }
+        }
+
+        $this->set(compact('changePassword', 'user'));
+    }
+
+    public function resetPassword()
+    {
+        return $this->Crud->execute();
     }
 
     public function login()
@@ -83,14 +118,36 @@ class UsersController extends AppController
 
             if (!$resp->isSuccess()) {
                 $event->stopPropagation();
+
+                $this->Users->LoginAttempts->logUnauthenticatedAttempt([
+                    'email' => $this->request->getData('email'),
+                    'ipv4' => GetIp::getUserIpV4(),
+                    'ipv6' => GetIp::getUserIpV6(),
+                ]);
+
                 $this->Flash->error(__('Captcha failed...'));
                 return $this->redirect($this->referer());
             }
         });
 
+
         $this->Crud->on('afterLogin', function (Event $event) {
-            //Post-login logic
+            $ipv4 = GetIp::getUserIpV4();
+            $ipv6 = GetIp::getUserIpV6();
+
+            if ($event->getSubject()->success) {
+                $user = $this->Users->get($event->getSubject()->user['id']);
+
+                $user->triggerSuccessfullLogin($ipv4, $ipv6);
+            } else {
+                $this->Users->LoginAttempts->logUnauthenticatedAttempt([
+                    'email' => $this->request->getData('email'),
+                    'ipv4' => $ipv4,
+                    'ipv6' => $ipv6,
+                ]);
+            }
         });
+
 
         return $this->Crud->execute();
     }
@@ -121,6 +178,23 @@ class UsersController extends AppController
     {
         $provider = new Google(Configure::read('Muffin/OAuth2.providers.google.options'));
 
+        //$authUrl = $provider->getAuthorizationUrl(['approval_prompt' => 'force']);
+        $authUrl = $provider->getAuthorizationUrl();
+
+        $session = $this->request->session();
+        $session->write('oauth2state', $provider->getState());
+
+        if ($this->request->getQuery('redirect') !== null) {
+            $session->write('oauth2redirectAfterLogin', $this->request->getQuery('redirect'));
+        }
+
+        return $this->redirect($authUrl);
+    }
+
+    public function oauthFacebook()
+    {
+        $provider = new Facebook(Configure::read('Muffin/OAuth2.providers.facebook.options'));
+
         $authUrl = $provider->getAuthorizationUrl();
 
         $session = $this->request->session();
@@ -135,7 +209,7 @@ class UsersController extends AppController
 
     public function loginOauth()
     {
-        $session =$this->request->session();
+        $session = $this->request->session();
         if ($session->read('oauth2state') !== $this->request->getQuery('state')) {
             //XSS?
             throw new BadRequestException(__('Invalid state'));

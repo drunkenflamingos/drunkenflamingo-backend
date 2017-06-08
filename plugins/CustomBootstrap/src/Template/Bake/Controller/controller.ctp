@@ -4,6 +4,7 @@ use Cake\Utility\Inflector;
 $defaultModel = $name;
 %>
 <?php
+declare(strict_types=1);
 namespace <%= $namespace %>\Controller<%= $prefix %>;
 
 use <%= $namespace %>\Controller\AppController;
@@ -21,25 +22,21 @@ $classInfo = $this->Bake->classInfo($component, 'Controller/Component', 'Compone
  */
 class <%= $name %>Controller extends AppController
 {
-    public
-    function initialize()
+    public function initialize()
     {
         parent::initialize();
     }
 
-    public
-    function beforeFilter(\Cake\Event\Event $event)
+    public function beforeFilter(\Cake\Event\Event $event)
     {
         parent::beforeFilter($event);
     }
 
-    <%
-    echo $this->Bake->arrayProperty('helpers', $helpers, ['indent' => false]);
+    <% echo $this->Bake->arrayProperty('helpers', $helpers, ['indent' => false]);
     echo $this->Bake->arrayProperty('components', $components, ['indent' => false]);
     foreach ($actions as $action) {
         echo $this->element('Controller/' . $action);
-    }
-    %>
+    } %>
 }
 
 

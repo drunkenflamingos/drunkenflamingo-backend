@@ -1,18 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace StudentApi\Controller;
 
-use App\Controller\AppController as BaseController;
+use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\ORM\Query;
+use Cake\ORM\TableRegistry;
 
-class AppController extends BaseController
+class AppController extends \Api\Controller\AppController
 {
-    public function initialize()
-    {
-        parent::initialize();
-
-        $this->Auth->setConfig('authError', __('Unauthorized to student section'));
-    }
-
     public function isAuthorized(array $user): bool
     {
         $organizationId = $user['active_organization_id'];
@@ -24,6 +20,9 @@ class AppController extends BaseController
                     'UsersRoles.user_id' => $userId,
                     'UsersRoles.organization_id' => $organizationId,
                 ])
+                ->matching('Roles', function (Query $q) {
+                    return $q->where(['Roles.identifier' => 'student']);
+                })
                 ->contain(['Roles'])
                 ->firstOrFail();
         } catch (RecordNotFoundException $e) {

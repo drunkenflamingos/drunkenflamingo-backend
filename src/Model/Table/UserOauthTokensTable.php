@@ -1,26 +1,32 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\UserOauthToken;
+use Cake\Core\Configure;
+use Cake\Datasource\EntityInterface;
 use Cake\Event\Event;
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 use League\OAuth2\Client\Provider\AbstractProvider;
+use League\OAuth2\Client\Provider\Facebook;
+use League\OAuth2\Client\Provider\Google;
 
 /**
  * UserOauthTokens Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Users
  *
- * @method \App\Model\Entity\UserOauthToken get($primaryKey, $options = [])
- * @method \App\Model\Entity\UserOauthToken newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\UserOauthToken[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\UserOauthToken|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\UserOauthToken patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\UserOauthToken[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\UserOauthToken findOrCreate($search, callable $callback = null, $options = [])
+ * @method UserOauthToken get($primaryKey, $options = [])
+ * @method UserOauthToken newEntity($data = null, array $options = [])
+ * @method UserOauthToken[] newEntities(array $data, array $options = [])
+ * @method UserOauthToken|bool save(EntityInterface $entity, $options = [])
+ * @method UserOauthToken patchEntity(EntityInterface $entity, array $data, array $options = [])
+ * @method UserOauthToken[] patchEntities($entities, array $data, array $options = [])
+ * @method UserOauthToken findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
@@ -38,6 +44,7 @@ class UserOauthTokensTable extends Table
         parent::initialize($config);
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('Muffin/Trash.Trash');
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
@@ -48,10 +55,10 @@ class UserOauthTokensTable extends Table
     /**
      * Default validation rules.
      *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
+     * @param Validator $validator Validator instance.
+     * @return Validator
      */
-    public function validationDefault(Validator $validator)
+    public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->uuid('id')
@@ -69,7 +76,7 @@ class UserOauthTokensTable extends Table
             ->allowEmpty('refresh_token');
 
         $validator
-            ->dateTime('expires')
+            ->nonNegativeInteger('expires')
             ->allowEmpty('expires');
 
         return $validator;
@@ -79,10 +86,10 @@ class UserOauthTokensTable extends Table
      * Returns a rules checker object that will be used for validating
      * application integrity.
      *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
+     * @param RulesChecker $rules The rules object to be modified.
+     * @return RulesChecker
      */
-    public function buildRules(RulesChecker $rules)
+    public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['user_id'], 'Users'));
 
@@ -96,10 +103,57 @@ class UserOauthTokensTable extends Table
      */
     public function createOrUpdate(Event $event, AbstractProvider $provider, array $data)
     {
-        if (!isset($data['token']) || !$data['token']) {
+        $usersTable = TableRegistry::get('Users');
+
+        /** @var \League\OAuth2\Client\Token\AccessToken $token */
+        $token = $data['token'];
+
+        if (!isset($token) || !$token) {
             return;
         }
 
-        return; // void
+        switch (get_class($provider)) {
+            case Facebook::class:
+                $type = 'facebook';
+                break;
+            case Google::class:
+                $type = 'google';
+                break;
+            default:
+                $type = 'generic';
+                break;
+        }
+
+        $user = $usersTable->get($data['id']);
+        $existingToken = $this->find()
+            ->where([
+                'UserOauthTokens.user_id' => $user->id,
+                'UserOauthTokens.type' => $type,
+            ])
+            ->order(['expires' => 'DESC'])
+            ->first();
+
+        if ($existingToken === null) {
+            $userOauthToken = $this->newEntity([
+                'user_id' => $user->id,
+                'type' => $type,
+                'token' => $token->getToken(),
+                'refresh_token' => $token->getRefreshToken(),
+                'expires' => $token->getExpires(),
+            ]);
+        } else {
+            $userOauthToken = $this->patchEntity($existingToken, [
+                'token' => $token->getToken(),
+                'expires' => $token->getExpires(),
+            ]);
+
+            $refreshToken = $token->getRefreshToken();
+
+            if (!empty($refreshToken)) {
+                $userOauthToken->refresh_token = $refreshToken;
+            }
+        }
+
+        $this->save($userOauthToken);
     }
 }

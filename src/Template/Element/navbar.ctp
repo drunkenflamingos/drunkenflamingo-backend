@@ -1,8 +1,13 @@
 <?php
+declare(strict_types=1);
+
 /**
  * @var \Cake\View\View $this
  */
 use Cake\Core\Configure;
+use Cake\Routing\Router;
+
+$loggedInUser = !empty($this->request->session()->read('Auth.User'));
 
 ?>
 <div class="navbar navbar-fixed-top" role="navigation">
@@ -15,7 +20,18 @@ use Cake\Core\Configure;
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><?= Configure::read('App.title') ?></a>
+            <div class="navbar-brand" href="#">
+                <?= $this->Html->image('logo_white_transparent.png', [
+                    'class' => 'img-responsive',
+                    'style' => 'height: 32px;',
+                    'url' => !empty($loggedInUser) ?
+                        Router::url([
+                            'controller' => 'Organizations',
+                            'action' => 'picker',
+                        ]) :
+                        $this->request->getUri()->getPath(),
+                ]) ?>
+            </div>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -39,6 +55,16 @@ use Cake\Core\Configure;
                                     'plugin' => null,
                                     'controller' => 'Organizations',
                                     'action' => 'picker',
+                                ], ['escape' => false,]) ?>
+                        </li>
+
+                        <li>
+                            <?= $this->Html->link(
+                                '<i class="material-icons">settings</i> ' . __('Settings'),
+                                [
+                                    'plugin' => null,
+                                    'controller' => 'Users',
+                                    'action' => 'edit',
                                 ], ['escape' => false,]) ?>
                         </li>
 

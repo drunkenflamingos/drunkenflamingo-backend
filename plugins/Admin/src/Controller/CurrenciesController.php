@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Admin\Controller;
 
 use Admin\Controller\AppController;
@@ -11,6 +13,7 @@ use Cake\Event\Event;
  */
 class CurrenciesController extends AppController
 {
+    public $modelClass = 'App.Currencies';
     public $isAdmin = true;
 
     public function initialize()
