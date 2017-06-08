@@ -10,8 +10,8 @@ $this->extend('/Layout/dashboard');
 
 $preferredBrowserLang = $this->request->acceptLanguage()[0];
 
-$hasFacebook = Configure::read('Muffin/OAuth2.providers.facebook.options.clientSecret') !== null;
-$hasGoogle = Configure::read('Muffin/OAuth2.providers.google.options.clientSecret') !== null;
+$hasFacebook = !empty(Configure::read('Muffin/OAuth2.providers.facebook.options.clientSecret'));
+$hasGoogle = !empty('Muffin/OAuth2.providers.google.options.clientSecret');
 
 
 ?>
