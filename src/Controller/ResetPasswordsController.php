@@ -24,6 +24,7 @@ class ResetPasswordsController extends AppController
         $this->Crud->disable(['add', 'edit', 'view', 'delete', 'index']);
 
         $this->Crud->mapAction('resetPassword', [
+            'tokenField' => 'reset_token',
             'className' => 'CrudUsers.ResetPassword',
             'messages' => [
                 'success' => [
@@ -36,6 +37,7 @@ class ResetPasswordsController extends AppController
         ]);
 
         $this->Crud->mapAction('forgotPassword', [
+            'tokenField' => 'reset_token',
             'className' => 'CrudUsers.ForgotPassword',
             'messages' => [
                 'success' => [

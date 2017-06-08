@@ -278,6 +278,7 @@ Plugin::load('CrudUsers');
 
 Plugin::load('Josegonzalez/Upload');
 Plugin::load('Josegonzalez/Version', ['bootstrap' => true]);
+Plugin::load('MailgunEmail');
 
 Plugin::load('Search');
 
